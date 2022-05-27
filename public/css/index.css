@@ -120,3 +120,39 @@ input, select, textarea, button {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.l-layout {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.l-layout .l-inner {
+  min-height: calc(100vh - 35px);
+  height: 100%;
+  padding-bottom: 30px;
+}
+.l-layout .l-wrap {
+  max-width: 768px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.m-slill-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 244px;
+  width: 100%;
+  background-color: #D9D9D9;
+}
+.m-slill-item__title {
+  max-width: 36%;
+  width: 100px;
+}
+.m-slill-item__content {
+  max-width: 64%;
+  width: 100px;
+}
+.m-slill-item .m-check_list__li .m-check_input {
+  display: none;
+}

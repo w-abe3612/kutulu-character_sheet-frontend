@@ -16,7 +16,7 @@ module.exports = {
     // メインとなるJavaScriptファイル（エントリーポイント）
     entry: {
         // コンパイル対象のファイルを指定
-       'index': path.resolve(__dirname, "./src/app/app.tsx"),
+       'index': path.resolve(__dirname, "./src/app/index.tsx"),
        'index.css': path.resolve(__dirname, './src/scss/index.scss')
    },
 
