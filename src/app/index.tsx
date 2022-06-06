@@ -1,16 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client';
 import App from './components/App';
-import reducer from './reducers'
-import middleware from './middleware'
+import { store } from './reducers/store'
+import { Provider } from 'react-redux'
 
-const store = createStore(reducer,middleware)
 
-ReactDOM.render(
+const container: HTMLElement | null = document.getElementById('app')!;
+const root = createRoot(container);
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById("app")
+  </Provider>
 );

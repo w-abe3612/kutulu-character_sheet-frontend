@@ -1,16 +1,12 @@
+//合計数を表示させるコンポーネント
+
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-
-class AcquisitionPoint extends React.Component {
-    state = {}
-
-    render() {
-        return (
-            <div className="" >
-            </div>
-        )
-    }
+const AcquisitionPoint: React.FC = ( props ) => {
+    return (
+        <div ></div>
+    )
 }
 
-export default AcquisitionPoint
+export default AcquisitionPoint;

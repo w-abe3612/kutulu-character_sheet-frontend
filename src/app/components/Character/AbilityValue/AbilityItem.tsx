@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CheckButton from './checkButton' 
+
 
 
 class AbilityItem extends React.Component {
     state = {}
+    test = () => {
+        let t = []
+        for (let i:number = 1;  3 >= i ; ++i ) {
+            console.log(i)
+            t.push( <CheckButton /> )
+        }
+        return t
+    }
 
     render() {
         return (
@@ -13,36 +23,7 @@ class AbilityItem extends React.Component {
                 </div>
                 <div className="m-slill-item__content" >
                     <ul className="m-check_list" >
-                        <li className="m-check_list__li" >
-                            <div>
-                                <label
-                                    className="m-check_label"
-                                    htmlFor="test"
-                                    data-num="1"
-                                ></label>
-                                <input
-                                    type="checkbox"
-                                    className="m-check_input"
-                                    id="test"
-                                    name="test"
-                                    checked={false} />
-                            </div>
-                        </li>
-                        <li className="m-check_list__li" >
-                            <div>
-                                <label
-                                    className="m-check_label"
-                                    htmlFor="test2"
-                                    data-num="2"
-                                ></label>
-                                <input
-                                    type="checkbox"
-                                    className="m-check_input"
-                                    id="test2"
-                                    name="test2"
-                                    checked={true} />
-                            </div>
-                        </li>
+                        { this.test() }
                     </ul>
                 </div>
             </div>
