@@ -16,9 +16,13 @@ module.exports = {
     // メインとなるJavaScriptファイル（エントリーポイント）
     entry: {
         // コンパイル対象のファイルを指定
-       'index': path.resolve(__dirname, "./src/app/index.tsx"),
-       'index.css': path.resolve(__dirname, './src/scss/index.scss')
-   },
+        'index': path.resolve(__dirname, "./src/app/index.tsx"),
+        'index.css': path.resolve(__dirname, './src/scss/index.scss')
+    },
+
+    devServer: {
+        port: 3001
+    },
 
     // ファイルの出力設定
     output: {

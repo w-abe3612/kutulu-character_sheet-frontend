@@ -17,7 +17,7 @@ class AbilityItem extends React.Component {
 
     render() {
         return (
-            <div className="m-slill-item" >
+            <li className="m-slill-item" >
                 <div className="m-slill-item__title" >
                     <label className="m-slill-item__title__text" >名声</label>
                 </div>
@@ -26,7 +26,7 @@ class AbilityItem extends React.Component {
                         { this.test() }
                     </ul>
                 </div>
-            </div>
+            </li>
         )
     }
 }

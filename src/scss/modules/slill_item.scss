@@ -35,6 +35,7 @@
             .m-check_label {
                 content:'';
                 display: block;
+                position:relative;
                 width: 16px;
                 height: 100%;
                 &::before {
@@ -50,6 +51,20 @@
 
             .m-check_input {
                 display: none;
+            }
+            .m-check_input:checked + .m-check_label {
+                &::after {
+                    content:'';
+                    position:absolute;
+                    background-color:#424424;
+                    display: block;
+                    width: 8px;
+                    height: 8px;
+                    top: 4px;
+                    left: 4px;
+                    border-radius: 50%;
+                    border: solid 1px #424424;
+                }
             }
         }
     }
