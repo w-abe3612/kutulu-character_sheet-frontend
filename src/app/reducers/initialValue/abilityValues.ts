@@ -49,6 +49,7 @@ const initialAbilityValue: Array<abilityValueType> = [
         skill_type: 1,
         skill_order: 1,
     },
+
     {
         skill_name: '隠密',
         skill_param: 'undercover',

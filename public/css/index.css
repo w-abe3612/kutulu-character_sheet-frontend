@@ -1,0 +1,245 @@
+/*!********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/index.scss ***!
+  \********************************************************************************************************************************************************/
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 100%;
+  font-family: inherit;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #424242;
+}
+
+/*
+input , select , textarea , button{
+    display: block;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}*/
+.l-layout {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.l-layout .l-inner {
+  min-height: calc(100vh - 35px);
+  height: 100%;
+  padding-bottom: 30px;
+}
+.l-layout .l-wrap {
+  max-width: 768px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+.l-section_wrap {
+  max-width: calc(100% - 16px);
+  width: 100%;
+  margin: 0px auto;
+  background-color: #F0EEEE;
+  border-radius: 4px;
+}
+
+.l-section_Tab {
+  height: 30px;
+  background-color: #DEDDC8;
+}
+
+.l-section_content {
+  padding: 16px 8px;
+}
+
+.l-inner_box {
+  max-width: 510px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.m-header {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 54px;
+  background-color: #464B4F;
+  margin-bottom: 20px;
+}
+
+.m-slill-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 244px;
+  height: 32px;
+  width: 100%;
+  background-color: #D9D9D9;
+  border-radius: 4px;
+  margin: 10px 10px 10px 0px;
+}
+.m-slill-item__title {
+  max-width: 36%;
+  width: 100px;
+  background-color: #919AA1;
+}
+.m-slill-item__title__text {
+  color: #ffffff;
+  text-align: center;
+  line-height: 2;
+  display: block;
+}
+.m-slill-item__content {
+  max-width: 64%;
+  width: 100px;
+  padding: 8px 32px;
+}
+.m-slill-item .m-check_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.m-slill-item .m-check_list__li {
+  list-style: none;
+  margin-right: 8px;
+}
+.m-slill-item .m-check_list__li .m-check_label {
+  content: "";
+  display: block;
+  position: relative;
+  width: 16px;
+  height: 100%;
+}
+.m-slill-item .m-check_list__li .m-check_label::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: solid 2px #424424;
+  background: transparent;
+}
+.m-slill-item .m-check_list__li .m-check_input {
+  display: none;
+}
+.m-slill-item .m-check_list__li .m-check_input:checked + .m-check_label::after {
+  content: "";
+  position: absolute;
+  background-color: #424424;
+  display: block;
+  width: 8px;
+  height: 8px;
+  top: 4px;
+  left: 4px;
+  border-radius: 50%;
+  border: solid 1px #424424;
+}

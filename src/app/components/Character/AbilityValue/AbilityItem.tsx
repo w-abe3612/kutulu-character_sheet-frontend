@@ -1,34 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CheckButton from './checkButton' 
+import CheckButton from './checkButton'
 
+interface abilityValueType {
+    skill_name: string
+    skill_param: string
+    skill_value: number
+    skill_type: number
+    skill_order: number
+}
 
+type Props = {
+    skillItems: Array<abilityValueType>
+}
 
-class AbilityItem extends React.Component {
-    state = {}
-    test = () => {
-        let t = []
-        for (let i:number = 1;  3 >= i ; ++i ) {
-            console.log(i)
-            t.push( <CheckButton /> )
-        }
-        return t
-    }
+//　これの返り値の型がわからない
+const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
+    // jsxのエレメントを入れる時の型はJSX.Elementっぽい
+    let result:any = [];
+    let itemBoxes: Array<JSX.Element> = []
 
-    render() {
-        return (
-            <li className="m-slill-item" >
-                <div className="m-slill-item__title" >
-                    <label className="m-slill-item__title__text" >名声</label>
-                </div>
-                <div className="m-slill-item__content" >
-                    <ul className="m-check_list" >
-                        { this.test() }
-                    </ul>
-                </div>
-            </li>
-        )
-    }
+    itemBoxes = skillItems.map(( item:abilityValueType ):JSX.Element => (
+        <li key={ item.skill_param } className="m-slill-item" >
+            <div className="m-slill-item__title" >
+                <label className="m-slill-item__title__text" >{item.skill_name}</label>
+            </div>
+            <div className="m-slill-item__content" >
+                <ul className="m-check_list" >
+                    <CheckButton
+                          itemParam={ item.skill_param }
+                          itemValue={ item.skill_value }
+                    />
+                </ul>
+            </div>
+        </li>
+    ))
+
+    result = (
+        <div className = "l-inner_box" >
+            { itemBoxes }
+        </div>
+    )
+
+    return result
 }
 
 export default AbilityItem

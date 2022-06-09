@@ -30,3 +30,11 @@
 .l-section_content {
     padding:16px 8px;
 }
+
+.l-inner_box {
+    max-width:510px;
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
