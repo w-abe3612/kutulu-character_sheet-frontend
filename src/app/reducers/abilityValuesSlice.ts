@@ -4,7 +4,7 @@ import type { RootState } from './store'
 
 // Define a type for the slice state
 interface setChecked {
-  num: number,
+  value: number,
   itemParam: string
 }
 
@@ -27,7 +27,7 @@ export const abilityValuesSlice = createSlice({
 
       updateState.map((item: abilityValueType): void => {
         if ( item.skill_param === action.payload.itemParam ) {
-          item.skill_value = action.payload.num
+          item.skill_value = action.payload.value
         }
       })
       state = updateState

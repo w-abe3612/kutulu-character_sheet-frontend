@@ -10,7 +10,7 @@ type Propss = {
 }
 
 interface setChecked {
-    num: number,
+    value: number,
     itemParam: string
 }
 
@@ -19,11 +19,11 @@ const ItemBtn: React.FC<Propss> = ({ itemParam, itemValue, seconds }) => {
     const [ btnChecked, setChecked ] = useState(false);
 
     // もし値が同じならひとつ消える
-    const handleSkillPointCheck = ( btnChecked: any, paramName: string, e: React.ChangeEvent<HTMLInputElement> ) => {
+    const handleSkillPointCheck = ( itemValue:number,btnChecked: any, paramName: string, e: React.ChangeEvent<HTMLInputElement> ) => {
         e.preventDefault()
         let checkvalue: number = 0
         let setCheckedAction:setChecked = {
-            num: 0,
+            value: 0,
             itemParam: ''
         }
 
@@ -32,11 +32,11 @@ const ItemBtn: React.FC<Propss> = ({ itemParam, itemValue, seconds }) => {
             ? Number( e.currentTarget.getAttribute('data-num') ) : 0
 
 
-        if( btnChecked === true ) {
+        if( btnChecked === true && itemValue === checkvalue ) {
             checkvalue = checkvalue - 1
         }
         
-        setCheckedAction.num       = checkvalue
+        setCheckedAction.value     = checkvalue
         setCheckedAction.itemParam = paramName
 
         dispatch( addCheckedValue( setCheckedAction ) )
@@ -64,7 +64,7 @@ const ItemBtn: React.FC<Propss> = ({ itemParam, itemValue, seconds }) => {
                     name={itemParam + seconds}
                     data-num={seconds}
                     onChange={(e) => {
-                        handleSkillPointCheck( btnChecked, itemParam, e )
+                        handleSkillPointCheck( itemValue, btnChecked, itemParam, e )
                     }}
                     checked={ btnChecked }
                 />
