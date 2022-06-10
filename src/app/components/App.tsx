@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SkillCheck from './Character/AbilityValue'
+import AbilityValue from './Character/AbilityValue'
+import SpecializedSkill from './Character/SpecializedSkills'
+import FlavorInfo from './Character/FlavorInfo'
+import CharacterInfo from './Character/CharacterInfo'
+import CharacterPreference from './Character/CharacterPreference'
+import PossessionItem from './Character/PossessionItem'
 import Header from './Header'
 
 
@@ -10,7 +15,12 @@ const App: React.FC = () =>  {
             <div className='l-inner'>
                 <Header />
                 <div className='l-wrap'>
-                    <SkillCheck />
+                    <CharacterInfo />
+                    <FlavorInfo />
+                    <AbilityValue />
+                    <SpecializedSkill />
+                    <PossessionItem />
+                    <CharacterPreference />
                 </div>
             </div>
         </div>

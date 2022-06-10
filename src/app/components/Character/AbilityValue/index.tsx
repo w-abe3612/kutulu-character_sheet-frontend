@@ -46,7 +46,7 @@ const abilityTypeSeparation = ( text:Array<abilityValueType> ) => {
         return text
 }*/
 
-const SkillCheck: React.FC = () => {
+const AbilityValue: React.FC = () => {
     let abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
 
     let activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
@@ -57,7 +57,9 @@ const SkillCheck: React.FC = () => {
             <div className="l-section_Tab"></div>
             <div className="l-section_content">
                 <AcquisitionPoint />
+                <span className="">パッシブスキル</span>
                 <AbilityItem skillItems = {passiveSkill} />
+                <span className="">アクティブスキル</span>
                 <AbilityItem skillItems = {activeSkill} />
                 
             </div>
@@ -65,4 +67,4 @@ const SkillCheck: React.FC = () => {
     )
 }
 
-export default SkillCheck
+export default AbilityValue

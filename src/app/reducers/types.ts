@@ -20,3 +20,17 @@ export interface abilityValueType {
     skill_type: number
     skill_order: number
 }
+
+export interface specializedSkillType {
+    skill_name: string
+    skill_param: string
+    skill_value: number
+    skill_order: number
+}
+
+export interface flavorInfoType {
+    flavor_info_name: string
+    flavor_info_param: string
+    flavor_info_value: string
+    flavor_info_order: number
+}
