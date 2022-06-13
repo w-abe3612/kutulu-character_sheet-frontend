@@ -23,6 +23,11 @@ interface setProfileInfoType{
   itemParam: string
 }
 
+interface setTextAreaInfoType{
+  value: string,
+  itemParam: string
+}
+
 interface setInjuryValueType {
   value: number,
   itemParam: string
@@ -45,6 +50,17 @@ export const characterInfoSlice = createSlice({
 
       state = updateState
     },
+    setTextAreaInfo:(state, action: PayloadAction<setTextAreaInfoType>): void => {
+      let updateState: characterInfoType = state
+      let inputedValue:string = ''
+      let inputedParamName:string = ''
+
+      inputedValue = action.payload.value
+      inputedParamName = action.payload.itemParam
+      //todo jsonに変数の値で参照する方法
+
+      state = updateState
+    },
     setInjuryValue: (state, action: PayloadAction<setInjuryValueType>): void => {
       let updateState: characterInfoType = state
       let injuryValue: number = 0
@@ -56,7 +72,7 @@ export const characterInfoSlice = createSlice({
   },
 })
 
-export const { setProfileInfo, setInjuryValue } = characterInfoSlice.actions
+export const { setProfileInfo, setInjuryValue, setTextAreaInfo } = characterInfoSlice.actions
 
 export const selectCount = (state: RootState) => characterInfoSlice.actions
 

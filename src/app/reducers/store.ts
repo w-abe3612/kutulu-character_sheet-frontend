@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import abilityValuesReducer from './abilityValuesSlice';
 import characterInfoReducer from './characterInfosSlice';
 import specializedSkillReducer from './specializedSkillsSlice';
+import flavorInfoReducer from './flavorInfosSlice';
 
 export const store = configureStore({
   reducer: {
     abilityValues: abilityValuesReducer,
     characterInfo:characterInfoReducer,
-    specializedSkill:specializedSkillReducer
+    specializedSkill:specializedSkillReducer,
+    flavorInfo:flavorInfoReducer
   },
 })
 

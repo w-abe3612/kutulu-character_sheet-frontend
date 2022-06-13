@@ -31,8 +31,6 @@ const CharacterInfo: React.FC = () => {
     profileValue.character_title  = CharacterInfo.character_title
     profileValue.injury_value     = CharacterInfo.injury_value
 
-    console.log(CharacterInfo)
-
     return (
         <div className="m-flavor_info l-section_wrap">
             <div className="l-section_Tab"></div>
