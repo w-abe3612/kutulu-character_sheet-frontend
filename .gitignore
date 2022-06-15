@@ -1,6 +1,9 @@
 node_modules/
 /public/build
 
+# api keys
+.env
+
 # misc
 .DS_Store
 
