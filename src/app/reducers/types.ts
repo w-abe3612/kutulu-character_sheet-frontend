@@ -34,3 +34,9 @@ export interface flavorInfoType {
     flavor_info_value: string
     flavor_info_order: number
 }
+
+export interface User {
+    id: number
+    name: string
+    email: string
+}

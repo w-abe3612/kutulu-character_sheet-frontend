@@ -21,7 +21,9 @@ module.exports = {
     },
 
     devServer: {
-        port: 3001
+        port: 3001,
+        // ここを設定しておかないと、直接手入力の際にcannot get ~~ が表示される
+        historyApiFallback: true,
     },
 
     // ファイルの出力設定
