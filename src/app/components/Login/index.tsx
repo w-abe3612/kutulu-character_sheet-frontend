@@ -1,5 +1,8 @@
 import React,{useState} from 'react'
 //import { useLogin } from "../../queries/AuthQuery"
+import {
+    Navigate,
+} from "react-router-dom";
 
 const Login: React.VFC = () => {
     /*
@@ -20,6 +23,7 @@ const Login: React.VFC = () => {
     }
     return (
         <>
+         <Navigate to="/user/1/create" replace={true} />
             <div className="login-page">
                 <div className="login-panel">
                     <form onSubmit={handleLogin}>
