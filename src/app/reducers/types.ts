@@ -40,3 +40,11 @@ export interface User {
     name: string
     email: string
 }
+
+// システムに関わる変数、
+export interface systemStateType {
+    isLoggedIn: boolean
+    userId: number | null
+    userName: string
+    isPage: string
+}

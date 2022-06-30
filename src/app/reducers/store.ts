@@ -3,13 +3,15 @@ import abilityValuesReducer from './abilityValuesSlice';
 import characterInfoReducer from './characterInfosSlice';
 import specializedSkillReducer from './specializedSkillsSlice';
 import flavorInfoReducer from './flavorInfosSlice';
+import systemStateReducer from './systemStateSlice';
 
 export const store = configureStore({
   reducer: {
     abilityValues: abilityValuesReducer,
     characterInfo:characterInfoReducer,
     specializedSkill:specializedSkillReducer,
-    flavorInfo:flavorInfoReducer
+    flavorInfo:flavorInfoReducer,
+    systemState:systemStateReducer
   },
 })
 

@@ -2,49 +2,119 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
+import { systemStateType } from '../../reducers/types';
+import { useLogout } from "../../queries/AuthQuery"
 
 
 const Header: React.FC = () => {
+    let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
+
+    const a: any = (systemState: systemStateType): void => {
+        let result: any = <></>
+        if (systemState.isLoggedIn === true) {
+            result = (
+                <div className="m-login-user">{systemState.userName} <span>さん</span></div>
+            )
+        } else {
+            result = (
+                <ul className="m-menu">
+                    <li className="m-register"><Link to="/register">新規登録</Link></li>
+                    <li className="m-login"><Link to="/login">ログイン</Link></li>
+                </ul>
+            )
+        }
+
+        return (result)
+    }
+
+    const b: any = (systemState: systemStateType): void => {
+        let result: any = <></>
+
+        const logout = useLogout()
+        const handleLogout = (e: React.MouseEvent<HTMLElement>) => {
+            e.preventDefault()
+            logout.mutate()
+        }
+
+        if ( systemState.isLoggedIn === true ) {
+            result = (
+                <div className="m-inner-bottom">
+                    <div className="m-inner-bottom__inner" >
+                        <ul className="m-menu">
+                            <li><Link to="/">トップへ戻る</Link></li>
+                            <li ><Link to="/">ダッシュボード</Link></li>
+                            <li ><Link to="/">新規作成</Link></li>
+                        </ul>
+
+                        <div>
+                            <div><Link to="/">トップへ戻る</Link></div>
+                            <div onClick={handleLogout} >ログアウト</div>
+                        </div>
+                    </div>
+                    <div>
+                        {
+                            /*
+                                sp時に表示される
+                            */
+                        }
+                        <button
+                            className="m-content__hamburger_btn"
+                            type="button"
+                        >
+                            <div data-position="top" ></div>
+                            <div data-position="mid" ></div>
+                            <div data-position="bottom" ></div>
+                        </button>
+                    </div>
+                </div>
+            )
+        }
+        return (result)
+    }
+
+    const c: any = (systemState: systemStateType): void => {
+        let result: any = <></>
+        if (systemState.isLoggedIn === true) {
+            result = (
+                <div
+                    className="m-toggle_menu"
+                    data-toggle={true}
+                >
+                    <div className="m-toggle_menu__inner">
+                        <p className="m-user">Hello, Tyler McGinnis</p>
+                        <nav className="m-nav">
+                            <ul className="m-menu">
+                                <li><Link to="/">トップへ戻る</Link></li>
+                                <li ><Link to="/">ダッシュボード</Link></li>
+                                <li ><Link to="/">新規作成</Link></li>
+                                <li id="logout">Logout</li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            )
+        }
+        return (result)
+    }
 
     return (
-        <div className='m-header' >
-            <div className="m-header__inner">
-                <div className="m-inner-top">
-                    <div className="m-header-logo">
-                        <Link to="/"><img /></Link>
+        <>
+            <div className='m-header' >
+                <div className="m-header__inner">
+                    <div className="m-inner-top">
+                        <div className="m-inner-top__inner">
+                            <div className="m-header-logo">
+                                <Link to="/"><img /></Link>
+                            </div>
+                            {a(systemState)}
+                        </div>
                     </div>
-                    <ul className="m-menu">
-                        {/*
-                            ログイン前
-                        */}
-                        <li className="m-register"><Link to="/register">新規登録</Link></li>
-                        <li className="m-login"><Link to="/login">ログイン</Link></li>
-                    </ul>
-                </div>
-                <div className="m-inner-bottom">
-                    <ul className="m-">
-                        <li><Link to="/">トップへ戻る</Link></li>
-                        <li ><Link to="/">ダッシュボード</Link></li>
-                        <li ><Link to="/">新規作成</Link></li>
-                    </ul>
-
-                    <div>
-                        <div><Link to="/">トップへ戻る</Link></div>
-                        <div><Link to="/">トップへ戻る</Link></div>
-                    </div>
-                </div>
-                <div className="">
-                    {/*
-                        viewモード時
-                    */}
-                </div>
-                <div className="">
-                    {/*
-                        sp時
-                    */}
+                    {b(systemState)}
                 </div>
             </div>
-        </div>
+            {c(systemState)}
+        </>
     )
 }
 
