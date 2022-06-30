@@ -20,11 +20,9 @@ const App: React.FC = () => {
     return (
         <div className='l-layout' >
             <div className='l-inner'>
-                <CookiesProvider>
-                    <QueryClientProvider client={queryClient} >
-                        <Router />
-                    </QueryClientProvider>
-                </CookiesProvider>
+                <QueryClientProvider client={queryClient} >
+                    <Router />
+                </QueryClientProvider>
             </div>
         </div>
     )

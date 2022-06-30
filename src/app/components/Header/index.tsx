@@ -5,6 +5,9 @@ import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
 import { systemStateType } from '../../reducers/types';
 import { useLogout } from "../../queries/AuthQuery"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGear,faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+//todo webpackでコンパイルしている為か、公式のチュートリアルの方法でBabel Macrosが動かない
 
 const Header: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
@@ -36,21 +39,25 @@ const Header: React.FC = () => {
             logout.mutate()
         }
 
-        if ( systemState.isLoggedIn === true ) {
+        if (systemState.isLoggedIn === true) {
             result = (
                 <div className="m-inner-bottom">
-                    <div className="m-inner-bottom__inner" >
+                    <nav className="m-inner-bottom__inner" >
                         <ul className="m-menu">
                             <li><Link to="/">トップへ戻る</Link></li>
-                            <li ><Link to="/">ダッシュボード</Link></li>
-                            <li ><Link to="/">新規作成</Link></li>
+                            <li ><Link to={'/user/' + systemState.userId } >ダッシュボード</Link></li>
+                            <li ><Link to={'/user/' + systemState.userId + '/create' } >新規作成</Link></li>
                         </ul>
 
-                        <div>
-                            <div><Link to="/">トップへ戻る</Link></div>
-                            <div onClick={handleLogout} >ログアウト</div>
+                        <div className="m-config-nav">
+                            <div className="" ><Link to="/user/:userId/config"><FontAwesomeIcon icon={faGear} />ユーザー設定</Link></div>
+                            <button 
+                                className=""
+                                onClick={handleLogout} >
+                                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                            </button>
                         </div>
-                    </div>
+                    </nav>
                     <div>
                         {
                             /*
@@ -85,8 +92,8 @@ const Header: React.FC = () => {
                         <nav className="m-nav">
                             <ul className="m-menu">
                                 <li><Link to="/">トップへ戻る</Link></li>
-                                <li ><Link to="/">ダッシュボード</Link></li>
-                                <li ><Link to="/">新規作成</Link></li>
+                                <li ><Link to={'/user/' + systemState.userId } >ダッシュボード</Link></li>
+                                <li ><Link to={'/user/' + systemState.userId + '/create' } >新規作成</Link></li>
                                 <li id="logout">Logout</li>
                             </ul>
                         </nav>

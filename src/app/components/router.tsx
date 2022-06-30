@@ -18,6 +18,7 @@ import CharacterView from './CharacterView'
 import UserConfig from './UserConfig'
 import NotFoundPage from './NotFoundPage'
 import Header from './Header'
+import RedirectOnLogout from './Commons/redirectOnLogout'
 
 import axios from 'axios'
 
@@ -27,16 +28,26 @@ const Router = () => {
             <div>
                 <Header />
                 <Routes>
-                    
+
+
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/register" element={<ForgetPassword />} />
-                    <Route path="/user/:userId" element={<Dashboard />} />
-                    <Route path="/user/:userId/create" element={<Character />} />
-                    <Route path="/user/:userId/edit/:charactorId" element={<CharacterEdit />} />
-                    <Route path="/user/:userId/view/:charactorId" element={<CharacterView />} />
-                    <Route path="/user/:userId/config" element={<UserConfig />} />
+
+                    <Route path="user">
+                        <Route path=":id" element={<RedirectOnLogout children={<Dashboard />} />} />
+                        <Route path=":id" >
+                            <Route path="config" element={<RedirectOnLogout children={<UserConfig />} />} />
+                            <Route path="create" element={<RedirectOnLogout children={<Character />} />} />
+                            <Route path="edit" >
+                                <Route path=":charactorId" element={<RedirectOnLogout children={<CharacterEdit />} />} />
+                            </Route>
+                            <Route path="view" >
+                                <Route path=":charactorId" element={<CharacterView />} />
+                            </Route>
+                        </Route>
+                    </Route>
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </div>

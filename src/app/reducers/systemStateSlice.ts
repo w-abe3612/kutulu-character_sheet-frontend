@@ -11,7 +11,7 @@ const initState: systemStateType = {
 
 
 
-
+// todo 現状localstrageを直接触ってログインをハイジャック出来るため対策
 
 const initials = () => {
     let result: any = {}

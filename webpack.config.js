@@ -62,11 +62,13 @@ module.exports = {
             cleanAfterEveryBuildPatterns: ['public/build']
         }),
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.html',
+            //これをつけないと、直接URL叩いた時404になる
+            publicPath: '/'
         }),
         new RemoveEmptyScriptsPlugin(),
-        new MiniCssExtractPlugin({ // CSSの出力先
-            filename: 'css/[name]'// 出力ファイル名を相対パスで指定（[name]にはentry:で指定したキーが入る）
+        new MiniCssExtractPlugin({
+            filename: 'css/[name]'
         }),
     ],
     // node_modules を監視（watch）対象から除外

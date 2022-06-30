@@ -1,40 +1,4 @@
-/*
-        <div className='m-header' >
-            <div className="m-header__inner">
-                <div className="m-inner-top">
-                    <div className="m-header-logo">
-                        <img />
-                    </div>
-                    <ul className="m-menu">
 
-                        <li><Link to="/register">新規登録</Link></li>
-                        <li><Link to="/login">ログイン</Link></li>
-                    </ul>
-                    <div>
-
-                    </div>
-                </div>
-                <div className="m-inner-bottom">
-                    <ul className="m-">
-                        <li><Link to="/">トップへ戻る</Link></li>
-                        <li ><Link to="/">ダッシュボード</Link></li>
-                        <li ><Link to="/">新規作成</Link></li>
-                    </ul>
-
-                    <div>
-                        <div><Link to="/">トップへ戻る</Link></div>
-                        <div><Link to="/">トップへ戻る</Link></div>
-                    </div>
-                </div>
-                <div className="">
-
-                </div>
-                <div className="">
-
-                </div>
-            </div>
-        </div>
-*/
 
 .m-header {
     content: '';
@@ -120,20 +84,7 @@
     }
 }
 
-/*
-<div className="m-inner-bottom">
-<ul className="m-nav-menu">
-    <li><Link to="/">トップへ戻る</Link></li>
-    <li ><Link to="/">ダッシュボード</Link></li>
-    <li ><Link to="/">新規作成</Link></li>
-</ul>
 
-<div className="m-config-menu" >
-    <div><Link to="/">トップへ戻る</Link></div>
-    <div><Link to="/">トップへ戻る</Link></div>
-</div>
-</div>
-*/
 
 // todo 上と合体
 .m-header {
@@ -240,39 +191,6 @@
     }
 }
 
-/*
-            .m-menu {
-                @extend .reset;
-                display:flex;
-                list-style: none;
-                li {
-                    a {
-                        padding: 24px 20px 0px 20px;
-                        line-height: 1;
-                        display: block;
-                        color:#424242;
-                        text-decoration: none;
-                        position:relative;
-                        &:hover{
-                            color:#ffffff;
-                            &:before{
-                                content:"";
-                                position:absolute;
-                                top: 18px;
-                                right: 0;
-                                bottom:0;
-                                left:0;
-                                z-index:-1;
-                                height: 30px;
-                                background:#65C2B1;
-                                transform: perspective(10px) rotateX(5deg);
-                                border-radius:4px 4px 0px 0px;
-                            }
-                        }
-                    }
-                }
-            }
-*/
 
 .m-toggle_menu {
     display:block;
@@ -322,4 +240,8 @@
     @include mq(md){
         display:none;
     }
+}
+
+.m-config-nav{
+    display:flex;
 }

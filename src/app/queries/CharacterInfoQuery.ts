@@ -1,13 +1,15 @@
-import * as api from "../api/character"
+import * as api from "../api/CharacterInfoApi"
 
 import { AxiosError } from 'axios'
 import { useQuery} from "react-query"
 
 
-const useCharacter = (id:number) => {
-    return useQuery('character', (id) => api.getCharacter)
+const useCharacters = (userId:number | null) => {
+    let data = useQuery('characters', (characters:any) => api.getCharacters(userId))
+    console.log(data)
+    return data
 }
 
 export {
-    useCharacter 
+    useCharacters
 }
