@@ -1,8 +1,110 @@
+/*
+        <div className='m-header' >
+            <div className="m-header__inner">
+                <div className="m-inner-top">
+                    <div className="m-header-logo">
+                        <img />
+                    </div>
+                    <ul className="m-menu">
+
+                        <li><Link to="/register">新規登録</Link></li>
+                        <li><Link to="/login">ログイン</Link></li>
+                    </ul>
+                    <div>
+
+                    </div>
+                </div>
+                <div className="m-inner-bottom">
+                    <ul className="m-">
+                        <li><Link to="/">トップへ戻る</Link></li>
+                        <li ><Link to="/">ダッシュボード</Link></li>
+                        <li ><Link to="/">新規作成</Link></li>
+                    </ul>
+
+                    <div>
+                        <div><Link to="/">トップへ戻る</Link></div>
+                        <div><Link to="/">トップへ戻る</Link></div>
+                    </div>
+                </div>
+                <div className="">
+
+                </div>
+                <div className="">
+
+                </div>
+            </div>
+        </div>
+*/
+
 .m-header {
-    content:'';
-    display:block;
-    width:100%;
-    height:54px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 54px;
     background-color: #464B4F;
-    margin-bottom:20px;
+    margin-bottom: 20px;
+
+    &__inner {
+        max-width: 1024px;
+        width:100%;
+        margin: 0px auto;
+        height: 54px;
+
+        .m-inner-top {
+            display:flex;
+            width:100%;
+            justify-content: space-between;
+            align-items: center;
+            height: 54px;
+            .m-header-logo {
+                content:'';
+                width:115px;
+                height:44px;
+                background-color:transparent;
+                img{
+                    display:block;
+                    width:115px;
+                    height:44px;
+                }
+            }
+
+
+            .m-menu {
+                list-style: none;
+                display:flex;
+                .m-register {
+                    height: 32px;
+                    width: 84px;
+                    line-height: 2;
+                    text-align: center;
+                    margin: 0px 0px 0px 10px;
+                    border-radius: 4px;
+                    background-color:#AC536C;
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                }
+
+                .m-login {
+                    height: 32px;
+                    width: 84px;
+                    line-height: 2;
+                    text-align: center;
+                    margin: 0px 0px 0px 10px;
+                    border-radius: 4px;
+                    background-color:#53AC8B;
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+        }
+
+        .m-inner-bottom {
+            display: none;
+        }
+    }
 }

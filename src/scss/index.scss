@@ -1,8 +1,11 @@
 @import "./base/reset.scss";
 @import "./base/base.scss";
-
 @import "./layout/layout.scss";
+
+@import "./variable.scss";
+
 
 @import "./modules/header.scss";
 @import "./modules/slill_item.scss";
 @import "./modules/acquisition_point.scss";
+@import "./modules/login.scss"

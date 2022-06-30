@@ -7,6 +7,34 @@ const useUser = () => {
     return useQuery('users', api.getUsers)
 }
 
+
+const useLogin = () => {
+
+    return useMutation( api.login , {
+        onSuccess: (user)=>{
+
+            console.log(user)
+        },
+        onError:(e) => {
+            console.log(e)
+        }
+    })
+}
+
+const useLogout = () => {
+
+    return useMutation( api.logout , {
+        onSuccess: (user)=>{
+            console.log(user)
+        },
+        onError:() => {
+            toast.error('ログアウトに失敗しました')
+        }
+    })
+}
+
 export {
-    useUser
+    useUser,
+    useLogin,
+    useLogout
 }

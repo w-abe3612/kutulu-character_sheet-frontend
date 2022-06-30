@@ -1,31 +1,4 @@
-import React, { useState } from 'react'
-import { useLogin , useLogout} from "../../queries/AuthQuery"
-import {
-    Navigate,
-    useLocation
-} from "react-router-dom";
-
-
-
-const Login: React.VFC = () => {
-    const login = useLogin()
-    const logout = useLogout()
-    const [ email, setEmail ]       = useState('admin@test.com')
-    const [ password, setPassword ] = useState('123456789')
-
-
-
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        login.mutate({ email, password })
-    }
-
-    const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        logout.mutate()
-    }
-
-    return (
+/*
         <div className="m-login">
             <div className="m-login__inner">
                 <h2 className="m-section_title">ログイン</h2>
@@ -54,9 +27,64 @@ const Login: React.VFC = () => {
                     <button type="submit" className="btn">ログイン</button>
                 </form>
             </div>
-            <button onClick={handleLogout} className="btn">ログアウト</button>
         </div>
-    )
+
+*/
+.button-reset {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
 }
 
-export default Login
+.m-login {
+    max-width:476px;
+    width:100%;
+    background-color:#F2F1F1;
+    margin: 40px auto 0px auto;
+    &__inner{
+        padding:16px;
+    }
+    .m-section_title{
+        text-align:center;
+        font-size:32px;
+        margin: 16px auto 32px auto;
+       
+    }
+
+    form{
+        max-width:294px;
+        width:100%;
+        margin :0px auto;
+        .input-group{
+            margin:0px 0px 16px 0px;
+            label{
+    
+            }
+            .input{
+                width:100%;
+            }
+
+        }
+        .btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+
+            height: 32px;
+            width: 84px;
+            line-height: 2;
+            text-align: center;
+            margin: 0px 0px 0px auto;
+            border-radius: 4px;
+            background-color:#53AC8B;
+            color: #fff;
+        }
+    }
+
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './router'
-import Header from './Header'
+
 import { QueryClient, QueryClientProvider } from "react-query"
 
 const App: React.FC = () =>  {
@@ -20,7 +20,7 @@ const App: React.FC = () =>  {
         <div className='l-layout' >
             <div className='l-inner'>
                 <QueryClientProvider client={queryClient} >
-                    <Header />
+                    
                     <Router />
                 </QueryClientProvider>
             </div>
