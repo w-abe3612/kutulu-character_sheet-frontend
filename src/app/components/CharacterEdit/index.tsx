@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 
 const CharacterEdit: React.FC = () => {
     return (
-        <div>編集画面</div>
+        <div>
+            
+            編集画面</div>
     )
 }
 

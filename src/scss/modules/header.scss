@@ -12,6 +12,7 @@
 
         .m-inner-top {
             background-color: #464B4F;
+            padding:0px 10px;
 
             &__inner {
                 display: flex;
@@ -40,9 +41,9 @@
                     list-style: none;
                     display: flex;
 
-                    .m-register {
+                    .m-register-btn {
                         height: 32px;
-                        width: 84px;
+                        width: 32px;
                         line-height: 2;
                         text-align: center;
                         margin: 0px 0px 0px 10px;
@@ -52,12 +53,24 @@
                         a {
                             color: #fff;
                             text-decoration: none;
+                            &.is-def {
+                                display:none;
+                            }
+                        }
+
+                        @include mq(se){
+                            width: 84px;
+                            a.is-def {
+                                display:block;
+                            }
+
                         }
                     }
 
-                    .m-login {
+                    .m-login-btn {
                         height: 32px;
-                        width: 84px;
+                        width: 32px;
+                        
                         line-height: 2;
                         text-align: center;
                         margin: 0px 0px 0px 10px;
@@ -67,6 +80,15 @@
                         a {
                             color: #fff;
                             text-decoration: none;
+                            &.is-def {
+                                display:none;
+                            }
+                        }
+                        @include mq(se){
+                            width: 84px;
+                            a.is-def {
+                                display:block;
+                            }
                         }
                     }
                 }
@@ -194,17 +216,11 @@
 
 .m-toggle_menu {
     display:block;
-    position:absolute;
-    top:0px;
-    height:100vh;
-    width:100vw;
-    background-color: hsla(0, 0%, 26%, 0.7);
-    z-index:8;
+
     &__inner{
         width: calc(100% - 80px);
         position: absolute;
-        right: 0px;
-        top: 80px;
+        top: 100px;
         height: calc(100% - 80px);
         padding: 30px 0px 0px 20px;
         background-color: #fff;
@@ -235,6 +251,26 @@
                 }
             }
         }
+
+    }
+
+    &[data-toggle="true"] {
+        position:absolute;
+        top:0px;
+        height:100vh;
+        width:100vw;
+        background-color: hsla(0, 0%, 26%, 0.7);
+        z-index:8;
+
+        .m-toggle_menu__inner {
+            right: 0px;
+        }
+    }
+
+    &[data-toggle="false"] {
+        .m-toggle_menu__inner {
+            right: calc( 100% + 80px );
+        }
     }
 
     @include mq(md){
@@ -244,4 +280,32 @@
 
 .m-config-nav{
     display:flex;
+    padding:7px 0px;
+    .m-config-btn{
+        height:32px;
+        width: 134px;
+
+        border: solid #000 1px;
+        border-radius: 4px;
+        padding: 5px 10px;
+        
+        & a {
+            text-decoration: none;
+            color:#000000;
+
+        }
+    }
+    .m-logout-btn{
+        height:32px;
+        width:32px;
+        border-radius: 4px;
+        background-color: #AC536C;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        appearance: none;
+        color:#fff;
+        margin: 0px 0px 0px 10px;
+    }
 }
