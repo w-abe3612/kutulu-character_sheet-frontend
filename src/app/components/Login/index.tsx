@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { setLoggedIn } from '../../reducers/systemStateSlice';
 import { systemStateType } from '../../reducers/types';
-
+import InputText from '../Commons/inputText';
 
 const Login: React.VFC = () => {
     const login = useLogin()
@@ -17,26 +17,25 @@ const Login: React.VFC = () => {
     const [ password, setPassword ] = useState('123456789')
 
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
-    
-    /*
-    useEffect(() => {
-        let setstate = {
-            isPage:'login'
-        }
-    })*/
 
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         login.mutate({ email, password })
-
-
     }
 
     const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
         logout.mutate()
+    }
 
+    const handleInputEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+        e.preventDefault()
+        setEmail(e.target.value)
+    }
 
+    const handleInputPassword = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+        e.preventDefault()
+        setPassword(e.target.value)
     }
 
     return (
@@ -47,24 +46,22 @@ const Login: React.VFC = () => {
             <div className="m-login__inner">
                 <h2 className="m-section_title">ログイン</h2>
                 <form onSubmit={handleLogin}>
-                    <div className="input-group">
-                        <label>メールアドレス</label>
-                        <input
-                            type="email"
-                            className="input"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label>パスワード</label>
-                        <input
-                            type="password"
-                            className="input"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                    </div>
+                    <InputText
+                        label="メールアドレス"
+                        name="email"
+                        value={email}
+                        default=""
+                        onChange={(e)=>handleInputEmail(e)}
+                    />
+
+                    <InputText
+                        label="パスワード"
+                        name="password"
+                        value={password}
+                        default=""
+                        onChange={(e)=>handleInputPassword(e)}
+                    />
+
                     <div>
                         <p></p>
                     </div>

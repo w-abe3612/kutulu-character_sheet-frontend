@@ -5,6 +5,7 @@ import {
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
 import { systemStateType } from '../../reducers/types';
 import { useCharacters } from '../../queries/CharacterInfoQuery'
+import CharacterItem from './characterItem'
 
 const Dashboard: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
@@ -20,7 +21,13 @@ const Dashboard: React.FC = () => {
     }
 
     return (
-        <div>ダッシュボード</div>
+        <CharacterItem 
+            player_id={1}
+            player_character="波越 圭子（なみごし　けいこ）"
+            image_path=""
+            image_name=""
+            updateded_at="2022-06-16 21:15:04"
+        />
     )
 }
 

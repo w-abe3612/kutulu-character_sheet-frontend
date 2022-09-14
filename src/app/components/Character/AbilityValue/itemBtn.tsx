@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { addCheckedValue } from '../../../reducers/abilityValuesSlice'
 
-type Propss = {
+type Props = {
     itemParam: string
     itemValue: number
     seconds: number
@@ -14,7 +14,7 @@ interface setChecked {
     itemParam: string
 }
 
-const ItemBtn: React.FC<Propss> = ({ itemParam, itemValue, seconds }) => {
+const ItemBtn: React.FC<Props> = ({ itemParam, itemValue, seconds }) => {
     const dispatch = useAppDispatch()
     const [ btnChecked, setChecked ] = useState(false);
 

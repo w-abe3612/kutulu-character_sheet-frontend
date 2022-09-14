@@ -1,0 +1,200 @@
+/*
+m-dashboard
+m-dashboard__inner
+
+m-dashboard__create-section
+m-dashboard__lists
+
+m-lists
+
+m-lists__inner
+
+m-character
+
+m-character__inner
+m-character__picture
+m-character__content
+m-character__charactor-name
+m-character__charactor-updateded_at
+m-character__charactor-button
+m-buttons
+m-buttons__inner
+m-button-edit
+m-button-view
+m-button-output
+m-button-delete
+*/
+
+.m-character {
+    max-width:768px;
+    width:100%;
+    display:block;
+    &__inner{
+        display:flex;
+        width:100%;
+        padding:20px 10px;
+    }
+
+    &__picture{
+        content:"";
+        display:block;
+        width:128px;
+        height:128px;
+        background-color: transparent;
+    }
+    &__content{
+        content:"";
+        display:flex;
+        flex-direction: column;
+        width:calc( 100% - 128px );
+        background-color: transparent;
+    }
+    &__charactor-name{
+        font-size:18px;
+        height:calc(100% - 60px);
+    }
+
+    &__charactor-button{
+        height:60px;
+    }
+    &__charactor-updateded_at{
+        display: block;
+        text-align: right;
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .m-buttons{
+        
+        &__inner{
+            display:flex;
+            justify-content: flex-end;
+            list-style:none;
+        }
+        .m-button-edit{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+
+            height: 32px;
+            width: 106px;
+            line-height: 2;
+            text-align: center;
+            margin: 0px 10px 0px 0px;
+            border-radius: 4px;
+            background-color:#ffffff;
+            border: solid 1px #53AC8B;
+            color: #53AC8B;
+            a {
+                color: #53AC8B; 
+            }
+
+        }
+        // todo 後ほど整理
+        .m-button-view{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+
+            height: 32px;
+            width: 106px;
+            line-height: 2;
+            text-align: center;
+            margin: 0px 10px 0px 0px;
+            border-radius: 4px;
+            background-color:#ffffff;
+            border: solid 1px #53AC8B;
+            color: #53AC8B;
+            a {
+                color: #53AC8B; 
+            }
+
+        }
+        .m-button-output{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+
+            height: 32px;
+            width: 106px;
+            line-height: 2;
+            text-align: center;
+            margin: 0px 10px 0px 0px;
+            border-radius: 4px;
+            background-color:#ffffff;
+            border: solid 1px #53AC8B;
+            color: #53AC8B;
+
+        }
+        .m-button-delete{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+
+            height: 32px;
+            width: 106px;
+            line-height: 2;
+            text-align: center;
+            margin: 0px 0px 0px 0px;
+            border-radius: 4px;
+            background-color:#ffffff;
+            border: solid 1px #AC536C;
+            color: #AC536C;
+
+        }
+
+        .m-button-edit,
+        .m-button-view,
+        .m-button-output,
+        .m-button-delete{
+            a {
+                text-decoration:none;
+                
+            }
+        }
+    }
+}
+
+/*
+
+        <div className="m-buttons">
+        <ul className="">
+            <li className="m-button-edit">
+                <Link className="" to="/register">編集</Link>
+            </li>
+            <li className="m-button-view">
+                <Link className="" to="/register">閲覧</Link>
+            </li>
+            <li className="m-button-output">キャラ出力</li>
+            <li className="m-button-delete">削除</li>
+            </ul>
+        </div>
+        <div className="m-character">
+            <div className="m-character__inner">
+                <div className="m-character__picture" >
+                    <figure className="m-user_pic">
+                        <div className="inner-box">
+                            <img src={ userPic } alt="user icon" />
+                        </div>
+                    </figure>
+                </div>
+                <div className="m-character__content" >
+                    <p className="m-character__charactor-name" >{props.player_character}</p>
+                    <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
+                    <ItemButtons />
+                </div>
+            </div>
+        </div>
+*/

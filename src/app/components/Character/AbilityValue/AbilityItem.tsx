@@ -14,7 +14,6 @@ type Props = {
     skillItems: Array<abilityValueType>
 }
 
-//　これの返り値の型がわからない
 const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
     // jsxのエレメントを入れる時の型はJSX.Elementっぽい
     let result:any = [];
