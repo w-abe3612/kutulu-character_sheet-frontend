@@ -23,8 +23,13 @@
 }
 
 .l-section_Tab {
-    height:30px;
     background-color:#DEDDC8;
+    .l-section_title {
+        font-size: 16px;
+        line-height: 1;
+        display: block;
+        padding: 10px 20px;
+    }
 }
 
 .l-section_content {

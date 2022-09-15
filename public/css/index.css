@@ -146,8 +146,13 @@ input , select , textarea , button{
 }
 
 .l-section_Tab {
-  height: 30px;
   background-color: #DEDDC8;
+}
+.l-section_Tab .l-section_title {
+  font-size: 16px;
+  line-height: 1;
+  display: block;
+  padding: 10px 20px;
 }
 
 .l-section_content {
@@ -300,10 +305,15 @@ input , select , textarea , button{
   z-index: 9;
 }
 .m-header .m-inner-bottom__inner .m-menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .m-header .m-inner-bottom__inner .m-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+  }
 }
 .m-header .m-inner-bottom__inner .m-menu li a {
   padding: 24px 20px 0px 20px;
@@ -332,6 +342,14 @@ input , select , textarea , button{
 }
 
 .m-content__hamburger_btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   display: block;
   content: "";
   height: 47px;
@@ -428,30 +446,46 @@ input , select , textarea , button{
   padding: 7px 0px;
 }
 .m-config-nav .m-config-btn {
-  height: 32px;
-  width: 134px;
-  border: solid #000 1px;
-  border-radius: 4px;
-  padding: 5px 10px;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .m-config-nav .m-config-btn {
+    display: block;
+    height: 32px;
+    width: 142px;
+    border: solid #000 1px;
+    border-radius: 4px;
+    padding: 3px 10px;
+  }
 }
 .m-config-nav .m-config-btn a {
   text-decoration: none;
   color: #000000;
 }
+.m-config-nav .m-config-btn a svg {
+  padding-right: 5px;
+}
 .m-config-nav .m-logout-btn {
-  height: 32px;
-  width: 32px;
-  border-radius: 4px;
-  background-color: #AC536C;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  color: #fff;
-  margin: 0px 0px 0px 10px;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .m-config-nav .m-logout-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    display: block;
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    background-color: #AC536C;
+    color: #fff;
+    margin: 0px 0px 0px 10px;
+  }
 }
 
 .m-slill-item {
@@ -638,4 +672,249 @@ input , select , textarea , button{
   border-radius: 4px;
   background-color: #53AC8B;
   color: #fff;
+}
+
+/*
+m-dashboard
+m-dashboard__inner
+
+m-dashboard__create-section
+m-dashboard__lists
+
+m-lists
+
+m-lists__inner
+
+m-character
+
+m-character__inner
+m-character__picture
+m-character__content
+m-character__charactor-name
+m-character__charactor-updateded_at
+m-character__charactor-button
+m-buttons
+m-buttons__inner
+m-button-edit
+m-button-view
+m-button-output
+m-button-delete
+*/
+.m-character {
+  max-width: 768px;
+  width: 100%;
+  display: block;
+}
+.m-character__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 20px 10px;
+}
+.m-character__picture {
+  content: "";
+  display: block;
+  width: 128px;
+  height: 128px;
+  background-color: transparent;
+}
+.m-character__content {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: calc(100% - 128px);
+  background-color: transparent;
+}
+.m-character__charactor-name {
+  font-size: 18px;
+  height: calc(100% - 60px);
+}
+.m-character__charactor-button {
+  height: 60px;
+}
+.m-character__charactor-updateded_at {
+  display: block;
+  text-align: right;
+  font-size: 16px;
+  line-height: 2;
+}
+.m-character .m-buttons__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  list-style: none;
+}
+.m-character .m-buttons .m-button-edit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 32px;
+  width: 106px;
+  line-height: 2;
+  text-align: center;
+  margin: 0px 10px 0px 0px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #53AC8B;
+  color: #53AC8B;
+}
+.m-character .m-buttons .m-button-edit a {
+  color: #53AC8B;
+}
+.m-character .m-buttons .m-button-view {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 32px;
+  width: 106px;
+  line-height: 2;
+  text-align: center;
+  margin: 0px 10px 0px 0px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #53AC8B;
+  color: #53AC8B;
+}
+.m-character .m-buttons .m-button-view a {
+  color: #53AC8B;
+}
+.m-character .m-buttons .m-button-output {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 32px;
+  width: 106px;
+  line-height: 2;
+  text-align: center;
+  margin: 0px 10px 0px 0px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #53AC8B;
+  color: #53AC8B;
+}
+.m-character .m-buttons .m-button-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 32px;
+  width: 106px;
+  line-height: 2;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 1px #AC536C;
+  color: #AC536C;
+}
+.m-character .m-buttons .m-button-edit a,
+.m-character .m-buttons .m-button-view a,
+.m-character .m-buttons .m-button-output a,
+.m-character .m-buttons .m-button-delete a {
+  text-decoration: none;
+}
+
+/*
+
+        <div className="m-buttons">
+        <ul className="">
+            <li className="m-button-edit">
+                <Link className="" to="/register">編集</Link>
+            </li>
+            <li className="m-button-view">
+                <Link className="" to="/register">閲覧</Link>
+            </li>
+            <li className="m-button-output">キャラ出力</li>
+            <li className="m-button-delete">削除</li>
+            </ul>
+        </div>
+        <div className="m-character">
+            <div className="m-character__inner">
+                <div className="m-character__picture" >
+                    <figure className="m-user_pic">
+                        <div className="inner-box">
+                            <img src={ userPic } alt="user icon" />
+                        </div>
+                    </figure>
+                </div>
+                <div className="m-character__content" >
+                    <p className="m-character__charactor-name" >{props.player_character}</p>
+                    <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
+                    <ItemButtons />
+                </div>
+            </div>
+        </div>
+*/
+/*
+        <div className="m-preferenceList">
+            <ul className="m-preferenceList__inner">
+                <li className="m-list-basic m-list-li">キャラ出力</li>
+                <li className="m-button-email m-list-li">キャラ出力</li>
+                <li className="m-button-password m-list-li">削除</li>
+            </ul>
+        </div>
+*/
+.m-preferenceList {
+  display: block;
+}
+.m-preferenceList__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  list-style: none;
+}
+.m-preferenceList__inner .m-list-li {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: inline-block;
+  height: 32px;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  padding: 0px 10px;
+  line-height: 2;
+  font-size: 14px;
+  text-align: center;
+  margin: 0px 10px 0px 0px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: solid 1px #53AC8B;
+  color: #53AC8B;
 }
