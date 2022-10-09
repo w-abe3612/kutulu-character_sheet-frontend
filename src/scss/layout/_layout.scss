@@ -20,6 +20,11 @@
     margin:0px auto 20px auto;
     background-color: #F0EEEE;
     border-radius: 4px;
+    &__dash {
+        .l-section_content {
+            padding:0px;
+        }
+    }
 }
 
 .l-section_Tab {

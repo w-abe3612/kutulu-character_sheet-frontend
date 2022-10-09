@@ -9,10 +9,6 @@ const initState: systemStateType = {
     isPage: ''
 }
 
-
-
-// todo 現状localstrageを直接触ってログインをハイジャック出来るため対策
-
 const initials = () => {
     let result: any = {}
     let s:any = localStorage.getItem("isLoggedIn");

@@ -11,7 +11,6 @@ import Character from './Character'
 import Home from './Home'
 import Login from './Login'
 import Register from './Register'
-import ForgetPassword from './ForgetPassword'
 import Dashboard from './Dashboard'
 import CharacterEdit from './CharacterEdit'
 import CharacterView from './CharacterView'
@@ -30,8 +29,14 @@ const Router = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/register" element={<ForgetPassword />} />
+                    <Route path="register" >
+                        <Route index element={<Register urlNest="input" />} />
+                        <Route path="verify" element={<Register  urlNest="verify" />} />
+                        <Route path="confirm" >
+                            <Route index element={<Register urlNest="confirm" />} />
+                            <Route path="complete" element={<Register urlNest="complete"/>} />
+                        </Route>
+                    </Route>
 
                     <Route path="user">
                         <Route path=":id" element={<RedirectOnLogout children={<Dashboard />} />} />

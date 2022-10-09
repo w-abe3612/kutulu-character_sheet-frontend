@@ -48,3 +48,12 @@ export interface systemStateType {
     userName: string
     isPage: string
 }
+
+// 新規登録に使われるStates
+export interface registerStatesType {
+    formState:string,
+    username:string,
+    email:string,
+    password:string,
+    confirmation:string
+}

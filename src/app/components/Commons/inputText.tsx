@@ -12,7 +12,6 @@ interface inputPropsType {
 type Props = inputPropsType
 
 const InputText: React.FC<Props> = ( props ): JSX.Element => {
-    
     return (
         <div className="input-group">
             <label>{props.label}</label>

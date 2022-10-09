@@ -1,34 +1,14 @@
-/*
-m-dashboard
-m-dashboard__inner
-
-m-dashboard__create-section
-m-dashboard__lists
-
-m-lists
-
-m-lists__inner
-
-m-character
-
-m-character__inner
-m-character__picture
-m-character__content
-m-character__charactor-name
-m-character__charactor-updateded_at
-m-character__charactor-button
-m-buttons
-m-buttons__inner
-m-button-edit
-m-button-view
-m-button-output
-m-button-delete
-*/
 
 .m-character {
     max-width:768px;
     width:100%;
     display:block;
+    &:nth-child(even){
+        background-color:#EDE9E4;
+    }
+    &:nth-child(odd){
+        background-color:#F9F8F6;
+    }
     &__inner{
         display:flex;
         width:100%;
@@ -87,13 +67,18 @@ m-button-delete
             border-radius: 4px;
             background-color:#ffffff;
             border: solid 1px #53AC8B;
-            color: #53AC8B;
             a {
                 color: #53AC8B; 
             }
-
+            &:hover {
+                background-color:#53AC8B;
+                border: solid 1px #53AC8B;
+                a {
+                    color: #ffffff;
+                }
+            }
         }
-        // todo 後ほど整理
+
         .m-button-view{
             background-color: transparent;
             border: none;
@@ -114,7 +99,13 @@ m-button-delete
             a {
                 color: #53AC8B; 
             }
-
+            &:hover {
+                background-color:#53AC8B;
+                border: solid 1px #53AC8B;
+                a {
+                    color: #ffffff;
+                }
+            }
         }
         .m-button-output{
             background-color: transparent;
@@ -123,7 +114,6 @@ m-button-delete
             outline: none;
             padding: 0;
             appearance: none;
-
             height: 32px;
             width: 106px;
             line-height: 2;
@@ -133,7 +123,11 @@ m-button-delete
             background-color:#ffffff;
             border: solid 1px #53AC8B;
             color: #53AC8B;
-
+            &:hover {
+                background-color:#53AC8B;
+                border: solid 1px #53AC8B;
+                color: #ffffff;
+            }
         }
         .m-button-delete{
             background-color: transparent;
@@ -142,7 +136,6 @@ m-button-delete
             outline: none;
             padding: 0;
             appearance: none;
-
             height: 32px;
             width: 106px;
             line-height: 2;
@@ -152,7 +145,11 @@ m-button-delete
             background-color:#ffffff;
             border: solid 1px #AC536C;
             color: #AC536C;
-
+            &:hover {
+                background-color:#AC536C;
+                border: solid 1px #AC536C;
+                color: #ffffff;
+            }
         }
 
         .m-button-edit,
@@ -166,35 +163,3 @@ m-button-delete
         }
     }
 }
-
-/*
-
-        <div className="m-buttons">
-        <ul className="">
-            <li className="m-button-edit">
-                <Link className="" to="/register">編集</Link>
-            </li>
-            <li className="m-button-view">
-                <Link className="" to="/register">閲覧</Link>
-            </li>
-            <li className="m-button-output">キャラ出力</li>
-            <li className="m-button-delete">削除</li>
-            </ul>
-        </div>
-        <div className="m-character">
-            <div className="m-character__inner">
-                <div className="m-character__picture" >
-                    <figure className="m-user_pic">
-                        <div className="inner-box">
-                            <img src={ userPic } alt="user icon" />
-                        </div>
-                    </figure>
-                </div>
-                <div className="m-character__content" >
-                    <p className="m-character__charactor-name" >{props.player_character}</p>
-                    <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
-                    <ItemButtons />
-                </div>
-            </div>
-        </div>
-*/

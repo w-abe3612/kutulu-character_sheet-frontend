@@ -144,6 +144,9 @@ input , select , textarea , button{
   background-color: #F0EEEE;
   border-radius: 4px;
 }
+.l-section_wrap__dash .l-section_content {
+  padding: 0px;
+}
 
 .l-section_Tab {
   background-color: #DEDDC8;
@@ -674,36 +677,16 @@ input , select , textarea , button{
   color: #fff;
 }
 
-/*
-m-dashboard
-m-dashboard__inner
-
-m-dashboard__create-section
-m-dashboard__lists
-
-m-lists
-
-m-lists__inner
-
-m-character
-
-m-character__inner
-m-character__picture
-m-character__content
-m-character__charactor-name
-m-character__charactor-updateded_at
-m-character__charactor-button
-m-buttons
-m-buttons__inner
-m-button-edit
-m-button-view
-m-button-output
-m-button-delete
-*/
 .m-character {
   max-width: 768px;
   width: 100%;
   display: block;
+}
+.m-character:nth-child(even) {
+  background-color: #EDE9E4;
+}
+.m-character:nth-child(odd) {
+  background-color: #F9F8F6;
 }
 .m-character__inner {
   display: -webkit-box;
@@ -770,10 +753,16 @@ m-button-delete
   border-radius: 4px;
   background-color: #ffffff;
   border: solid 1px #53AC8B;
-  color: #53AC8B;
 }
 .m-character .m-buttons .m-button-edit a {
   color: #53AC8B;
+}
+.m-character .m-buttons .m-button-edit:hover {
+  background-color: #53AC8B;
+  border: solid 1px #53AC8B;
+}
+.m-character .m-buttons .m-button-edit:hover a {
+  color: #ffffff;
 }
 .m-character .m-buttons .m-button-view {
   background-color: transparent;
@@ -797,6 +786,13 @@ m-button-delete
 .m-character .m-buttons .m-button-view a {
   color: #53AC8B;
 }
+.m-character .m-buttons .m-button-view:hover {
+  background-color: #53AC8B;
+  border: solid 1px #53AC8B;
+}
+.m-character .m-buttons .m-button-view:hover a {
+  color: #ffffff;
+}
 .m-character .m-buttons .m-button-output {
   background-color: transparent;
   border: none;
@@ -815,6 +811,11 @@ m-button-delete
   background-color: #ffffff;
   border: solid 1px #53AC8B;
   color: #53AC8B;
+}
+.m-character .m-buttons .m-button-output:hover {
+  background-color: #53AC8B;
+  border: solid 1px #53AC8B;
+  color: #ffffff;
 }
 .m-character .m-buttons .m-button-delete {
   background-color: transparent;
@@ -835,6 +836,11 @@ m-button-delete
   border: solid 1px #AC536C;
   color: #AC536C;
 }
+.m-character .m-buttons .m-button-delete:hover {
+  background-color: #AC536C;
+  border: solid 1px #AC536C;
+  color: #ffffff;
+}
 .m-character .m-buttons .m-button-edit a,
 .m-character .m-buttons .m-button-view a,
 .m-character .m-buttons .m-button-output a,
@@ -842,37 +848,6 @@ m-button-delete
   text-decoration: none;
 }
 
-/*
-
-        <div className="m-buttons">
-        <ul className="">
-            <li className="m-button-edit">
-                <Link className="" to="/register">編集</Link>
-            </li>
-            <li className="m-button-view">
-                <Link className="" to="/register">閲覧</Link>
-            </li>
-            <li className="m-button-output">キャラ出力</li>
-            <li className="m-button-delete">削除</li>
-            </ul>
-        </div>
-        <div className="m-character">
-            <div className="m-character__inner">
-                <div className="m-character__picture" >
-                    <figure className="m-user_pic">
-                        <div className="inner-box">
-                            <img src={ userPic } alt="user icon" />
-                        </div>
-                    </figure>
-                </div>
-                <div className="m-character__content" >
-                    <p className="m-character__charactor-name" >{props.player_character}</p>
-                    <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
-                    <ItemButtons />
-                </div>
-            </div>
-        </div>
-*/
 /*
         <div className="m-preferenceList">
             <ul className="m-preferenceList__inner">
