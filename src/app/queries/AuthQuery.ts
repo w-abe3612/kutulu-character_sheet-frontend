@@ -23,9 +23,6 @@ const useLogin = () => {
             }
             // この間にエラー時判定が入るはず
             dispatch(setLoggedIn(loggedinflg))
-            localStorage.setItem('isLoggedIn', String(loggedinflg.isLoggedIn));
-            localStorage.setItem('userId', String(loggedinflg.userId));
-            localStorage.setItem('userName', loggedinflg.userName);
         },
         onError:(e) => {
             //console.log(e)

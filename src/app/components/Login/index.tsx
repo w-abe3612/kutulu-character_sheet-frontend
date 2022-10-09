@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useLogin , useLogout} from "../../queries/AuthQuery"
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
 import {
@@ -11,31 +12,13 @@ import InputText from '../Commons/inputText';
 
 const Login: React.VFC = () => {
     const login = useLogin()
-    const logout = useLogout()
     const dispatch = useAppDispatch()
-    const [ email, setEmail ]       = useState('admin@test.com')
-    const [ password, setPassword ] = useState('123456789')
 
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
+    const { register, watch, handleSubmit, formState: { errors } } = useForm();
 
-    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        login.mutate({ email, password })
-    }
-
-    const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
-        logout.mutate()
-    }
-
-    const handleInputEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
-        e.preventDefault()
-        setEmail(e.target.value)
-    }
-
-    const handleInputPassword = ( e: React.ChangeEvent<HTMLInputElement> ) => {
-        e.preventDefault()
-        setPassword(e.target.value)
+    const onSubmit = (data:any) => {
+        login.mutate({ email:data.email, password:data.password })
     }
 
     return (
@@ -45,23 +28,37 @@ const Login: React.VFC = () => {
             )}
             <div className="m-login__inner">
                 <h2 className="m-section_title">ログイン</h2>
-                <form onSubmit={handleLogin}>
-                    <InputText
-                        label="メールアドレス"
-                        name="email"
-                        value={email}
-                        default=""
-                        onChange={(e)=>handleInputEmail(e)}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <InputText 
+                        label="メールアドレス" 
+                        name="email" 
+                        register={register} 
+                        required={{required:'「メールアドレス」は必須です。',
+                        maxLength : {
+                            value: 254,
+                            message: '254文字以下で入力してください。'
+                        },
+                        pattern:{
+                            value: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})*$/,
+                            message: '「メールアドレス」のパターンではありません。'
+                        }}}
+                        error={errors.email}
                     />
-
-                    <InputText
-                        label="パスワード"
-                        name="password"
-                        value={password}
-                        default=""
-                        onChange={(e)=>handleInputPassword(e)}
+                    <InputText 
+                        label="パスワード" 
+                        name="password" 
+                        register={register} 
+                        required={{required:'「パスワード」は必須です。',
+                        maxLength : {
+                            value: 254,
+                            message: '254文字以下で入力してください。'
+                        },
+                        pattern:{
+                            value: /[A-Za-z0-9]/,
+                            message: '半角英数字で入力してください。'
+                        }}}
+                        error={errors.password}
                     />
-
                     <div>
                         <p></p>
                     </div>
