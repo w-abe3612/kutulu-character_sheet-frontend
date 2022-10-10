@@ -4,6 +4,7 @@ import type { RootState } from './store'
 // Define a type for the slice state
 interface registerStatesType {
     formState:string,
+    verifyFlg:boolean,
     username:string,
     email:string,
     password:string,
@@ -12,6 +13,7 @@ interface registerStatesType {
 
 const initialRegisterStates:registerStatesType = {
     formState:'input',
+    verifyFlg:false,
     username:'',
     email:'',
     password:'',
@@ -40,11 +42,16 @@ export const registerStateSlice = createSlice({
         updateState.confirmation = action.payload.confirmation
 
         state = updateState
+    },
+    setVerifyFlg:(state, action: PayloadAction<any>):void => {
+      let updateState: registerStatesType = state
+      updateState.verifyFlg    = action.payload.verifyFlg
+      state = updateState
     }
   },
 })
 
-export const { setFormState, setrRegisterInputs } = registerStateSlice.actions
+export const { setFormState, setrRegisterInputs, setVerifyFlg } = registerStateSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = ( state: RootState ) => registerStateSlice.actions

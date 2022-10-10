@@ -6,7 +6,7 @@ import {
     useNavigate
 } from "react-router-dom";
 import { registerStatesType } from '../../reducers/types';
-import { setFormState, setrRegisterInputs } from '../../reducers/registerSlice';
+import { setFormState, setrRegisterInputs,setVerifyFlg } from '../../reducers/registerSlice';
 import { useRegister } from "../../queries/RegisterQuery"
 
 const ConfirmRegister: React.VFC = () => {
@@ -24,6 +24,8 @@ const ConfirmRegister: React.VFC = () => {
                 password_confirmation:registerState.confirmation
             }
         )
+
+        localStorage.setItem('test', 'test');
     }
 /*
     const handleComplete = (e: React.FormEvent<HTMLFormElement>) => {

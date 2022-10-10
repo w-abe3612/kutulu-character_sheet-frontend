@@ -52,6 +52,7 @@ export interface systemStateType {
 // 新規登録に使われるStates
 export interface registerStatesType {
     formState:string,
+    verifyFlg:boolean,
     username:string,
     email:string,
     password:string,

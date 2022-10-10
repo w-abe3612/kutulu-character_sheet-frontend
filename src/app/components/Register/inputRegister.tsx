@@ -11,10 +11,11 @@ import ConfirmRegister from './confirmRegister';
 
 
 interface registerStatesType {
-    formState:string
-    username:string
-    email:string
-    password:string
+    formState:string,
+    verifyFlg:boolean,
+    username:string,
+    email:string,
+    password:string,
     confirmation:string
 }
 
