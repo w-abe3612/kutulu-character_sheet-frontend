@@ -4,6 +4,7 @@ import AbilityItem from './AbilityItem'
 import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { specializedSkillType} from '../../../reducers/types'
+import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 
 // todo AcquisitionPointとAbilityItemはAbilityValueとほぼ同様のロジックを採用している為、
@@ -12,13 +13,10 @@ const SpecializedSkill: React.FC = () => {
     let specializedSkill:Array<specializedSkillType> = useAppSelector( ( state : any ) => state.specializedSkill )
 
     return (
-        <div className="m-ability_value l-section_wrap">
-            <div className="l-section_Tab"></div>
-            <div className="l-section_content">
+        <SectionWrap  title="専門分野">
                 <AcquisitionPoint />
                 <AbilityItem skillItems={ specializedSkill }/>
-            </div>
-        </div>
+        </SectionWrap>
     )
 }
 

@@ -4,7 +4,8 @@
 
 @import "./variable.scss";
 
-
+@import "./modules/common/inputText.scss";
+@import "./modules/common/textarea.scss";
 @import "./modules/header.scss";
 @import "./modules/slill_item.scss";
 @import "./modules/acquisition_point.scss";

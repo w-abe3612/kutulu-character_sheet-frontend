@@ -46,7 +46,6 @@ export const characterInfoSlice = createSlice({
 
       inputedValue = action.payload.value
       inputedParamName = action.payload.itemParam
-      //todo jsonに変数の値で参照する方法よくわからん寝る
 
       state = updateState
     },

@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { characterInfoType } from '../../../reducers/types'
 import CharacterIcon from './CharacterIcon'
 import Profiles from './Profiles'
+import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 interface iconProps {
     image_path:string
@@ -32,15 +33,12 @@ const CharacterInfo: React.FC = () => {
     profileValue.injury_value     = CharacterInfo.injury_value
 
     return (
-        <div className="m-flavor_info l-section_wrap">
-            <div className="l-section_Tab"></div>
-            <div className="l-section_content">
-                <div className="">
-                    <CharacterIcon />
-                    <Profiles profileValue={ profileValue }/>
-                </div>
+        <SectionWrap title="個人情報" >
+            <div className="m-characterInfo">
+                <CharacterIcon />
+                <Profiles profileValue={ profileValue }/>
             </div>
-        </div>
+        </SectionWrap>
     )
 }
 

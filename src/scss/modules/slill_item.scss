@@ -8,8 +8,7 @@
     margin: 00px 10px 10px 0px;
 
     &__title {
-        max-width: 36%;
-        width: 100px;
+        width: 36%;
         background-color: #919AA1;
 
         &__text {
@@ -21,9 +20,31 @@
     }
 
     &__content {
-        max-width: 64%;
-        width: 100px;
+        width: 64%;
         padding: 8px 32px;
+    }
+
+    &.m-specialize {
+        max-width: 272px;
+
+        .m-slill-item__title {
+            
+            width: 58%;
+            background-color: #919AA1;
+    
+            &__text {
+                color: #ffffff;
+                text-align: center;
+                line-height: 2;
+                display: block;
+                font-size:16px;
+            }
+        }
+    
+        .m-slill-item__content {
+            width: 42%;
+            padding: 8px 24px;
+        }
     }
 
     .m-check_list {

@@ -33,18 +33,17 @@ const TextEntry: React.FC<Props> = ({ inputLabel,itemParam, itemValue }) => {
     }
 
     return (
-        <li key={ itemParam } className="">
-            <label className="" >{inputLabel !== null || inputLabel !== undefined ? inputLabel : '' }</label>
-            <div className="" >
-                <input
-                    className=""
-                    type="text"
-                    defaultValue={itemValue !== null || itemValue !== undefined ? itemValue : ''}
-                    value={textInputed}
-                    onChange={(e) => {
-                        handleInputText(itemParam, e)
-                    }}
-                />
+        <li key={ itemParam } className="m-charInputText">
+            <label className="m-charInputText__label" >{inputLabel !== null || inputLabel !== undefined ? inputLabel : '' }</label>
+                <div className="m-charInputText__content" >
+                    <input
+                        type="text"
+                        defaultValue={itemValue !== null || itemValue !== undefined ? itemValue : ''}
+                        value={textInputed}
+                        onChange={(e) => {
+                            handleInputText(itemParam, e)
+                        }}
+                    />
             </div>
         </li>
     )

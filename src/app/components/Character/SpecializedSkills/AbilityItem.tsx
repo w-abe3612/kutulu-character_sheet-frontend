@@ -20,7 +20,7 @@ const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
     let itemBoxes: Array<JSX.Element> = []
 
     itemBoxes = skillItems.map(( item:specializedSkillType ):JSX.Element => (
-        <li key={ item.skill_param } className="m-slill-item" >
+        <li key={ item.skill_param } className="m-slill-item m-specialize" >
             <div className="m-slill-item__title" >
                 <label className="m-slill-item__title__text" >{item.skill_name}</label>
             </div>

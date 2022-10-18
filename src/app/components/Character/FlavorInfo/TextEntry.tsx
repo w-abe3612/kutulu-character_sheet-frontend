@@ -28,11 +28,10 @@ const TextEntry: React.FC<Props> = ({ inputLabel,itemParam, itemValue }) => {
     }
 
     return (
-        <li key={ itemParam } className="">
-            <label className="" >{inputLabel !== null || inputLabel !== undefined ? inputLabel : '' }</label>
-            <div className="" >
+        <li key={ itemParam } className="m-otherInfoInput">
+            <label className="m-otherInfoInput__title" >{inputLabel !== null || inputLabel !== undefined ? inputLabel : '' }</label>
+            <div className="m-otherInfoInput__content" >
                 <input
-                    className=""
                     type="text"
                     defaultValue={itemValue !== null || itemValue !== undefined ? itemValue : ''}
                     value={textInputed}

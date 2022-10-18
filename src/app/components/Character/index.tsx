@@ -6,17 +6,32 @@ import FlavorInfo from './FlavorInfo'
 import CharacterInfo from './CharacterInfo'
 import CharacterPreference from './CharacterPreference'
 import PossessionItem from './PossessionItem'
+import { useCreateCharacter } from '../../queries/characterQuery'
 
-const handleformAction = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-}
 
 const CharacterCreate: React.FC = () => {
+    
+    const createCharacter = useCreateCharacter()
+    const handleformAction = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        
+        const infos = { 
+            player_name:'あああ',
+            player_character:'あああ',
+            character_title:'あああ',
+            injury_value:2,
+            image_path:'../path/path/',
+            image_name:'image.jpg',
+            possession_item:'あああ',
+            character_preference:'あああ',
+        }
+        
+        createCharacter.mutate(infos )
+        
+    }
     return (
         <div className='l-wrap'>
-            <form onSubmit={(e) => {
-                handleformAction(e)
-            }} >
+            <form onSubmit={handleformAction} >
                 <CharacterInfo />
                 <FlavorInfo />
                 <AbilityValue />
@@ -25,7 +40,7 @@ const CharacterCreate: React.FC = () => {
                 <CharacterPreference />
                 <button
                     className="btn"
-                    onClick={handleformAction}
+                    type="submit"
                 >更新</button>
             </form >
         </div>

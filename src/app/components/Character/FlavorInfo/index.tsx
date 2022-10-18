@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { flavorInfoType } from '../../../reducers/types'
 import TextEntry from './TextEntry'
+import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 /*
 let test = {
@@ -28,7 +29,7 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
     })
 
     result = (
-        <ul >
+        <ul className="m-flaverInfos_wrap" >
             { inputsElements }
         </ul>
     )
@@ -43,12 +44,9 @@ const FlavorInfo: React.FC = () => {
 
 
     return (
-        <div className="m-flavor_info l-section_wrap">
-            <div className="l-section_Tab"></div>
-            <div className="l-section_content">
-                { entryInput }
-            </div>
-        </div>
+        <SectionWrap title="個人情報" >
+            { entryInput }
+        </SectionWrap>
     )
 }
 

@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 const CharacterIcon: React.FC = () => {
 
     return (
-        <div className="">
+        <div className="m-charCharactorIcon">
+            <div className="m-charCharactorIcon__inner"></div>
         </div>
     )
 }

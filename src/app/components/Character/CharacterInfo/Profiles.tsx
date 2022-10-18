@@ -17,7 +17,7 @@ type Props = {
 const Profiles: React.FC<Props> = ({ profileValue }) => {
 
     return (
-        <>
+        <div>
             <ul>
                 <TextEntry
                     inputLabel="プレイヤー名"
@@ -46,7 +46,7 @@ const Profiles: React.FC<Props> = ({ profileValue }) => {
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
 
 
     )

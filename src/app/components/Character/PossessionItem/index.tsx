@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { characterInfoType } from '../../../reducers/types'
 import { setTextAreaInfo } from '../../../reducers/characterInfosSlice'
+import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 
 const PossessionItem: React.FC = () => {
@@ -21,19 +22,17 @@ const PossessionItem: React.FC = () => {
     }
 
     return (
-        <div className="m-flavor_info l-section_wrap">
-            <div className="l-section_Tab"></div>
-            <div className="l-section_content">
+        <SectionWrap title="個人情報" >
                 <textarea
                     name="possession_item"
+                    className="m-sentenceInput"
                     value={textAreaInputed}
                     onChange={(e) => {
                         handleInputTextArea(e)
                     }}
                     cols={50}
                     rows={5} />
-            </div>
-        </div>
+        </SectionWrap>
     )
 }
 

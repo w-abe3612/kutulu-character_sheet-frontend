@@ -24,6 +24,14 @@ $breakpoints: (
   display: block;
 
   @include mq(se) {
-    display: none;
+    display: none ;
+  }
+}
+
+.is-sm {
+  display: block !important;
+
+  @include mq(sm) {
+    display: none !important;
   }
 }

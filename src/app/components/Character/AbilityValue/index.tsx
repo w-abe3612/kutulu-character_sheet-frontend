@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AbilityItem from './AbilityItem'
 import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 interface abilityValueType {
     skill_name: string
@@ -53,17 +54,13 @@ const AbilityValue: React.FC = () => {
     let passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
 
     return (
-        <div className="m-ability_value l-section_wrap">
-            <div className="l-section_Tab"></div>
-            <div className="l-section_content">
+        <SectionWrap title="個人情報" >
                 <AcquisitionPoint />
                 <span className="">パッシブスキル</span>
                 <AbilityItem skillItems = {passiveSkill} />
                 <span className="">アクティブスキル</span>
                 <AbilityItem skillItems = {activeSkill} />
-                
-            </div>
-        </div>
+        </SectionWrap>
     )
 }
 
