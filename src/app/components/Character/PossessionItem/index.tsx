@@ -22,7 +22,7 @@ const PossessionItem: React.FC = () => {
     }
 
     return (
-        <SectionWrap title="個人情報" >
+        <SectionWrap title="所持品" >
                 <textarea
                     name="possession_item"
                     className="m-sentenceInput"
@@ -31,7 +31,7 @@ const PossessionItem: React.FC = () => {
                         handleInputTextArea(e)
                     }}
                     cols={50}
-                    rows={5} />
+                    rows={5} >任意入力項目です。予め所持している物品等を入力しておく欄になります。スマートフォンを持っているか、現代人なら持っている筈だ等言い合いになる事もありますが、シナリオが破綻する事があり、事前にキーパーに許可を貰う方がいいです。</textarea>
         </SectionWrap>
     )
 }

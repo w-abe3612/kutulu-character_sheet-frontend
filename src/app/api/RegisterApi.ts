@@ -8,7 +8,7 @@ const register = async ({name,email,password,password_confirmation}:{name:string
         {name,email,password,password_confirmation},
         {headers: {
             'Content-Type': 'application/json'
-  }}
+        }}
     )
     return data 
 }

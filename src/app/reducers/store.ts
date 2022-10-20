@@ -5,6 +5,7 @@ import specializedSkillReducer from './specializedSkillsSlice';
 import flavorInfoReducer from './flavorInfosSlice';
 import systemStateReducer from './systemStateSlice';
 import registerStateReducer from './registerSlice';
+import dashboardIndexReducer from './dashboardIndex';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ export const store = configureStore({
     specializedSkill:specializedSkillReducer,
     flavorInfo:flavorInfoReducer,
     systemState:systemStateReducer,
-    registerState:registerStateReducer
+    registerState:registerStateReducer,
+    dashboard:dashboardIndexReducer
   },
 })
 

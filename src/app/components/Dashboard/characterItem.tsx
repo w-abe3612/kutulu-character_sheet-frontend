@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ItemButtons from './itemButtons'
+import image from 'img/dammyUser.png'
 
 export interface characterInfoType {
     player_id: number
@@ -32,7 +33,7 @@ const CharacterItem: React.FC<Props> = (props): JSX.Element => {
                 <div className="m-character__picture" >
                     <figure className="m-user_pic">
                         <div className="inner-box">
-                            <img src={userPic} alt="user icon" />
+                        <img src={image} alt="user icon" />
                         </div>
                     </figure>
                 </div>
@@ -41,7 +42,7 @@ const CharacterItem: React.FC<Props> = (props): JSX.Element => {
                     <div className="m-character__picture is-sm" >
                         <figure className="m-user_pic">
                             <div className="inner-box">
-                                <img src={userPic} alt="user icon" />
+                                <img src={image}  alt="user icon" />
                             </div>
                         </figure>
                     </div>

@@ -34,12 +34,7 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                // 拡張子 .ts もしくは .tsx の場合
-                test: /\.tsx?$/,
-                // TypeScript をコンパイルする
-                use: "ts-loader"
-            },
+
             {
                 test: /\.(sa|sc|c)ss$/, // 対象にするファイルを指定
                 use: [
@@ -50,10 +45,21 @@ module.exports = {
                     // 下から順にコンパイル処理が実行されるので、記入順序に注意
                 ]
             },
+            {
+                test: /\.(jpg|png)$/,
+                loader: 'url-loader'
+            },
+            {
+                // 拡張子 .ts もしくは .tsx の場合
+                test: /\.tsx?$/,
+                // TypeScript をコンパイルする
+                use: "ts-loader"
+            },
         ]
     },
     // import 文で .ts や .tsx ファイルを解決するため
     resolve: {
+        modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
 

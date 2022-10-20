@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 axios.defaults.withCredentials = true;
-/*
-const getCharacters = async ( id:number ) => {
-    const { data } = await axios.get<any>(`http://localhost:80/api/v1/characters/${id}`)
+
+const getCharacters = async ( ) => {
+    const { data } = await axios.get<any>(`http://localhost:80/api/v1/characters`)
     return data 
 }
-*/
+
 const createCharacter = async ( infos:any) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/character/create`,
@@ -28,6 +28,6 @@ const createCharacter = async ( infos:any) => {
 }
 
 export {
-    //getCharacters,
+    getCharacters,
     createCharacter
 }

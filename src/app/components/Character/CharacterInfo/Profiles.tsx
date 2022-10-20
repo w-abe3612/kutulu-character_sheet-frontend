@@ -36,7 +36,7 @@ const Profiles: React.FC<Props> = ({ profileValue }) => {
                 />
             </ul>
             <div className="m-slill-item">
-                <div className="m-slill-item__title"><label className="m-slill-item__title__text">名声</label></div>
+                <div className="m-slill-item__title"><label className="m-slill-item__title__text">負傷</label></div>
                 <div className="m-slill-item__content">
                     <ul className="m-check_list">
                         <CheckButton

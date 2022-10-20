@@ -6,7 +6,7 @@ import FlavorInfo from './FlavorInfo'
 import CharacterInfo from './CharacterInfo'
 import CharacterPreference from './CharacterPreference'
 import PossessionItem from './PossessionItem'
-import { useCreateCharacter } from '../../queries/characterQuery'
+import { useCreateCharacter } from '../../queries/CharacterQuery'
 
 
 const CharacterCreate: React.FC = () => {
