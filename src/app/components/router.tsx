@@ -12,7 +12,6 @@ import Home from './Home'
 import Login from './Login'
 import Register from './Register'
 import Dashboard from './Dashboard'
-import CharacterEdit from './CharacterEdit'
 import CharacterView from './CharacterView'
 import UserConfig from './UserConfig'
 import NotFoundPage from './NotFoundPage'
@@ -45,7 +44,7 @@ const Router = () => {
                             <Route path="config" element={<RedirectOnLogout children={<UserConfig />} />} />
                             <Route path="create" element={<RedirectOnLogout children={<Character />} />} />
                             <Route path="edit" >
-                                <Route path=":charactorId" element={<RedirectOnLogout children={<CharacterEdit />} />} />
+                                <Route path=":charactorId" element={<Character />} />
                             </Route>
                             <Route path="view" >
                                 <Route path=":charactorId" element={<CharacterView />} />
@@ -57,7 +56,8 @@ const Router = () => {
             </div>
         </BrowserRouter>
     )
-}*/
+}
+*/
 
 const Router = () => {
     return (
@@ -77,15 +77,15 @@ const Router = () => {
                     </Route>
 
                     <Route path="user">
-                        <Route path=":id" element={<RedirectOnLogout children={<Dashboard />} />} />
+                        <Route path=":id" element={<Dashboard />} />
                         <Route path=":id" >
                             <Route path="config" element={<RedirectOnLogout children={<UserConfig />} />} />
                             <Route path="create" element={<Character />} />
+                            <Route path="edit" >
+                                <Route path=":charactorId" element={<Character />} />
+                            </Route>
                             <Route path="view" >
                                 <Route path=":charactorId" element={<CharacterView />} />
-                            </Route>
-                            <Route path="edit" >
-                                <Route path=":charactorId" element={<RedirectOnLogout children={<CharacterEdit />} />} />
                             </Route>
                         </Route>
                     </Route>
@@ -95,5 +95,4 @@ const Router = () => {
         </BrowserRouter>
     )
 }
-
 export default Router

@@ -2,6 +2,10 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import CheckButton from './checkButton'
 import TextEntry from './TextEntry'
+import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import InputTextInfo from '../../Commons/SheetParts/inputTextInfo'
+import CheckParameter from '../../Commons/SheetParts/checkParameter'
+
 
 interface profilesProps {
     player_name: string
@@ -13,41 +17,62 @@ interface profilesProps {
 type Props = {
     profileValue: profilesProps
 }
-
+export interface inputTextInfoPropsType {
+    label: string
+    name: string
+    register: any
+    required: any
+}
 const Profiles: React.FC<Props> = ({ profileValue }) => {
 
     return (
         <div>
             <ul>
-                <TextEntry
-                    inputLabel="プレイヤー名"
-                    itemParam="player_name"
-                    itemValue={profileValue.player_name}
+                <InputTextInfo
+                    label="プレイヤー名"
+                    name="player_name"
+                    setClass="s-profiles"
+                    required={{
+                        required:'「プレイヤー名」は必須です。',
+                        maxLength : {
+                            value: 16,
+                            message: '16文字以下で入力してください。'
+                        }
+                    }}
                 />
-                <TextEntry
-                    inputLabel="氏名"
-                    itemParam="player_character"
-                    itemValue={profileValue.player_character}
+                <InputTextInfo
+                    label="氏名"
+                    name="player_character"
+                    setClass="s-profiles"
+                    required={{
+                        required:'「氏名」は必須です。',
+                        maxLength : {
+                            value: 16,
+                            message: '16文字以下で入力してください。'
+                        }
+                    }}
                 />
-                <TextEntry
-                    inputLabel="称号／肩書"
-                    itemParam="character_title"
-                    itemValue={profileValue.character_title}
+                <InputTextInfo
+                    label="称号／肩書"
+                    name="character_title"
+                    setClass="s-profiles"
+                    required={{
+                        required:'「称号／肩書」は必須です。',
+                        maxLength : {
+                            value: 16,
+                            message: '16文字以下で入力してください。'
+                        }
+                    }}
                 />
             </ul>
-            <div className="m-slill-item">
-                <div className="m-slill-item__title"><label className="m-slill-item__title__text">負傷</label></div>
-                <div className="m-slill-item__content">
-                    <ul className="m-check_list">
-                        <CheckButton
-                            itemParam="injury_value"
-                            itemValue={profileValue.injury_value}
-                        />
-                    </ul>
-                </div>
-            </div>
+            <CheckParameter
+                label="負傷"
+                setClass=""
+                itemName="injury_value"
+                itemValue={profileValue.injury_value}
+                seconds={3}
+            />
         </div>
-
 
     )
 }

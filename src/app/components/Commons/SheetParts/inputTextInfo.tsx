@@ -1,33 +1,28 @@
 import React, { useEffect, useState } from 'react'
+import { inputTextInfoPropsType } from '../../../type'
+import { useFormContext } from "react-hook-form";
 
-
-interface inputPropsType {
-    label: string
-    name: string
-    value: string
-    default:string
-    onChange:(e: React.ChangeEvent<HTMLInputElement> ) => void
-}
-
-type Props = inputPropsType
+type Props = inputTextInfoPropsType
 
 const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
-    
+    const { register, formState } = useFormContext();
+    const errorMessage:any = formState.errors[props.name]?.message ? formState.errors[props.name]?.message : '';
+
     return (
-        <div className="input-group">
-            <label className="" ></label>
-            <div className="" >
-                <input
-                    className=""
-                    type="text"
-                    defaultValue={props.default}
-                    value={props.value}
-                    onChange={e => props.onChange(e)}
-                />
+        <div className="m-inputTextInfo">
+            <div className={`input-group ${ props.setClass && props.setClass }`} >
+                <label className="input-title">{props.label}</label>
+                <div className="input-content" >
+                    <input
+                        type="text"
+                        className="input-text"
+                        {...register(props.name, props.required)}
+                    />
+                </div>
             </div>
+            { errorMessage && <span className="error-message" >{ errorMessage }</span>}
         </div>
     )
 }
-
 
 export default InputTextInfo

@@ -40,7 +40,6 @@ const useLogout = () => {
 
     return useMutation( api.logout , {
         onSuccess: (user)=>{
-            console.log(user)
             let loggedinflg = {
                 isLoggedIn:false
             }

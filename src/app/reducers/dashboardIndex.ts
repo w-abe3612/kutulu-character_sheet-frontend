@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction,createAsyncThunk,current } from '@reduxjs/toolkit'
 import axios from "axios";
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
@@ -40,16 +40,25 @@ export const dashboardIndexSlice = createSlice({
 
         state = updateState
     },
-    getDashboard2Users:(state) => {
-      return state
+    deleteCharacterItem:(state, action: PayloadAction<any>) => {
+      let updateState:any = state
+      const character_id = action.payload
+
+      updateState = Object.values(updateState).filter((character:any) => character.id !== character_id  )
+      console.log(updateState)
+      state = updateState
+
+      // ...stateとするとレンダリングする
+      return {
+        ...state,
+      }
     }
   },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
       let updateState: Array<characterInfoType> = state
       updateState = action.payload
-
-        state = updateState
+      state = updateState
       return {
         ...state,
       };
@@ -57,7 +66,7 @@ export const dashboardIndexSlice = createSlice({
   }
 })
 
-export const { setDashboard2Users ,getDashboard2Users } = dashboardIndexSlice.actions
+export const { setDashboard2Users ,deleteCharacterItem} = dashboardIndexSlice.actions
 
 export const selectCount = (state: RootState) => dashboardIndexSlice.actions
 

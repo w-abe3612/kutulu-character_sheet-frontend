@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
+import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 
 interface inputPropsType {
     label:string
@@ -15,6 +15,7 @@ type Props = inputPropsType
 const InputText: React.FC<Props> = ( props ):JSX.Element => (
     <div className="input-group">
     <label>{props.label}</label>
+    {console.log(typeof props.register)}
         <input
             type="text"
             className="input"

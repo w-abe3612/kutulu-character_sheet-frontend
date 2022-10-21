@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { setLoggedIn } from '../../reducers/systemStateSlice';
 import { systemStateType } from '../../reducers/types';
-import InputText from '../Commons/inputText';
+import InputText from '../Commons/SystemUseParts/inputText';
 
 const Login: React.VFC = () => {
     const login = useLogin()

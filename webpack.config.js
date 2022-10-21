@@ -34,7 +34,6 @@ module.exports = {
 
     module: {
         rules: [
-
             {
                 test: /\.(sa|sc|c)ss$/, // 対象にするファイルを指定
                 use: [

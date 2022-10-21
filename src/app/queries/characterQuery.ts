@@ -5,12 +5,24 @@ import {
 import { AxiosError } from 'axios'
 import { useQuery, useMutation, useQueryClient } from "react-query"
 import { useAppDispatch } from '../reducers/hooks'
-import { setDashboard2Users,getDashboard2Users } from '../reducers/dashboardIndex';
+import { setDashboard2Users } from '../reducers/dashboardIndex';
 
 
 // そもreduserがあるから、react-queryいならない可能性
 const useCharacters  = () => {
     return api.getCharacters() 
+}
+
+const useDeleteCharacter  = () => {
+    let a:any = useMutation( (id:any)=> api.deleteCharacter(id) , {
+        onSuccess: (user) => {
+            console.log(user)
+        },
+        onError:(e) => {
+            console.log(e)
+        },
+    })
+    return a
 }
 
 const useCreateCharacter = () => {
@@ -31,5 +43,6 @@ const useCreateCharacter = () => {
 
 export {
     useCharacters,
-    useCreateCharacter
+    useCreateCharacter,
+    useDeleteCharacter
 }

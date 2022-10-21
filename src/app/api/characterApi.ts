@@ -7,7 +7,18 @@ const getCharacters = async ( ) => {
     return data 
 }
 
-const createCharacter = async ( infos:any) => {
+const deleteCharacter = async (id:any) => {
+    const { data } = await axios.post<any>(
+        `http://localhost:80/api/v1/character/delete`,
+        { character_id:id },
+        { headers: {
+            'Content-Type': 'application/json'
+        }}
+    )
+    return data
+}
+
+const createCharacter = async ( infos:any ) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/character/create`,
         {    
@@ -28,6 +39,7 @@ const createCharacter = async ( infos:any) => {
 }
 
 export {
+    deleteCharacter,
     getCharacters,
     createCharacter
 }

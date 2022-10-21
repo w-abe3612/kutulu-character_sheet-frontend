@@ -18,12 +18,8 @@ const Verify: React.FC = () => {
     }
 
     let cat = localStorage.getItem("test");
-    console.log('test1')
-    console.log(cat)
     if (cat === 'test') {
         verifyReg()
-        console.log('test2')
-        console.log(cat)
         localStorage.removeItem("test");
     }
 

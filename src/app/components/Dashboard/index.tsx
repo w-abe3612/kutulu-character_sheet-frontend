@@ -7,12 +7,14 @@ import { systemStateType } from '../../reducers/types';
 import CharacterItem from './characterItem'
 import SectionWrap from "../Commons/Layout/sectionWrapDash"
 //import { useCharacters } from '../../queries/CharacterQuery'
-import { getCharacters }  from '../../reducers/dashboardIndex';
+import { getCharacters,deleteCharacterItem }  from '../../reducers/dashboardIndex';
+import { useDeleteCharacter } from '../../queries/CharacterQuery'
 
 const Dashboard: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
     let dashboradIndex = useAppSelector((state: any) => state.dashboard)
     let aaa = <></>
+    const deleteCharacter   = useDeleteCharacter()
 
     const dispatch = useAppDispatch()
 
@@ -26,7 +28,7 @@ const Dashboard: React.FC = () => {
         <SectionWrap title="キャラ一覧" >
             { dashboradIndex.length > 0 ||  Object.values(dashboradIndex).map(( character:any ) => {
             return <CharacterItem 
-                player_id={character.id}
+                character_id={character.id}
                 player_character={character.character_title}
                 image_path="../img/"
                 image_name="dammyUser.png"

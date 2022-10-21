@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { setFormState, setrRegisterInputs } from '../../reducers/registerSlice';
 import { systemStateType} from '../../reducers/types';
-import InputText from '../Commons/inputText';
+import InputText from '../Commons/SystemUseParts/inputText';
 import ConfirmRegister from './confirmRegister';
 
 

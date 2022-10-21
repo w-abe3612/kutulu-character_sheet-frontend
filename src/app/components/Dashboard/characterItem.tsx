@@ -2,24 +2,15 @@ import React, { useEffect, useState } from 'react'
 import ItemButtons from './itemButtons'
 import image from 'img/dammyUser.png'
 
+
 export interface characterInfoType {
-    player_id: number
+    character_id: number
     player_character: string
     image_path: string
     image_name: string
     updateded_at: string
 }
-/*
-m-character
 
-m-character__inner
-m-character__picture
-m-character__content
-m-character__charactor-name
-m-character__charactor-updateded_at
-m-character__charactor-button
-
-*/
 
 
 type Props = characterInfoType
@@ -49,7 +40,7 @@ const CharacterItem: React.FC<Props> = (props): JSX.Element => {
                     <div className="m-character__charactor-button">
                         <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
                         <ItemButtons
-                            player_id={1}
+                            character_id={props.character_id}
                         />
                     </div>
                 </div>
