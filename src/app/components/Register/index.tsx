@@ -4,7 +4,7 @@ import {
     Navigate,
     useLocation
 } from "react-router-dom";
-import { systemStateType,registerStatesType } from '../../reducers/types';
+import { systemStateType,registerStatesType } from '../../type/';
 import InputRegister from './inputRegister'
 import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
@@ -22,8 +22,8 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
 
     let result = <></>
 
-    if ( systemState.isLoggedIn === true ) {
-        return <Navigate to={"/user/" + systemState.userId } replace={true} />
+    if ( systemState.isLoggedIn === '1' ) {
+        return <Navigate to={"/user/" + systemState.userId + '/'} replace={true} />
     }
 
     if ( urlNest === 'input' ) {

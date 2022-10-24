@@ -1,12 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React,{ useEffect } from 'react';
 import Router from './router'
 
 import { QueryClient, QueryClientProvider } from "react-query"
-import { CookiesProvider } from 'react-cookie';
-
+import { useAppSelector, useAppDispatch } from '../reducers/hooks'
+import { isCheckLoggedIn,setLoggedIn }  from '../reducers/systemStateSlice';
+import type { systemStateType } from '../type'
+import crypto from 'crypto-js'
 
 const App: React.FC = () => {
+    const dispatch = useAppDispatch()
+    let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
+
+    // コンストラクターにする予定？
+    const recoveryText = ( targetText:string | null ):string => {
+        let result = ''
+        if (targetText !== null ) {
+            let bytes = crypto.AES.decrypt(targetText, process.env.HASH_KEY ? process.env.HASH_KEY: '' )
+            result = bytes.toString(crypto.enc.Utf8)
+        }
+        return result
+    }
+
+    // コンストラクターにする予定？
+    useEffect(() => {
+        if ( systemState.isLoggedIn === '0' ) {
+            if ( localStorage.getItem("userId") !== null 
+                && localStorage.getItem("userName") !== null) {
+
+                let result: any = {
+                    isLoggedIn: recoveryText( localStorage.getItem("isLoggedIn")),
+                    userId: Number(recoveryText(localStorage.getItem('userId'))),
+                    userName: recoveryText(localStorage.getItem('userName'))
+                }
+                dispatch(setLoggedIn(result))
+            } else {
+                //この時取得できなかった際にはlocalstrageを消す必要あり
+                dispatch(isCheckLoggedIn())
+            }
+        }
+    }, [dispatch]);
+
     const queryClient = new QueryClient({
         defaultOptions: {
             queries: {

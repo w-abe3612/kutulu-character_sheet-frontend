@@ -1,36 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import React,{useEffect} from 'react';
+import { useAppSelector } from '../../../reducers/hooks'
 import { characterInfoType } from '../../../reducers/types'
-import { setTextAreaInfo } from '../../../reducers/characterInfosSlice'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
+import SentenceTextArea from '../../Commons/SheetParts/sentenceTextArea'
 
+type Props = {
+    isPage: string
+}
 
-const CharacterPreference: React.FC = () => {
-    const [textAreaInputed, setInputed] = useState('');
-    const CharacterInfo: Array<characterInfoType> = useAppSelector((state: any) => state.CharacterInfo)
-    const dispatch = useAppDispatch()
-
-    const handleInputTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setInputed(e.target.value)
-
-        dispatch(setTextAreaInfo({
-            value: e.target.value,
-            itemParam: "character_preference"
-        }))
-    }
-
+const CharacterPreference: React.FC<Props> = (props): JSX.Element => {
+    let CharacterInfo:characterInfoType = useAppSelector( ( state : any ) => state.characterInfo )
+    useEffect(()=>{
+        if(props.isPage === 'create') {
+            console.log(props.isPage)
+        }
+    })
     return (
         <SectionWrap title="個人情報" >
-                <textarea
-                    name="character_preference"
-                    className="m-sentenceInput"
-                    value={textAreaInputed}
-                    onChange={(e) => {
-                        handleInputTextArea(e)
-                    }}
-                    cols={50}
-                    rows={5} />
+            <SentenceTextArea
+                name="character_preference"
+                value={ CharacterInfo.character_preference }
+                setClass=""
+            />
         </SectionWrap>
     )
 }

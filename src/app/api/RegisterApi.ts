@@ -19,7 +19,7 @@ const verify = async (token:string) => {
         {token},
         {headers: {
             'Content-Type': 'application/json'
-  }}
+        }}
     )
     return data 
 }

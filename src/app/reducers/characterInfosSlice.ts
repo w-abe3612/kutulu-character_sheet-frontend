@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction,createAsyncThunk,current } from '@reduxjs/toolkit'
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
+import { useCharactorInfo } from '../queries/CharacterQuery'
 
 // Define a type for the slice state
 interface characterInfoType {
@@ -35,30 +36,31 @@ interface setInjuryValueType {
 
 const initialState = initialCharacterInfo
 
+export const getCharacterInfo = createAsyncThunk(
+  "getCharacterInfo",
+  async (id:any) => {
+    const test = await useCharactorInfo(id)
+    return test
+  }
+);
+
 export const characterInfoSlice = createSlice({
   name: 'characterInfo',
   initialState,
   reducers: {
-    setProfileInfo: (state, action: PayloadAction<setProfileInfoType>): void => {
+    initializeCharacterInfo:(state) => {
       let updateState: characterInfoType = state
-      let inputedValue:string = ''
-      let inputedParamName:string = ''
-
-      inputedValue = action.payload.value
-      inputedParamName = action.payload.itemParam
-
+      updateState = initialCharacterInfo
       state = updateState
+
+      return state
     },
-    setTextAreaInfo:(state, action: PayloadAction<setTextAreaInfoType>): void => {
-      let updateState: characterInfoType = state
-      let inputedValue:string = ''
-      let inputedParamName:string = ''
-
-      inputedValue = action.payload.value
-      inputedParamName = action.payload.itemParam
-      //todo jsonに変数の値で参照する方法
+    setCharacterInfo:(state, action: PayloadAction<setInjuryValueType>) => {
+      let updateState: any = state
+      updateState = action.payload
 
       state = updateState
+      return state
     },
     setInjuryValue: (state, action: PayloadAction<setInjuryValueType>): void => {
       let updateState: characterInfoType = state
@@ -69,9 +71,30 @@ export const characterInfoSlice = createSlice({
       state = updateState
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getCharacterInfo.fulfilled, (state, action) => {
+      const newState = {
+        player_name:action.payload[0].player_name,
+        player_character:action.payload[0].player_character,
+        character_title:action.payload[0].character_title,
+        injury_value:action.payload[0].injury_value,
+        image_path:action.payload[0].image_path,
+        image_name:action.payload[0].image_name,
+        ability_value_max:action.payload[0].ability_value_max,
+        ability_value_total:action.payload[0].ability_value_total,
+        specialized_skill_max:action.payload[0].pecialized_skill_max,
+        specialized_skill_total:action.payload[0].specialized_skill_total,
+        possession_item:action.payload[0].possession_item,
+        character_preference:action.payload[0].character_preference,
+      }
+      return {
+        ...newState,
+      };
+    });
+  }
 })
 
-export const { setProfileInfo, setInjuryValue, setTextAreaInfo } = characterInfoSlice.actions
+export const {  setCharacterInfo,setInjuryValue, initializeCharacterInfo } = characterInfoSlice.actions
 
 export const selectCount = (state: RootState) => characterInfoSlice.actions
 

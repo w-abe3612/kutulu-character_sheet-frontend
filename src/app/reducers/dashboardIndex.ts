@@ -45,7 +45,6 @@ export const dashboardIndexSlice = createSlice({
       const character_id = action.payload
 
       updateState = Object.values(updateState).filter((character:any) => character.id !== character_id  )
-      console.log(updateState)
       state = updateState
 
       // ...stateとするとレンダリングする

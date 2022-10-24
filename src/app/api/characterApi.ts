@@ -1,9 +1,50 @@
 import axios from 'axios'
+import { useAppSelector, useAppDispatch } from '../reducers/hooks'
 
 axios.defaults.withCredentials = true;
 
 const getCharacters = async ( ) => {
     const { data } = await axios.get<any>(`http://localhost:80/api/v1/characters`)
+    return data 
+}
+
+const getCharacterInfo = async (id:any ) => {
+    const { data } = await axios.get<any>(
+        `http://localhost:80/api/v1/character_infos`,
+        {
+        params: {
+            character_id:id
+        }})
+    return data 
+}
+
+const getFlavorInfos = async (id:any ) => {
+    const { data } = await axios.get<any>(
+        `http://localhost:80/api/v1/flavor_infos`,
+        {
+        params: {
+            character_id:id
+        }})
+    return data 
+}
+
+const getAbilityValues = async (id:any ) => {
+    const { data } = await axios.get<any>(
+        `http://localhost:80/api/v1/ability_values`,
+        {
+        params: {
+            character_id:id
+        }})
+    return data 
+}
+
+const getSpecialzedSkills = async (id:any ) => {
+    const { data } = await axios.get<any>(
+        `http://localhost:80/api/v1/specialzed_skills`,
+        {
+        params: {
+            character_id:id
+        }})
     return data 
 }
 
@@ -18,27 +59,28 @@ const deleteCharacter = async (id:any) => {
     return data
 }
 
-const createCharacter = async ( infos:any ) => {
+const createCharacter = async ( info:any ) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/character/create`,
         {    
-            player_name:infos.player_name,
-            player_character:infos.player_character,
-            character_title:infos.character_title,
-            injury_value:infos.injury_value,
-            image_path:infos.image_path,
-            image_name:infos.image_name,
-            possession_item:infos.possession_item,
-            character_preference:infos.character_preference,
+            characterInfo:info.characterInfo,
+            flavorInfoValue:info.flavorInfoValue,
+            abilityValues:info.abilityValues,
+            specializedSkill:info.specializedSkill,
         },
         {headers: {
             'Content-Type': 'application/json'
         }}
     )
+
     return data 
 }
 
 export {
+    getCharacterInfo,
+    getFlavorInfos,
+    getAbilityValues,
+    getSpecialzedSkills,
     deleteCharacter,
     getCharacters,
     createCharacter

@@ -1,5 +1,6 @@
 import React, { ReactText, useEffect } from 'react';
 import {
+    useLocation,
     Navigate
 } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
@@ -13,16 +14,12 @@ import { useDeleteCharacter } from '../../queries/CharacterQuery'
 const Dashboard: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
     let dashboradIndex = useAppSelector((state: any) => state.dashboard)
-    let aaa = <></>
-    const deleteCharacter   = useDeleteCharacter()
-
+    
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        // 非同期処理を実行 // 引数に例として私のQiitaアカウント名を指定
-        dispatch(getCharacters());
-      }, [dispatch]);
-
+        dispatch(getCharacters())
+    }, [dispatch])
 
     return (
         <SectionWrap title="キャラ一覧" >

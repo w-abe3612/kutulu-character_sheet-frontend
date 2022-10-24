@@ -17,8 +17,11 @@ interface profilesProps {
     character_title:string
     injury_value:number
 }
+type Props = {
+    isPage: string
+}
 
-const CharacterInfo: React.FC = () => {
+const CharacterInfo: React.FC<Props> = (props) => {
     let CharacterInfo:characterInfoType = useAppSelector( ( state : any ) => state.characterInfo )
     let profileValue : profilesProps = {
         player_name:'',
@@ -26,6 +29,13 @@ const CharacterInfo: React.FC = () => {
         character_title:'',
         injury_value:0
     }
+    useEffect(()=>{
+        if(props.isPage === 'create') {
+            console.log(props.isPage)
+        } else if(props.isPage === 'edit') {
+            console.log(props.isPage)
+        }
+    })
 
     profileValue.player_name      = CharacterInfo.player_name
     profileValue.player_character = CharacterInfo.player_character

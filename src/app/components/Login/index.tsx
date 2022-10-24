@@ -7,10 +7,10 @@ import {
     useLocation
 } from "react-router-dom";
 import { setLoggedIn } from '../../reducers/systemStateSlice';
-import { systemStateType } from '../../reducers/types';
+import { systemStateType } from '../../type/';
 import InputText from '../Commons/SystemUseParts/inputText';
 
-const Login: React.VFC = () => {
+const Login: React.FC = () => {
     const login = useLogin()
     const dispatch = useAppDispatch()
 
@@ -20,10 +20,10 @@ const Login: React.VFC = () => {
     const onSubmit = (data:any) => {
         login.mutate({ email:data.email, password:data.password })
     }
-
+    
     return (
         <div className="m-login">
-            { systemState.isLoggedIn === true && (
+            { systemState.isLoggedIn === '1' && (
                 <Navigate to={"/user/" + systemState.userId } replace={true} />
             )}
             <div className="m-login__inner">

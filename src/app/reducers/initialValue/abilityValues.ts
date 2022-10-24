@@ -71,7 +71,6 @@ const initialAbilityValue: Array<abilityValueType> = [
         skill_type: 1,
         skill_order: 4,
     },
-
 ]
 
 export default initialAbilityValue

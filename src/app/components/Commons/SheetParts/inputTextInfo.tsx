@@ -16,6 +16,7 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
                     <input
                         type="text"
                         className="input-text"
+                        defaultValue={ props.default }
                         {...register(props.name, props.required)}
                     />
                 </div>

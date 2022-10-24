@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CheckButton from './checkButton'
+import CheckParameter from '../../Commons/SheetParts/checkParameter'
 
 export interface specializedSkillType {
     skill_name: string
@@ -21,17 +21,14 @@ const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
 
     itemBoxes = skillItems.map(( item:specializedSkillType ):JSX.Element => (
         <li key={ item.skill_param } className="m-slill-item m-specialize" >
-            <div className="m-slill-item__title" >
-                <label className="m-slill-item__title__text" >{item.skill_name}</label>
-            </div>
-            <div className="m-slill-item__content" >
-                <ul className="m-check_list" >
-                    <CheckButton
-                          itemParam={ item.skill_param }
-                          itemValue={ item.skill_value }
-                    />
-                </ul>
-            </div>
+                <CheckParameter
+                    label={item.skill_name}
+                    setClass=""
+                    itemName={item.skill_param}
+                    itemValue={item.skill_value}
+                    seconds={3}
+                    isReduser='specializedSkill'
+                />
         </li>
     ))
 

@@ -4,6 +4,9 @@ import AbilityItem from './AbilityItem'
 import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
+import { systemStateType } from '../../../type'
+import { initializeAbilityValues ,getAbilityValue } from '../../../reducers/abilityValuesSlice'
+
 
 interface abilityValueType {
     skill_name: string
@@ -41,25 +44,32 @@ const sort2ItemOrder = ( itemvaluse :Array<abilityValueType> ): Array<abilityVal
     return result
 }
 
-// パッシブスキルとかそこの区切り
-/*
-const abilityTypeSeparation = ( text:Array<abilityValueType> ) => {
-        return text
-}*/
+type Props = {
+    isPage: string
+    characterId: number
+}
+const AbilityValue: React.FC<Props> = (props) => {
+    const dispatch = useAppDispatch()
+    const systemState:systemStateType = useAppSelector((state: any) => state.systemState)
+    const abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
 
-const AbilityValue: React.FC = () => {
-    let abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
+    const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
+    const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
 
-    let activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
-    let passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
-
+    useEffect(()=>{
+        if(props.isPage === 'create') {
+            console.log(props.isPage)
+        } else if(props.isPage === 'edit') {
+            console.log(props.isPage)
+        }
+    })
     return (
         <SectionWrap title="個人情報" >
-                <AcquisitionPoint />
-                <span className="">パッシブスキル</span>
-                <AbilityItem skillItems = {passiveSkill} />
-                <span className="">アクティブスキル</span>
-                <AbilityItem skillItems = {activeSkill} />
+            <AcquisitionPoint />
+            <span className="">パッシブスキル</span>
+            <AbilityItem skillItems = {passiveSkill} />
+            <span className="">アクティブスキル</span>
+            <AbilityItem skillItems = {activeSkill} />
         </SectionWrap>
     )
 }

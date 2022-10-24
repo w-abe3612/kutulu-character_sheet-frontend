@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 
 
 const getUsers = async () => {
-    const { data } = await axios.get<User>('api/user')
+    const { data } = await axios.get<User>('http://localhost:80/api/v1/user')
     return data 
 }
 

@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit'
 import initialAbilityValue from './initialValue/abilityValues'
 import type { RootState } from './store'
+import { useAbilityValues } from '../queries/CharacterQuery'
 
 // Define a type for the slice state
 interface setChecked {
@@ -18,11 +19,26 @@ export interface abilityValueType {
 
 const initialState = initialAbilityValue
 
+export const getAbilityValue = createAsyncThunk(
+  "getAbilityValue",
+  async (id:any) => {
+    const test = await useAbilityValues(id)
+    return test
+  }
+);
+
 export const abilityValuesSlice = createSlice({
   name: 'abilityValues',
   initialState,
   reducers: {
-    addCheckedValue: (state, action: PayloadAction<setChecked>): void => {
+    initializeAbilityValues:(state) => {
+      let updateState: Array<abilityValueType> = state
+      updateState = initialAbilityValue
+      state = updateState
+
+      return state
+    },
+    setAbilityValues: (state, action: PayloadAction<setChecked>): void => {
       let updateState: Array<abilityValueType> = state
 
       updateState.map((item: abilityValueType): void => {
@@ -33,9 +49,15 @@ export const abilityValuesSlice = createSlice({
       state = updateState
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getAbilityValue.fulfilled, (state, action) => {
+
+
+    });
+  }
 })
 
-export const { addCheckedValue } = abilityValuesSlice.actions
+export const { setAbilityValues,initializeAbilityValues } = abilityValuesSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => abilityValuesSlice.actions

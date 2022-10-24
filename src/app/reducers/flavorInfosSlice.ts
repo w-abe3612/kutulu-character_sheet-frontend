@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction ,createAsyncThunk} from '@reduxjs/toolkit'
 import initialFlavorInfo from './initialValue/flavorInfo'
 import type { RootState } from './store'
+import { useFlavorInfos } from '../queries/CharacterQuery'
 
 // todo 名前の変更
 interface setChecked {
@@ -17,11 +18,26 @@ export interface flavorInfoType {
 
 const initialState = initialFlavorInfo
 
+export const getFlavorInfos = createAsyncThunk(
+  "getFlavorInfos",
+  async (id:any) => {
+    const test = await useFlavorInfos(id)
+    return test
+  }
+);
+
 export const flavorInfoSlice = createSlice({
   name: 'flavorInfo',
   initialState,
   reducers: {
-    addCheckedValue: (state, action: PayloadAction<setChecked>): void => {
+    initializeFlavorInfo:(state) => {
+      let updateState: Array<flavorInfoType> = state
+      updateState = initialFlavorInfo
+      state = updateState
+
+      return state
+    },
+    setFlavorInfoValue: (state, action: PayloadAction<setChecked>) => {
       let updateState: Array<flavorInfoType> = state
 
       updateState.map((item: flavorInfoType): void => {
@@ -30,11 +46,19 @@ export const flavorInfoSlice = createSlice({
         }
       })
       state = updateState
+
+      return state 
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getFlavorInfos.fulfilled, (state, action) => {
+
+
+    });
+  }
 })
 
-export const { addCheckedValue } = flavorInfoSlice.actions
+export const { setFlavorInfoValue,initializeFlavorInfo } = flavorInfoSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => flavorInfoSlice.actions

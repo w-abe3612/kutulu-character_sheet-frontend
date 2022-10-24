@@ -27,13 +27,14 @@ export const registerStateSlice = createSlice({
   name: 'registerStates',
   initialState,
   reducers: {
-    setFormState: (state, action: PayloadAction<any>): void => {
+    setFormState: (state, action: PayloadAction<any>) => {
         let updateState: registerStatesType = state
         updateState.formState = action.payload.formState
-
         state = updateState
+
+        return state
     },
-    setrRegisterInputs:(state, action: PayloadAction<any>):void => {
+    setrRegisterInputs:(state, action: PayloadAction<any>)=> {
         let updateState: registerStatesType = state
 
         updateState.username     = action.payload.username
@@ -42,11 +43,15 @@ export const registerStateSlice = createSlice({
         updateState.confirmation = action.payload.confirmation
 
         state = updateState
+
+        return state
     },
-    setVerifyFlg:(state, action: PayloadAction<any>):void => {
+    setVerifyFlg:(state, action: PayloadAction<any>) => {
       let updateState: registerStatesType = state
       updateState.verifyFlg    = action.payload.verifyFlg
       state = updateState
+
+      return state
     }
   },
 })

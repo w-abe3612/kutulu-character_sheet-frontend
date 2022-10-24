@@ -15,10 +15,9 @@ type Props = characterInfoType
 const ItemButtons: React.FC<Props> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
-    console.log(systemState)
     const deleteCharacter   = useDeleteCharacter()
 
-    const deletehandlaer = (e: React.MouseEvent<HTMLElement>) => {
+    const deleteHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()
         deleteCharacter.mutate(props.character_id)
         dispatch(deleteCharacterItem(props.character_id))
@@ -34,8 +33,9 @@ const ItemButtons: React.FC<Props> = (props): JSX.Element => {
                     <Link className="" to={ '/user/' + systemState.userId + '/view/' + props.character_id + '/' }>閲覧</Link>
                 </li>
                 <li className="m-button-output">キャラ出力</li>
+                <li className="m-button-output">URL出力</li>
                 <li 
-                    onClick={deletehandlaer }
+                    onClick={ deleteHandler }
                     className="m-button-delete"
                 >削除</li>
             </ul>

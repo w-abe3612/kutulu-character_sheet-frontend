@@ -2,10 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { useFormContext } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { setInjuryValue } from '../../../reducers/characterInfosSlice'
+import { setAbilityValues } from '../../../reducers/abilityValuesSlice'
+import { setSpecializedSkill } from '../../../reducers/specializedSkillsSlice'
 
-const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds }) => {
+const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => {
     const [ btnChecked, setChecked ] = useState(false);
     const dispatch = useAppDispatch()
+    // 後でstate変更による再レンダリングのみで表現したい
+    const { setValue } = useFormContext();
+
+    const switchReduserDispatch = (isReduser:string,setAction:any) => {
+        switch ( isReduser ) {
+            case 'injuryValue':
+                dispatch( setInjuryValue( setAction ) )
+                break;
+            case 'abilityValues':
+                dispatch( setAbilityValues( setAction ) )
+                break;
+            case 'specializedSkill':
+                dispatch( setSpecializedSkill( setAction ) )
+                break;
+        }
+
+    }
 
     const handleSkillPointCheck = ( itemValue:number,btnChecked: any, paramName: string, e: React.ChangeEvent<HTMLInputElement> ) => {
         e.preventDefault()
@@ -14,7 +33,6 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds }) => {
         checkvalue = e.currentTarget.getAttribute('data-num') !== undefined
             || e.currentTarget.getAttribute('data-num') !== null
             ? Number( e.currentTarget.getAttribute('data-num') ) : 0
-
 
         if( btnChecked === true && itemValue === checkvalue ) {
             checkvalue = checkvalue - 1
@@ -28,7 +46,9 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds }) => {
         setCheckedAction.value     = checkvalue
         setCheckedAction.itemParam = paramName
 
-        dispatch( setInjuryValue( setCheckedAction ) )
+        switchReduserDispatch( isReduser, setCheckedAction )
+        // 後でstate変更による再レンダリングのみで表現したい
+        setValue(paramName,checkvalue)
     }
 
         // チェックされたのが2だった場合、1もチェックされる
@@ -72,25 +92,35 @@ type Props = {
     itemName: string
     itemValue: number
     seconds: number
+    isReduser: string
 }
 
 const CheckParameter: React.FC<Props> = (props):JSX.Element => {
-    let checkButtons :JSX.Element = <></>
     let defaultValue = 0
-    let seconds:number = props.seconds - 1
+    let seconds:number = props.seconds
+    const { setValue } = useFormContext();
 
-    const { register } = useFormContext();
-
-    const parameterSeconds = (itemName: string, itemValue: number) :Array<JSX.Element> => {
+    useEffect(()=>{
+        setValue( props.itemName,props.itemValue )
+    },[setValue])
+    
+    const parameterSeconds = (itemName: string, itemValue: number,isReduser:string) :Array<JSX.Element> => {
         let result:Array<JSX.Element> = []
         for ( let i:number = 0; seconds >= i; ++i ) {
-            result[ i ] = (
-                <ItemBtn
-                    itemName =  {itemName}
-                    itemValue = {itemValue}
-                    seconds   = {i}
-                />)
+            if (i === 0 ) {
+                result[ i ] = <></>
+            } else {
+                result[ i ] = (
+                    <ItemBtn
+                        itemName =  {itemName}
+                        itemValue = {itemValue}
+                        seconds   = {i}
+                        isReduser = {isReduser}
+                    />)
+            }
+
         }
+
         return result.map( ( checkButton:JSX.Element ) => {
             return checkButton
         } )
@@ -102,15 +132,8 @@ const CheckParameter: React.FC<Props> = (props):JSX.Element => {
                 <label className="input-title">{props.label}</label>
                 <div className="input-content" >
                     <ul className="button-list">
-                        { parameterSeconds(props.itemName, props.itemValue) }
+                        { parameterSeconds(props.itemName, props.itemValue,props.isReduser) }
                     </ul>
-                    <input
-                        type="hidden"
-                        defaultValue={ defaultValue }
-                        readOnly={true}
-                        value={ defaultValue }
-                        {...register(props.itemName)}
-                    />
                 </div>
             </div>
         </div>

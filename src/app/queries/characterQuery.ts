@@ -4,37 +4,48 @@ import {
 } from "react-router-dom";
 import { AxiosError } from 'axios'
 import { useQuery, useMutation, useQueryClient } from "react-query"
-import { useAppDispatch } from '../reducers/hooks'
+import { useAppSelector,useAppDispatch } from '../reducers/hooks'
 import { setDashboard2Users } from '../reducers/dashboardIndex';
 
 
-// そもreduserがあるから、react-queryいならない可能性
+
 const useCharacters  = () => {
     return api.getCharacters() 
 }
 
+const useCharactorInfo = (id:any) => {
+    return api.getCharacterInfo(id)
+}
+
+const useFlavorInfos = (id:any) => {
+    return api.getFlavorInfos(id)
+}
+
+const useAbilityValues = (id:any) => {
+    return api.getAbilityValues(id)
+}
+
+const useSpecialzedSkills = (id:any) => {
+    return api.getSpecialzedSkills(id)
+}
+
+
 const useDeleteCharacter  = () => {
     let a:any = useMutation( (id:any)=> api.deleteCharacter(id) , {
         onSuccess: (user) => {
-            console.log(user)
         },
         onError:(e) => {
-            console.log(e)
         },
     })
     return a
 }
 
 const useCreateCharacter = () => {
-    const navigate = useNavigate();
-    const queryClient = useQueryClient()
-    let a:any = useMutation( api.createCharacter , {
+    let a:any = useMutation( (infos:any)=> api.createCharacter(infos) , {
         onSuccess: (user) => {
-            queryClient.invalidateQueries('infos')
-            navigate("/user/3/edit") 
+            console.log(user)
         },
         onError:(e) => {
-            console.log(e)
         },
     })
     return a
@@ -42,6 +53,10 @@ const useCreateCharacter = () => {
 
 
 export {
+    useCharactorInfo,
+    useFlavorInfos,
+    useAbilityValues,
+    useSpecialzedSkills,
     useCharacters,
     useCreateCharacter,
     useDeleteCharacter

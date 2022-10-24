@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 
 import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
-import { systemStateType } from '../../reducers/types';
+import { systemStateType } from '../../type/';
 import { useLogout } from "../../queries/AuthQuery"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +12,7 @@ import { faGear, faArrowRightFromBracket, faArrowRightToBracket, faAddressCard }
 const Header: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
     const [toggleFlg, setToggleFlg] = useState(false)
-
+let ae = systemState.isLoggedIn
     const fonc: any = (e: React.MouseEvent<HTMLInputElement>):void => {
         e.preventDefault()
 
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
 
     const a: any = (systemState: systemStateType): void => {
         let result: any = <></>
-        if (systemState.isLoggedIn === true) {
+        if (ae === '1') {
             result = (
                 <div className="m-login-user">{systemState.userName} <span>さん</span></div>
             )
@@ -53,7 +53,7 @@ const Header: React.FC = () => {
             logout.mutate()
         }
 
-        if (systemState.isLoggedIn === true) {
+        if (systemState.isLoggedIn === '1') {
             result = (
                 <div className="m-inner-bottom">
                     <nav className="m-inner-bottom__inner" >
@@ -95,7 +95,7 @@ const Header: React.FC = () => {
 
     const c: any = (systemState: systemStateType): void => {
         let result: any = <></>
-        if (systemState.isLoggedIn === true) {
+        if (systemState.isLoggedIn === '1') {
             result = (
                 <div
                     className="m-toggle_menu"

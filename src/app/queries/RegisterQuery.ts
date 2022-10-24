@@ -8,10 +8,8 @@ const useRegister = () => {
 
     let a:any = useMutation( api.register , {
         onSuccess: (user) => {
-            console.log(user)
         },
         onError:(e) => {
-            console.log(e)
         },
     })
     return a
@@ -22,10 +20,8 @@ const useVerify = () => {
 
     let a:any = useMutation( api.verify , {
         onSuccess: (user) => {
-            console.log(user)
         },
         onError:(e) => {
-            console.log(e)
         },
     })
     return a

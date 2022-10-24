@@ -7,7 +7,7 @@ import {
     RouteProps,
     useLocation
 } from "react-router-dom";
-import Character from './Character'
+import { CharacterCreate, CharacterEdit } from './Character'
 import Home from './Home'
 import Login from './Login'
 import Register from './Register'
@@ -60,6 +60,7 @@ const Router = () => {
 */
 
 const Router = () => {
+
     return (
         <BrowserRouter>
             <div>
@@ -80,9 +81,9 @@ const Router = () => {
                         <Route path=":id" element={<Dashboard />} />
                         <Route path=":id" >
                             <Route path="config" element={<RedirectOnLogout children={<UserConfig />} />} />
-                            <Route path="create" element={<Character />} />
+                            <Route path="create" element={<CharacterCreate />} />
                             <Route path="edit" >
-                                <Route path=":charactorId" element={<Character />} />
+                                <Route path=":charactorId" element={<CharacterEdit />} />
                             </Route>
                             <Route path="view" >
                                 <Route path=":charactorId" element={<CharacterView />} />
