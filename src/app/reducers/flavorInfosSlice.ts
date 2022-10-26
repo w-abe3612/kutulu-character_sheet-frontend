@@ -52,8 +52,20 @@ export const flavorInfoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getFlavorInfos.fulfilled, (state, action) => {
+      let updateState: Array<flavorInfoType> = state
+      let result:any = []
+      const newFlavorInfo = action.payload
+      result = newFlavorInfo.map((info:any) => {
+        return {
+          flavor_info_name: info.flavor_info_name, 
+          flavor_info_param: info.flavor_info_param, 
+          flavor_info_value: info.flavor_info_value, 
+          flavor_info_order: info.flavor_info_order,
+        }
+      })
+      updateState = result
 
-
+      return updateState 
     });
   }
 })

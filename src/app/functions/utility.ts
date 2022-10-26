@@ -10,3 +10,26 @@ export const getCharacterId4Url = (isPage:string):number => {
 
     return result
 }
+
+export const renderBase64 = async ( imgFile:any ) => {
+    const reader = new FileReader()
+    let img =  await reader.readAsDataURL( imgFile )
+    console.log(img)
+    return img
+}
+
+
+
+/*
+const createCharacter = async ( info:any ) => {
+    const { data } = await axios.post<any>(
+        `http://localhost:80/api/v1/character/create`,
+        info,
+        {headers: {
+            'Content-Type': 'multipart/form-data'
+        }}
+    )
+    return data 
+}
+
+*/

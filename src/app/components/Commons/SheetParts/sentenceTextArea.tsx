@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { sentenceTextAreaType } from '../../../type'
 import { useFormContext } from "react-hook-form";
 

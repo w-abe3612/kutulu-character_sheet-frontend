@@ -27,10 +27,10 @@ const ItemButtons: React.FC<Props> = (props): JSX.Element => {
         <div className="m-buttons">
             <ul className="m-buttons__inner">
                 <li className="m-button-edit">
-                    <Link className="" to={ '/user/' + systemState.userId + '/edit/' + props.character_id + '/' }>編集</Link>
+                    <Link className="" to={ '/kutulu/user/' + systemState.userId + '/edit/' + props.character_id + '/' }>編集</Link>
                 </li>
                 <li className="m-button-view">
-                    <Link className="" to={ '/user/' + systemState.userId + '/view/' + props.character_id + '/' }>閲覧</Link>
+                    <Link className="" to={ '/kutulu/user/' + systemState.userId + '/view/' + props.character_id + '/' }>閲覧</Link>
                 </li>
                 <li className="m-button-output">キャラ出力</li>
                 <li className="m-button-output">URL出力</li>

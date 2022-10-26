@@ -50,8 +50,21 @@ export const specializedSkillSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getSpecialzedSkills.fulfilled, (state, action) => {
+      let updateState: Array<specializedSkillType> = state
+      let result:any = []
+      const newSpecializedSkill = action.payload
+      result = newSpecializedSkill.map((info:any) => {
+        return {
+          skill_name:info.skill_name,
+          skill_order:info.skill_order,
+          skill_param:info.skill_param,
+          skill_value:info.skill_value
+        }
+      })
+      console.log(action.payload)
+      updateState = result
 
-
+      return updateState 
     });
   }
 })

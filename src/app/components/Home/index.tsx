@@ -1,9 +1,12 @@
 import React, { ReactText } from 'react';
 import ReactDOM from 'react-dom';
+import Header from '../Header'
 
 const Home: React.FC = () => {
     return (
-        <div>ホームページ</div>
+        <div>
+            <Header />
+            ホームページ</div>
     )
 }
 

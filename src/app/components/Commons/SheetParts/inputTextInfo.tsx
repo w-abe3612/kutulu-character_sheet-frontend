@@ -7,7 +7,6 @@ type Props = inputTextInfoPropsType
 const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
     const { register, formState } = useFormContext();
     const errorMessage:any = formState.errors[props.name]?.message ? formState.errors[props.name]?.message : '';
-
     return (
         <div className="m-inputTextInfo">
             <div className={`input-group ${ props.setClass && props.setClass }`} >
@@ -16,7 +15,6 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
                     <input
                         type="text"
                         className="input-text"
-                        defaultValue={ props.default }
                         {...register(props.name, props.required)}
                     />
                 </div>

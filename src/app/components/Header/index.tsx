@@ -59,8 +59,8 @@ let ae = systemState.isLoggedIn
                     <nav className="m-inner-bottom__inner" >
                         <ul className="m-menu">
                             <li><Link to="/">トップへ戻る</Link></li>
-                            <li ><Link to={'/user/' + systemState.userId} >ダッシュボード</Link></li>
-                            <li ><Link to={'/user/' + systemState.userId + '/create'} >新規作成</Link></li>
+                            <li ><Link to={'/kutulu/user/' + systemState.userId} >ダッシュボード</Link></li>
+                            <li ><Link to={'/kutulu/user/' + systemState.userId + '/create'} >新規作成</Link></li>
                         </ul>
 
                         <div className="m-config-nav">

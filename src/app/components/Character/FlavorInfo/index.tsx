@@ -5,6 +5,7 @@ import { flavorInfoType } from '../../../reducers/types'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../Commons/SheetParts/inputTextInfo"
 import {initializeFlavorInfo,getFlavorInfos} from '../../../reducers/flavorInfosSlice'
+import { getCharacterId4Url } from '../../../functions/utility'
 
 // order順に並べ替える
 const entryInputs = (infoPrams: Array<flavorInfoType>) => {
@@ -17,7 +18,7 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
                 label={item.flavor_info_name}
                 name={item.flavor_info_param}
                 setClass=""
-                default=''
+                default={item.flavor_info_value}
                 required={{
                     maxLength: {
                         value: 12,
@@ -47,11 +48,13 @@ const FlavorInfo: React.FC<Props> = (props) => {
     const flavorInfo: Array<flavorInfoType> = useAppSelector((state: any) => state.flavorInfo)
     let entryInput:any = <></>
     entryInput = entryInputs(flavorInfo)
+    const characterId:number = getCharacterId4Url(props.isPage)
+
     useEffect(()=>{
-        if(props.isPage === 'create') {
-            dispatch(initializeFlavorInfo())
-        } else if(props.isPage === 'edit') {
+        if(props.isPage === 'edit') {
             dispatch(getFlavorInfos(props.characterId))
+        } else {
+            dispatch(initializeFlavorInfo())
         }
     },[dispatch])
 

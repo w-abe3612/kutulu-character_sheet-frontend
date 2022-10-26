@@ -10,11 +10,6 @@ type Props = {
 
 const CharacterPreference: React.FC<Props> = (props): JSX.Element => {
     let CharacterInfo:characterInfoType = useAppSelector( ( state : any ) => state.characterInfo )
-    useEffect(()=>{
-        if(props.isPage === 'create') {
-            console.log(props.isPage)
-        }
-    })
     return (
         <SectionWrap title="個人情報" >
             <SentenceTextArea

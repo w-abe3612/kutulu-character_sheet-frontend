@@ -5,6 +5,8 @@ import { characterInfoType } from '../../../reducers/types'
 import CharacterIcon from './CharacterIcon'
 import Profiles from './Profiles'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
+import { initializeCharacterInfo,getCharacterInfo } from '../../../reducers/characterInfosSlice'
+import { getCharacterId4Url } from '../../../functions/utility'
 
 interface iconProps {
     image_path:string
@@ -19,34 +21,24 @@ interface profilesProps {
 }
 type Props = {
     isPage: string
+    characterTitle:string
+    playerCharacter:string
+    playerName:string
+    injuryValue:number
 }
 
 const CharacterInfo: React.FC<Props> = (props) => {
-    let CharacterInfo:characterInfoType = useAppSelector( ( state : any ) => state.characterInfo )
-    let profileValue : profilesProps = {
-        player_name:'',
-        player_character:'',
-        character_title:'',
-        injury_value:0
-    }
-    useEffect(()=>{
-        if(props.isPage === 'create') {
-            console.log(props.isPage)
-        } else if(props.isPage === 'edit') {
-            console.log(props.isPage)
-        }
-    })
-
-    profileValue.player_name      = CharacterInfo.player_name
-    profileValue.player_character = CharacterInfo.player_character
-    profileValue.character_title  = CharacterInfo.character_title
-    profileValue.injury_value     = CharacterInfo.injury_value
-
+    const dispatch = useAppDispatch()
     return (
         <SectionWrap title="個人情報" >
             <div className="m-characterInfo">
                 <CharacterIcon />
-                <Profiles profileValue={ profileValue }/>
+                <Profiles 
+                    characterTitle = {props.characterTitle}
+                    playerCharacter = {props.playerCharacter}
+                    playerName = {props.playerName}
+                    injuryValue = {props.injuryValue}
+                />
             </div>
         </SectionWrap>
     )

@@ -43,7 +43,6 @@ const useDeleteCharacter  = () => {
 const useCreateCharacter = () => {
     let a:any = useMutation( (infos:any)=> api.createCharacter(infos) , {
         onSuccess: (user) => {
-            console.log(user)
         },
         onError:(e) => {
         },

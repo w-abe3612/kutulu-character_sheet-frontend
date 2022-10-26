@@ -62,17 +62,16 @@ const deleteCharacter = async (id:any) => {
 const createCharacter = async ( info:any ) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/character/create`,
-        {    
-            characterInfo:info.characterInfo,
-            flavorInfoValue:info.flavorInfoValue,
-            abilityValues:info.abilityValues,
-            specializedSkill:info.specializedSkill,
-        },
-        {headers: {
+        info,
+        { headers: {
             'Content-Type': 'application/json'
         }}
+        /*
+        {headers: {
+            'Content-Type': 'multipart/form-data'
+        }}*/
     )
-
+    console.log(data)
     return data 
 }
 

@@ -80,3 +80,25 @@
         }
     }
 }
+
+.m-checkParameter {
+    .input-group{
+        &.s-specialize{
+            max-width: 272px;
+            .input-title{
+                width: 140px;
+                color: #ffffff;
+                text-align: center;
+                line-height: 2.4;
+                display: block;
+                font-size:14px;
+            }
+
+            .input-content{
+                width: calc(100% - 140px );
+                padding: 8px 24px;
+            }
+        }
+    }
+}
+

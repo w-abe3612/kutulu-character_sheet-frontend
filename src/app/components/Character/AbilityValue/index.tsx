@@ -55,14 +55,14 @@ const AbilityValue: React.FC<Props> = (props) => {
 
     const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
     const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
-
     useEffect(()=>{
-        if(props.isPage === 'create') {
-            console.log(props.isPage)
-        } else if(props.isPage === 'edit') {
-            console.log(props.isPage)
+        if(props.isPage === 'edit') {
+            dispatch(getAbilityValue(props.characterId))
+        } else {
+            dispatch(initializeAbilityValues())
         }
-    })
+    },[dispatch])
+
     return (
         <SectionWrap title="個人情報" >
             <AcquisitionPoint />

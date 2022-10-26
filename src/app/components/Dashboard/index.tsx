@@ -10,6 +10,7 @@ import SectionWrap from "../Commons/Layout/sectionWrapDash"
 //import { useCharacters } from '../../queries/CharacterQuery'
 import { getCharacters,deleteCharacterItem }  from '../../reducers/dashboardIndex';
 import { useDeleteCharacter } from '../../queries/CharacterQuery'
+import Header from '../Header'
 
 const Dashboard: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
@@ -22,6 +23,8 @@ const Dashboard: React.FC = () => {
     }, [dispatch])
 
     return (
+        <>
+        <Header />
         <SectionWrap title="キャラ一覧" >
             { dashboradIndex.length > 0 ||  Object.values(dashboradIndex).map(( character:any ) => {
             return <CharacterItem 
@@ -33,6 +36,7 @@ const Dashboard: React.FC = () => {
             />
         }) }
         </SectionWrap>
+        </>
     )
     return <></>
 }

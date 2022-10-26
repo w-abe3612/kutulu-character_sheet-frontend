@@ -1,12 +1,14 @@
 import React, { ReactText } from 'react';
 import ReactDOM from 'react-dom';
-
+import Header from '../Header'
 
 
 
 const CharacterView: React.FC = () => {
     return (
-        <div>view</div>
+        <div>
+            <Header />
+            view</div>
     )
 }
 

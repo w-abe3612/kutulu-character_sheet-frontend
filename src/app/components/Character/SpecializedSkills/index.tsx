@@ -5,7 +5,8 @@ import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { specializedSkillType} from '../../../reducers/types'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
-
+import {initializeSpecializedSkill,getSpecialzedSkills} from '../../../reducers/specializedSkillsSlice'
+import { getCharacterId4Url } from '../../../functions/utility'
 
 // todo AcquisitionPointとAbilityItemはAbilityValueとほぼ同様のロジックを採用している為、
 // 続き)共通のロジックにしたい
@@ -14,14 +15,16 @@ type Props = {
     characterId: number
 }
 const SpecializedSkill: React.FC<Props> = (props) => {
+    const dispatch = useAppDispatch()
     let specializedSkill:Array<specializedSkillType> = useAppSelector( ( state : any ) => state.specializedSkill )
     useEffect(()=>{
-        if(props.isPage === 'create') {
-            console.log(props.isPage)
-        } else if(props.isPage === 'edit') {
-            console.log(props.isPage)
+        if(props.isPage === 'edit') {
+            dispatch(getSpecialzedSkills(props.characterId))
+        } else {
+            dispatch(initializeSpecializedSkill())
         }
-    })
+    },[dispatch])
+
     return (
         <SectionWrap  title="専門分野">
                 <AcquisitionPoint />

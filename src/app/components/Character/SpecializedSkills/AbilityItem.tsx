@@ -23,7 +23,7 @@ const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
         <li key={ item.skill_param } className="m-slill-item m-specialize" >
                 <CheckParameter
                     label={item.skill_name}
-                    setClass=""
+                    setClass="s-specialize"
                     itemName={item.skill_param}
                     itemValue={item.skill_value}
                     seconds={3}
