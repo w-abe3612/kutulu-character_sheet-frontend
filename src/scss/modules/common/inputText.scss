@@ -40,22 +40,7 @@
 }
 
 
-.m-charCharactorIcon {
-    &__inner {
-        content:'';
-        background-color: #919AA1;
-        width:178px;
-        height:178px;
-        
-        
-        margin:auto;
-        margin-bottom:16px;
-        margin-right: 16px;
-        @include mq(sm) {
-            margin-bottom:0px;
-        }
-    }
-}
+
 
 .m-characterInfo {
     display: flex;

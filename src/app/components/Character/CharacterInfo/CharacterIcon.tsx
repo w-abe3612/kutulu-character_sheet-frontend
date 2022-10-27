@@ -1,20 +1,18 @@
 import React,{ useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import InputImgFile from '../../Commons/SheetParts/inputFile'
+import ProfileIcon from '../../Commons/SheetParts/profileIcon'
 
 const CharacterIcon: React.FC = () => {
 
     return (
         <div className="m-charCharactorIcon">
-            <div className="m-charCharactorIcon__inner">
-                <InputImgFile
-                    label="テスト"
-                    name="test_img"
-                    setClass="s-profiles"
-                    default=''
-                    required=''
-                />
-            </div>
+            <ProfileIcon
+                label="テスト"
+                name="test_img"
+                setClass="s-profiles"
+                default=''
+                required=''
+            />
         </div>
     )
 }

@@ -361,6 +361,141 @@ input , select , textarea , button{
   padding: 8px 16px;
 }
 
+/*
+        <div className="m-viewProfileIcon">
+            <figure>
+                <img src="" alt="" />
+            </figure>
+            <button 
+                type="button"
+                className="m-deleteIcon"
+                onClick={onc}
+            >
+                <FontAwesomeIcon icon={ faXmark } />
+            </button>
+        </div>
+*/
+.m-charCharactorIcon {
+  content: "";
+  margin: 0px 24px 0 0;
+}
+
+.m-viewProfileIcon {
+  position: relative;
+  display: block;
+  width: 178px;
+  height: 178px;
+  background-color: #f1f1f1;
+}
+@media screen and (min-width: 576px) {
+  .m-viewProfileIcon {
+    margin-bottom: 0px;
+  }
+}
+.m-viewProfileIcon .image-inner {
+  position: relative;
+  width: 100%;
+}
+.m-viewProfileIcon .image-inner:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  /* 比率を指定 */
+}
+.m-viewProfileIcon .image-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.m-viewProfileIcon .m-deleteIcon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background-color: #AC536C;
+}
+.m-viewProfileIcon .m-deleteIcon .m-faXmark {
+  color: #ffffff;
+}
+
+/*
+        <div className="m-inputImgFile" >
+            <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <FontAwesomeIcon 
+                    className="m-faCloudArrowUp"
+                    icon={ faCloudArrowUp } 
+                />
+                <p className="" ></p>
+            </div>
+      </div>
+*/
+.m-inputImgFile {
+  position: relative;
+  display: block;
+  width: 178px;
+  height: 178px;
+  background-color: #f1f1f1;
+}
+.m-inputImgFile .input-dropzone {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 160px;
+  background-color: transparent;
+  border: 2px dashed #424242;
+  margin: 7px;
+  cursor: pointer;
+}
+.m-inputImgFile .m-faCloudArrowUp {
+  display: inline-block;
+  position: absolute;
+  top: -46px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 130px;
+  font-size: 14px;
+  color: #737582;
+  margin: auto;
+  height: auto;
+  height: 62px;
+}
+.m-inputImgFile .input-description {
+  display: inline-block;
+  position: absolute;
+  top: 46px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 104px;
+  font-size: 14px;
+  color: #3C3C3C;
+  margin: auto;
+  height: 21px;
+}
+@media screen and (min-width: 576px) {
+  .m-inputImgFile {
+    margin-bottom: 0px;
+  }
+}
+
 .m-charInputText {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -398,21 +533,6 @@ input , select , textarea , button{
   height: 36px;
   background-color: #D9D9D9;
   padding: 4px 8px;
-}
-
-.m-charCharactorIcon__inner {
-  content: "";
-  background-color: #919AA1;
-  width: 178px;
-  height: 178px;
-  margin: auto;
-  margin-bottom: 16px;
-  margin-right: 16px;
-}
-@media screen and (min-width: 576px) {
-  .m-charCharactorIcon__inner {
-    margin-bottom: 0px;
-  }
 }
 
 .m-characterInfo {

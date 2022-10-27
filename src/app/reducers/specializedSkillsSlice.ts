@@ -61,7 +61,6 @@ export const specializedSkillSlice = createSlice({
           skill_value:info.skill_value
         }
       })
-      console.log(action.payload)
       updateState = result
 
       return updateState 
