@@ -6,20 +6,18 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { specializedSkillType} from '../../../reducers/types'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 import {initializeSpecializedSkill,getSpecialzedSkills} from '../../../reducers/specializedSkillsSlice'
-import { getCharacterId4Url } from '../../../functions/utility'
+import { useParams } from 'react-router-dom'
 
-// todo AcquisitionPointとAbilityItemはAbilityValueとほぼ同様のロジックを採用している為、
-// 続き)共通のロジックにしたい
 type Props = {
     isPage: string
-    characterId: number
 }
 const SpecializedSkill: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     let specializedSkill:Array<specializedSkillType> = useAppSelector( ( state : any ) => state.specializedSkill )
+    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
     useEffect(()=>{
         if(props.isPage === 'edit') {
-            dispatch(getSpecialzedSkills(props.characterId))
+            dispatch(getSpecialzedSkills(urlParams.charactorId))
         } else {
             dispatch(initializeSpecializedSkill())
         }
@@ -27,8 +25,8 @@ const SpecializedSkill: React.FC<Props> = (props) => {
 
     return (
         <SectionWrap  title="専門分野">
-                <AcquisitionPoint />
-                <AbilityItem skillItems={ specializedSkill }/>
+            <AcquisitionPoint />
+            <AbilityItem skillItems={ specializedSkill }/>
         </SectionWrap>
     )
 }

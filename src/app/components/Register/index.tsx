@@ -9,7 +9,7 @@ import InputRegister from './inputRegister'
 import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
 import Verify from './verifyRegister';
-
+import Header from '../Header'
 
 type Props = {
     urlNest: string
@@ -38,7 +38,13 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
         return <Navigate to="/register" replace={true} />
     }
 
-    return result
+    //return result
+    return (
+        <>
+            <Header />
+            {result}
+        </>
+    )
 }
 
 export default Register;

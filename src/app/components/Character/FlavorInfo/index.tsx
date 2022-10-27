@@ -6,6 +6,7 @@ import SectionWrap from "../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../Commons/SheetParts/inputTextInfo"
 import {initializeFlavorInfo,getFlavorInfos} from '../../../reducers/flavorInfosSlice'
 import { getCharacterId4Url } from '../../../functions/utility'
+import { useParams } from 'react-router-dom'
 
 // order順に並べ替える
 const entryInputs = (infoPrams: Array<flavorInfoType>) => {
@@ -40,7 +41,6 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
 
 type Props = {
     isPage: string
-    characterId: number
 }
 
 const FlavorInfo: React.FC<Props> = (props) => {
@@ -48,11 +48,12 @@ const FlavorInfo: React.FC<Props> = (props) => {
     const flavorInfo: Array<flavorInfoType> = useAppSelector((state: any) => state.flavorInfo)
     let entryInput:any = <></>
     entryInput = entryInputs(flavorInfo)
+    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
     const characterId:number = getCharacterId4Url(props.isPage)
 
     useEffect(()=>{
         if(props.isPage === 'edit') {
-            dispatch(getFlavorInfos(props.characterId))
+            dispatch(getFlavorInfos(urlParams.charactorId))
         } else {
             dispatch(initializeFlavorInfo())
         }

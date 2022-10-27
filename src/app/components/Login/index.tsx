@@ -28,7 +28,7 @@ const Login: React.FC = () => {
 
             <div className="m-login">
                 {systemState.isLoggedIn === '1' && (
-                    <Navigate to={"/user/" + systemState.userId} replace={true} />
+                    <Navigate to={"/kutulu/user/" + systemState.userId} replace={true} />
                 )}
                 <div className="m-login__inner">
                     <h2 className="m-section_title">ログイン</h2>

@@ -64,7 +64,7 @@ let ae = systemState.isLoggedIn
                         </ul>
 
                         <div className="m-config-nav">
-                            <div className="m-config-btn" ><Link to={"/user/" + systemState.userId + "/config"}><FontAwesomeIcon icon={faGear} />ユーザー設定</Link></div>
+                            <div className="m-config-btn" ><Link to={"/kutulu/user/" + systemState.userId + "/config"}><FontAwesomeIcon icon={faGear} />ユーザー設定</Link></div>
                             <button
                                 className="m-logout-btn"
                                 onClick={handleLogout} >

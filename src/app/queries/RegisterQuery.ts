@@ -2,6 +2,9 @@ import * as api from "../api/RegisterApi"
 import { useQuery, useMutation } from "react-query"
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../reducers/hooks'
+import {
+    useNavigate
+} from "react-router-dom";
 
 const useRegister = () => {
     const dispatch = useAppDispatch()
@@ -16,10 +19,11 @@ const useRegister = () => {
 }
 
 const useVerify = () => {
-    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     let a:any = useMutation( api.verify , {
         onSuccess: (user) => {
+            return navigate("/")
         },
         onError:(e) => {
         },

@@ -8,6 +8,7 @@ import SectionWrap from "../../Commons/Layout/sectionWrap"
 import { initializeCharacterInfo,getCharacterInfo } from '../../../reducers/characterInfosSlice'
 import { getCharacterId4Url } from '../../../functions/utility'
 
+
 interface iconProps {
     image_path:string
     image_name:string
@@ -29,6 +30,7 @@ type Props = {
 
 const CharacterInfo: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
+
     return (
         <SectionWrap title="個人情報" >
             <div className="m-characterInfo">

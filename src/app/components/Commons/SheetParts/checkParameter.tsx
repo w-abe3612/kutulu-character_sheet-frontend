@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useFormContext } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-import { setInjuryValue } from '../../../reducers/characterInfosSlice'
+import { setInjuryValue } from '../../../reducers/kutuluInfoSlice'
 import { setAbilityValues } from '../../../reducers/abilityValuesSlice'
 import { setSpecializedSkill } from '../../../reducers/specializedSkillsSlice'
 

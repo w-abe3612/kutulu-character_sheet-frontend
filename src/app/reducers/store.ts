@@ -6,6 +6,8 @@ import flavorInfoReducer from './flavorInfosSlice';
 import systemStateReducer from './systemStateSlice';
 import registerStateReducer from './registerSlice';
 import dashboardIndexReducer from './dashboardIndex';
+import kutuluInfoReducer from './kutuluInfoSlice';
+
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +17,8 @@ export const store = configureStore({
     flavorInfo:flavorInfoReducer,
     systemState:systemStateReducer,
     registerState:registerStateReducer,
-    dashboard:dashboardIndexReducer
+    dashboard:dashboardIndexReducer,
+    kutuluInfo:kutuluInfoReducer
   },
 })
 

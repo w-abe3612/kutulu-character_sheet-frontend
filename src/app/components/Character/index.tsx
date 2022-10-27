@@ -12,7 +12,10 @@ import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
 import { getCharacterId4Url } from '../../functions/utility'
 import { submithandler } from '../../functions/submit'
 import { initializeCharacterInfo,getCharacterInfo } from '../../reducers/characterInfosSlice'
+import { initializeKutuluInfo,getKutuluInfo } from '../../reducers/kutuluInfoSlice'
+import { useParams } from 'react-router-dom'
 import Header from '../Header'
+
 
 type Props = {
     isPage: string
@@ -21,6 +24,7 @@ type Props = {
 const SheetLayout: React.FC<Props> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
     const store = useAppSelector((state: any) => state)
+
     const methods = useForm({
         defaultValues:{
             player_name:'test'
@@ -32,8 +36,10 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
     useEffect(()=>{
         if(props.isPage === 'edit') {
             dispatch(getCharacterInfo(characterId))
+            dispatch(getKutuluInfo(characterId))
         } else {
             dispatch(initializeCharacterInfo())
+            dispatch(initializeKutuluInfo())
             methods.reset()
         }
     },[dispatch,methods])
@@ -53,20 +59,17 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
                     <form onSubmit={methods.handleSubmit(onSubmit)} >
                         <CharacterInfo 
                             isPage={props.isPage}
-                            characterTitle = { store.characterInfo.character_title }
-                            playerCharacter = { store.characterInfo.player_character }
                             playerName = { store.characterInfo.player_name }
-                            injuryValue = { store.characterInfo.injury_value }
+                            playerCharacter = { store.characterInfo.player_character }
+                            characterTitle = { store.kutuluInfo.character_title }
+                            injuryValue = { store.kutuluInfo.injury_value }
                         />
                         <FlavorInfo
-                            isPage={props.isPage}
-                            characterId={characterId} />
+                            isPage={props.isPage}/>
                         <AbilityValue
-                            isPage={props.isPage}
-                            characterId={characterId} />
+                            isPage={props.isPage} />
                         <SpecializedSkill
-                            isPage={props.isPage}
-                            characterId={characterId} />
+                            isPage={props.isPage}/>
                         <PossessionItem isPage={props.isPage} />
                         <CharacterPreference isPage={props.isPage} />
                         <button

@@ -18,6 +18,16 @@ const getCharacterInfo = async (id:any ) => {
     return data 
 }
 
+const getKutuluInfo = async (id:any) => {
+    const { data } = await axios.get<any>(
+        `http://localhost:80/api/v1/kutulu_info`,
+        {
+        params: {
+            character_id:id
+        }})
+    return data 
+}
+
 const getFlavorInfos = async (id:any ) => {
     const { data } = await axios.get<any>(
         `http://localhost:80/api/v1/flavor_infos`,
@@ -80,6 +90,7 @@ export {
     getFlavorInfos,
     getAbilityValues,
     getSpecialzedSkills,
+    getKutuluInfo,
     deleteCharacter,
     getCharacters,
     createCharacter

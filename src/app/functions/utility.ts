@@ -11,12 +11,6 @@ export const getCharacterId4Url = (isPage:string):number => {
     return result
 }
 
-export const renderBase64 = async ( imgFile:any ) => {
-    const reader = new FileReader()
-    let img =  await reader.readAsDataURL( imgFile )
-    console.log(img)
-    return img
-}
 
 
 

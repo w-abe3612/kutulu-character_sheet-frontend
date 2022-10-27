@@ -36,10 +36,16 @@ export interface registerStatesType {
 export interface characterInfoType {
     player_name:string
     player_character:string
-    character_title:string
-    injury_value:number
     image_path:string
     image_name:string
+    public_page_token:string
+    public_flg:number
+}
+
+// クトゥルーコアインフォ
+export interface kutuluInfoType {
+    character_title:string
+    injury_value:number
     ability_value_max:number
     ability_value_total:number
     specialized_skill_max:number

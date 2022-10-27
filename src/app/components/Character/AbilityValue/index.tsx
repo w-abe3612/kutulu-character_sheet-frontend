@@ -6,6 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 import { systemStateType } from '../../../type'
 import { initializeAbilityValues ,getAbilityValue } from '../../../reducers/abilityValuesSlice'
+import { useParams } from 'react-router-dom'
 
 
 interface abilityValueType {
@@ -46,18 +47,17 @@ const sort2ItemOrder = ( itemvaluse :Array<abilityValueType> ): Array<abilityVal
 
 type Props = {
     isPage: string
-    characterId: number
 }
 const AbilityValue: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     const systemState:systemStateType = useAppSelector((state: any) => state.systemState)
     const abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
-
+    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
     const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
     const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
     useEffect(()=>{
         if(props.isPage === 'edit') {
-            dispatch(getAbilityValue(props.characterId))
+            dispatch(getAbilityValue(urlParams.charactorId))
         } else {
             dispatch(initializeAbilityValues())
         }

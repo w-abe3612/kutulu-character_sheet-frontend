@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { useAppSelector } from '../../../reducers/hooks'
-import { characterInfoType } from '../../../type'
+import { kutuluInfoType } from '../../../type'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 import SentenceTextArea from '../../Commons/SheetParts/sentenceTextArea'
 
@@ -9,12 +9,12 @@ type Props = {
 }
 
 const PossessionItem: React.FC<Props> = (props): JSX.Element => {
-    let CharacterInfo:characterInfoType = useAppSelector( ( state : any ) => state.characterInfo )
+    let kutuluInfo:kutuluInfoType = useAppSelector( ( state : any ) => state.kutuluInfo )
     return (
         <SectionWrap title="個人情報" >
             <SentenceTextArea
                 name="possession_item"
-                value={ CharacterInfo.possession_item }
+                value={ kutuluInfo.possession_item }
                 setClass=""
             />
         </SectionWrap>

@@ -14,6 +14,7 @@ const login = async ({email,password}:{email:string,password:string}) => {
         `http://localhost:80/api/v1/login`,
         {email,password}
     )
+    console.log(data)
     return data 
 }
 

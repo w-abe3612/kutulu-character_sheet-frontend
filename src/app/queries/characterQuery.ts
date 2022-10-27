@@ -17,6 +17,10 @@ const useCharactorInfo = (id:any) => {
     return api.getCharacterInfo(id)
 }
 
+const useKutuluInfo = (id:any) => {
+    return api.getKutuluInfo(id)
+}
+
 const useFlavorInfos = (id:any) => {
     return api.getFlavorInfos(id)
 }
@@ -56,6 +60,7 @@ export {
     useFlavorInfos,
     useAbilityValues,
     useSpecialzedSkills,
+    useKutuluInfo,
     useCharacters,
     useCreateCharacter,
     useDeleteCharacter

@@ -24,6 +24,7 @@ const useLogin = () => {
             dispatch(setLoggedIn(loggedinflg))
         },
         onError:(e) => {
+            console.log(e)
         },
     })
     return a

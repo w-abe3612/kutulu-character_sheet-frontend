@@ -80,12 +80,14 @@ const Router = () => {
                             <Route path=":id" element={<Dashboard />} />
                             <Route path=":id" >
                                 <Route path="config" element={<RedirectOnLogout children={<UserConfig />} />} />
-                                <Route path="create" element={<CharacterCreate />} />
+                                <Route path="create" element={<RedirectOnLogout children={<CharacterCreate />} />} />
                                 <Route path="edit" >
-                                    <Route path=":charactorId" element={<CharacterEdit />} />
+                                    <Route path=":charactorId" element={<RedirectOnLogout children={<CharacterEdit />} />} />
                                 </Route>
-                                <Route path="view" >
-                                    <Route path=":charactorId" element={<CharacterView />} />
+                                <Route path=":publicPageToken" >
+                                    <Route path="view" >
+                                        <Route path="::publicUserPageToken" element={<CharacterView />} />
+                                    </Route>
                                 </Route>
                             </Route>
                         </Route>
