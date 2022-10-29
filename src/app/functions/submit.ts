@@ -1,29 +1,21 @@
-import { useAppSelector, useAppDispatch } from '../reducers/hooks'
-import { setAbilityValues } from '../reducers/abilityValuesSlice'
-import { setCharacterInfo } from '../reducers/characterInfosSlice'
-import { setFlavorInfoValue } from '../reducers/flavorInfosSlice'
-import { setSpecializedSkill } from '../reducers/specializedSkillsSlice'
 import { useCreateCharacter } from '../queries/CharacterQuery'
 
 export const submithandler = () => {
     const create = useCreateCharacter()
-    const dispatch = useAppDispatch()
 
-    const __datas: any = {
-        datas: {},
-        states: {}
-    }
     const __property: any = {
         datas: {},
         purpose: 'create',
         sendValues: {
             characterInfo: {},
+            kutuluInfo:{},
             flavorInfo: {},
             abilityValues: {},
             specializedSkill: {},
         },
         states: {
             characterInfo: {},
+            kutuluInfo:{},
             flavorInfo: {},
             abilityValues: {},
             specializedSkill: {},
@@ -34,20 +26,22 @@ export const submithandler = () => {
         characterInfo: (data: any) => {
             let result: any
             const submitedCharactorinfo: any = [{
-                player_name: data.player_name,
-                player_character: data.player_character,
-                character_title: data.character_title,
-                injury_value: data.injury_value,
-                image_path: data.test_img,
-                image_name: 'aaa',
-                ability_value_max: 13,
-                ability_value_total: 0,
-                specialized_skill_max: 10,
-                specialized_skill_total: 0,
-                possession_item: 'fewaf',
-                character_preference: 'fewaf',
+                player_name:data.player_name,
+                player_character:data.player_character,
+                image_path:data.image_path,
+                image_name:data.image_name,
             }]
             __property.sendValues.characterInfo = submitedCharactorinfo
+        },
+        kutuluInfo: (data: any) => {
+            let result: any
+            const submitedKutuluinfo: any = [{
+                character_title:data.character_title,
+                injury_value:data.injury_value,
+                possession_item:data.possession_item,
+                character_preference:data.character_preference,
+            }]
+            __property.sendValues.kutuluInfo = submitedKutuluinfo
         },
         flavorInfo: (data: any) => {
             let result: any = []
@@ -74,15 +68,15 @@ export const submithandler = () => {
             let result: any = []
             let stateAbilityValues = __property.states.abilityValues
             const submitedAbilityValue: any = {
-                prestige: data.prestige !== undefined ? data.prestige : 0,
-                speech: data.speech !== undefined ? data.speech : 0,
-                credit: data.credit !== undefined ? data.credit : 0,
-                parentage: data.parentage !== undefined ? data.parentage : 0,
-                shooting: data.shooting !== undefined ? data.shooting : 0,
-                combat: data.combat !== undefined ? data.combat : 0,
-                undercover: data.undercover !== undefined ? data.undercover : 0,
-                nimble: data.nimble !== undefined ? data.nimble : 0,
-                strength: data.strength !== undefined ? data.strength : 0,
+                prestige: data.prestige ,
+                speech: data.speech ,
+                credit: data.credit ,
+                parentage: data.parentage ,
+                shooting: data.shooting ,
+                combat: data.combat ,
+                undercover: data.undercover ,
+                nimble: data.nimble ,
+                strength: data.strength ,
             }
 
             for (const index in stateAbilityValues) {
@@ -101,18 +95,18 @@ export const submithandler = () => {
             let result: any = []
             let stateSpecializedSkill = __property.states.specializedSkill
             const submitedSpecializedSkill: any = {
-                anthropology: data.anthropology !== undefined ? data.anthropology : 0,
-                library: data.library !== undefined ? data.library : 0,
-                artistry: data.artistry !== undefined ? data.artistry : 0,
-                medical: data.medical !== undefined ? data.medical : 0,
-                science: data.science !== undefined ? data.science : 0,
-                psychology: data.psychology !== undefined ? data.psychology : 0,
-                archeology: data.archeology !== undefined ? data.archeology : 0,
-                economics: data.economics !== undefined ? data.economics : 0,
-                criminology: data.criminology !== undefined ? data.criminology : 0,
-                engineering: data.engineering !== undefined ? data.engineering : 0,
-                occult: data.occult !== undefined ? data.occult : 0,
-                linguistics: data.linguistics !== undefined ? data.linguistics : 0,
+                anthropology: data.anthropology ,
+                library: data.library ,
+                artistry: data.artistry ,
+                medical: data.medical ,
+                science: data.science ,
+                psychology: data.psychology ,
+                archeology: data.archeology ,
+                economics: data.economics ,
+                criminology: data.criminology ,
+                engineering: data.engineering ,
+                occult: data.occult,
+                linguistics: data.linguistics ,
             }
 
             for (const index in stateSpecializedSkill) {
@@ -142,15 +136,20 @@ export const submithandler = () => {
             __private.flavorInfo(__property.datas)
             __private.specializedSkill(__property.datas)
             __private.characterInfo(__property.datas)
+            __private.kutuluInfo(__property.datas)
             __private.abilityValues(__property.datas)
         },
         setPurposeSubmit: (purpose: string) => {
             __property.purpose = purpose
         },
         submit: () => {
-            if (__property.purpose === 'create') {
+            if ( __property.purpose === 'create' ) {
                 create.mutate({
-                    characterInfo:__property.sendValues.characterInfo
+                    characterInfo:__property.sendValues.characterInfo,
+                    kutuluInfo:__property.sendValues.kutuluInfo,
+                    flavorInfo:__property.sendValues.flavorInfo,
+                    specializedSkill:__property.sendValues.specializedSkill,
+                    abilityValues:__property.sendValues.abilityValues,
                 })
             }
         }

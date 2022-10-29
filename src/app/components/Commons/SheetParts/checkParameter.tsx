@@ -47,7 +47,7 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => 
 
         switchReduserDispatch(isReduser, setCheckedAction)
         // 後でstate変更による再レンダリングのみで表現したい
-        setValue(paramName, checkvalue)
+        //setValue(paramName, checkvalue)
     }
 
     // チェックされたのが2だった場合、1もチェックされる

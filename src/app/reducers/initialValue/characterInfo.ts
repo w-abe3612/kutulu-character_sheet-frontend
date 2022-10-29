@@ -3,6 +3,7 @@ export interface characterInfoType {
     player_character:string
     image_path:string
     image_name:string
+    img_upload_base64:string
     public_page_token:string
     public_flg:number
 }
@@ -12,6 +13,7 @@ const initialCharacterInfo: characterInfoType = {
     player_character:'',
     image_path:'',
     image_name:'',
+    img_upload_base64:'',
     public_page_token:'',
     public_flg:1
 }

@@ -1,17 +1,15 @@
 import React, { useEffect, useState,useCallback } from 'react'
-import { inputTextInfoPropsType } from '../../../type'
 import { useFormContext,useController } from "react-hook-form";
 import {useDropzone} from 'react-dropzone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark,faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { useAppDispatch } from 'app/reducers/hooks';
+import {deleteImages,setbase64} from '../../../reducers/characterInfosSlice'
 
-type Props = inputTextInfoPropsType
 
-
-
-const ViewProfileIcon:React.FC = () :JSX.Element => {
+const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
     const resetIcon = (e:React.MouseEvent<HTMLElement>) => {
-        console.log('test')
+        props.changeImage()
     }
 
     return (
@@ -35,27 +33,14 @@ const ViewProfileIcon:React.FC = () :JSX.Element => {
     )
 }
 
-const InputImgFile: React.FC = (): JSX.Element => {
-    const { register, formState,setValue } = useFormContext();
-    const onDrop =  useCallback( (acceptedFiles:any) => {
-        if ( acceptedFiles ) {
-            const reader = new FileReader()
-            reader.onload = () => {
-            const binaryStr = reader.result
-            //setValue('img_upload_base64',binaryStr)
-        }
-        reader.readAsDataURL(acceptedFiles![0])
-        }
-    }, [])
-    
-    const {getRootProps, getInputProps} = useDropzone({onDrop})
+const InputImgFile: React.FC<any> = (props): JSX.Element => {
 
     return (
         <div className="m-inputImgFile" >
-            <div {...getRootProps({
+            <div {...props.getRootProps({
                 className:'input-dropzone'
             })}>
-                <input {...getInputProps()} />
+                <input {...props.getInputProps()} />
                 <FontAwesomeIcon 
                     className="m-faCloudArrowUp"
                     icon={ faCloudArrowUp } 
@@ -66,20 +51,64 @@ const InputImgFile: React.FC = (): JSX.Element => {
     )
 }
 
+interface isssss{
+    image_path:string
+    image_name:string
+    img_upload_base64:string
+}
 
+type Props = isssss
 
 const ProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
+    const dispatch = useAppDispatch()
+    const { register, formState,setValue } = useFormContext();
+    const onDrop =  useCallback( (acceptedFiles:any) => {
+        if ( acceptedFiles ) {
+            const reader = new FileReader()
+            reader.onload = () => {
+                const binaryStr = reader.result
+                setValue('img_upload_base64',binaryStr)
+                dispatch(setbase64({img_upload_base64:binaryStr}))
+            }
+        reader.readAsDataURL(acceptedFiles![0])
+        }
+    }, [])
+
+
+    useEffect(()=>{
+        setValue('image_path',props.image_path ?props.image_path:'' )
+        setValue('image_name',props.image_name ? props.image_name:'')
+    },[props])
+
+    const changeImageHandler = (e:React.MouseEvent<HTMLElement>) => {
+        dispatch(deleteImages())
+    }
+
+    
+    const {getRootProps, getInputProps} = useDropzone({onDrop})
+
     let section:any
-    // 
-    if ( true ) {
-        section = <ViewProfileIcon />
+
+    // 入力済の画像の存在もしくは入力したbase64
+    if ( ( props.image_path && props.image_name ) || props.img_upload_base64 ) {
+        section = <ViewProfileIcon 
+            changeImage = {changeImageHandler}
+        />
     } else {
-        section = <InputImgFile />
+        section = <InputImgFile 
+            getRootProps = {getRootProps}
+            getInputProps = {getInputProps}
+        />
     }
 
     return (
-        <div className="m-ProfileIcon" >
-            { section }
+        <div className="m-charCharactorIcon">
+            <div className="m-ProfileIcon" >
+                { section }
+                <input type="hidden" />
+                <input type="hidden" />
+                <input type="hidden" />
+            </div>
         </div>
     )
 }

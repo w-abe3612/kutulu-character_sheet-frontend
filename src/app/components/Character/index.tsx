@@ -42,10 +42,9 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
             dispatch(initializeKutuluInfo())
             methods.reset()
         }
-    },[dispatch,methods])
+    },[dispatch])
 
     const onSubmit = (data: any) => {
-
         submit.setDatas(data)
         submit.setStates(store)
         submit.createValues()
@@ -60,9 +59,12 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
                         <CharacterInfo 
                             isPage={props.isPage}
                             playerName = { store.characterInfo.player_name }
-                            playerCharacter = { store.characterInfo.player_character }
+                            playerCharacter = { store.characterInfo.player_character } 
                             characterTitle = { store.kutuluInfo.character_title }
                             injuryValue = { store.kutuluInfo.injury_value }
+                            image_path = {store.characterInfo.image_path }
+                            image_name = {store.characterInfo.image_name}
+                            img_upload_base64 = {store.characterInfo.img_upload_base64}
                         />
                         <FlavorInfo
                             isPage={props.isPage}/>

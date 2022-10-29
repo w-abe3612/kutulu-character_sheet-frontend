@@ -38,6 +38,7 @@ export interface characterInfoType {
     player_character:string
     image_path:string
     image_name:string
+    img_upload_base64:string
     public_page_token:string
     public_flg:number
 }
