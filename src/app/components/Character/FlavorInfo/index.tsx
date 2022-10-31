@@ -25,6 +25,9 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
                         message: '12文字以下で入力してください。'
                     }
                 }}
+                setValueAction={{
+                    type:'flavorInfo',
+                }}
             />
         ) 
     })
@@ -55,7 +58,7 @@ const FlavorInfo: React.FC<Props> = (props) => {
         } else {
             dispatch(initializeFlavorInfo())
         }
-    },[dispatch])
+    },[0])
 
     return (
         <SectionWrap title="その他情報" >

@@ -37,11 +37,11 @@ export const flavorInfoSlice = createSlice({
 
       return state
     },
-    setFlavorInfoValue: (state, action: PayloadAction<setChecked>) => {
+    setFlavorInfoValue: (state, action: PayloadAction<any>) => {
       let updateState: Array<flavorInfoType> = state
 
       updateState.map((item: flavorInfoType): void => {
-        if ( item.flavor_info_param === action.payload.itemParam ) {
+        if ( item.flavor_info_param === action.payload.name ) {
           item.flavor_info_value = action.payload.value
         }
       })

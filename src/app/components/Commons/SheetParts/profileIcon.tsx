@@ -4,7 +4,7 @@ import {useDropzone} from 'react-dropzone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark,faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from 'app/reducers/hooks';
-import {deleteImages,setbase64} from '../../../reducers/characterInfosSlice'
+import {resetImages,setbase64} from '../../../reducers/characterInfosSlice'
 
 
 const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
@@ -17,7 +17,7 @@ const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
             <figure className="image-inner" >
                 <img 
                     className="image-img"
-                    src="https://img.game8.jp/5753768/888b9fbc031bb1254039ad2e925c1109.png/show" alt="" />
+                    src={props.viewICon} alt="" />
             </figure>
             <button 
                 type="button"
@@ -74,25 +74,34 @@ const ProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
         }
     }, [])
 
-
-    useEffect(()=>{
-        setValue('image_path',props.image_path ?props.image_path:'' )
-        setValue('image_name',props.image_name ? props.image_name:'')
+    useEffect(()=> {
+        setValue('image_path',props.image_path ?props.image_path:'./img/' )
+        setValue('image_name',props.image_name ? props.image_name:'dammyUser.png')
     },[props])
 
     const changeImageHandler = (e:React.MouseEvent<HTMLElement>) => {
-        dispatch(deleteImages())
+        dispatch(resetImages())
     }
 
-    
+    // edit時の
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 
     let section:any
+    let IconImage:any
 
-    // 入力済の画像の存在もしくは入力したbase64
+    // todo edit画面で得られた画像が本当に存在するかチェックも入れたい
+    if ( props.img_upload_base64 !== '' ) {
+        IconImage = props.img_upload_base64
+    } else if( props.img_upload_base64 === '' 
+                && ( props.image_path === '' 
+                    && props.image_name === '' ) ) {
+        IconImage = props.image_path + props.image_name
+    }
+
     if ( ( props.image_path && props.image_name ) || props.img_upload_base64 ) {
         section = <ViewProfileIcon 
             changeImage = {changeImageHandler}
+            viewICon = {props.img_upload_base64}
         />
     } else {
         section = <InputImgFile 

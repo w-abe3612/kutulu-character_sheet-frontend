@@ -1,11 +1,13 @@
-import { useCreateCharacter } from '../queries/CharacterQuery'
+import { useCreateCharacter,useEditCharacter } from '../queries/CharacterQuery'
 
 export const submithandler = () => {
     const create = useCreateCharacter()
+    const edit   = useEditCharacter()
 
     const __property: any = {
         datas: {},
-        purpose: 'create',
+        purpose: '',
+        characterId:0,
         sendValues: {
             characterInfo: {},
             kutuluInfo:{},
@@ -139,12 +141,24 @@ export const submithandler = () => {
             __private.kutuluInfo(__property.datas)
             __private.abilityValues(__property.datas)
         },
-        setPurposeSubmit: (purpose: string) => {
+        setPurpose: (purpose: string) => {
             __property.purpose = purpose
+        },
+        setCharacterId:(characterId:number) => {
+            __property.characterId = characterId
         },
         submit: () => {
             if ( __property.purpose === 'create' ) {
                 create.mutate({
+                    characterInfo:__property.sendValues.characterInfo,
+                    kutuluInfo:__property.sendValues.kutuluInfo,
+                    flavorInfo:__property.sendValues.flavorInfo,
+                    specializedSkill:__property.sendValues.specializedSkill,
+                    abilityValues:__property.sendValues.abilityValues,
+                })
+            } else if (__property.purpose === 'edit' ) {
+                edit.mutate({
+                    characterId:__property.characterId,
                     characterInfo:__property.sendValues.characterInfo,
                     kutuluInfo:__property.sendValues.kutuluInfo,
                     flavorInfo:__property.sendValues.flavorInfo,

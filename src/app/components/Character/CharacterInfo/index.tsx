@@ -33,7 +33,7 @@ type Props = {
 
 const CharacterInfo: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
-
+    
     return (
         <SectionWrap title="個人情報" >
             <div className="m-characterInfo">

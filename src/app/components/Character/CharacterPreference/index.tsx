@@ -16,6 +16,10 @@ const CharacterPreference: React.FC<Props> = (props): JSX.Element => {
                 name="character_preference"
                 value={ kutuluInfo.character_preference }
                 setClass=""
+                setValueAction={{
+                    type:'',
+                    name:'',
+                }}
             />
         </SectionWrap>
     )

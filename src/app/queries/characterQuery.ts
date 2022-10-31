@@ -54,6 +54,16 @@ const useCreateCharacter = () => {
     return a
 }
 
+const useEditCharacter = () => {
+    let a:any = useMutation( (infos:any)=> api.updateCharacter(infos) , {
+        onSuccess: (user) => {
+        },
+        onError:(e) => {
+        },
+    })
+    return a
+}
+
 
 export {
     useCharactorInfo,
@@ -63,5 +73,6 @@ export {
     useKutuluInfo,
     useCharacters,
     useCreateCharacter,
+    useEditCharacter,
     useDeleteCharacter
 }

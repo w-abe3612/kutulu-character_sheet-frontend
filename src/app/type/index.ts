@@ -5,6 +5,7 @@ export interface inputTextInfoPropsType {
     setClass: string
     default:string
     required: any
+    setValueAction:any
 }
 
 // テキストエリアのProps
@@ -12,6 +13,7 @@ export interface sentenceTextAreaType {
     name: string
     value: string
     setClass: string
+    setValueAction:any
 }
 
 // システムに関わる変数、

@@ -25,6 +25,13 @@ export const characterInfoSlice = createSlice({
 
       return state
     },
+    setCharacterInfoValue:(state, action: PayloadAction<any>) => {
+      let updateState: any = state
+      updateState[ action.payload.name ] = action.payload.value
+
+      state = updateState
+      return state
+    },
     setCharacterInfo:(state, action: PayloadAction<any>) => {
       let updateState: any = state
       updateState = action.payload
@@ -39,10 +46,10 @@ export const characterInfoSlice = createSlice({
       state = updateState
       return state
     },
-    deleteImages:(state) => {
+    resetImages:(state) => {
       let updateState: any = state
-      updateState.image_path = ''
-      updateState.image_name = ''
+      updateState.image_path = './img/'
+      updateState.image_name = 'dammyUser.png'
       updateState.img_upload_base64 = ''
 
       state = updateState
@@ -69,7 +76,7 @@ export const characterInfoSlice = createSlice({
   }
 })
 
-export const {  setCharacterInfo, initializeCharacterInfo ,deleteImages,setbase64} = characterInfoSlice.actions
+export const {  setCharacterInfoValue,setCharacterInfo, initializeCharacterInfo ,resetImages,setbase64} = characterInfoSlice.actions
 
 export const selectCount = (state: RootState) => characterInfoSlice.actions
 

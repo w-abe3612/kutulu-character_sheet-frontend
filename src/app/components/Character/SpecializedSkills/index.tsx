@@ -21,7 +21,7 @@ const SpecializedSkill: React.FC<Props> = (props) => {
         } else {
             dispatch(initializeSpecializedSkill())
         }
-    },[dispatch])
+    },[0])
 
     return (
         <SectionWrap  title="専門分野">

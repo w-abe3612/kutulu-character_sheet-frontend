@@ -16,6 +16,9 @@ const PossessionItem: React.FC<Props> = (props): JSX.Element => {
                 name="possession_item"
                 value={ kutuluInfo.possession_item }
                 setClass=""
+                setValueAction={{
+                    type:'kutuluInfo'
+                }}
             />
         </SectionWrap>
     )

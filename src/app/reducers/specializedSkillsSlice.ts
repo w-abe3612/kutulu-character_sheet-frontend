@@ -37,7 +37,7 @@ export const specializedSkillSlice = createSlice({
 
       return state
     },
-    setSpecializedSkill: (state, action: PayloadAction<setChecked>): void => {
+    setSpecializedSkill: (state, action: PayloadAction<setChecked>) => {
       let updateState: Array<specializedSkillType> = state
 
       updateState.map((item: specializedSkillType): void => {
@@ -46,6 +46,8 @@ export const specializedSkillSlice = createSlice({
         }
       })
       state = updateState
+     
+      return updateState
     },
   },
   extraReducers: (builder) => {

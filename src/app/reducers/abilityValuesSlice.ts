@@ -38,15 +38,16 @@ export const abilityValuesSlice = createSlice({
 
       return state
     },
-    setAbilityValues: (state, action: PayloadAction<setChecked>): void => {
+    setAbilityValues: (state, action: PayloadAction<setChecked>) => {
       let updateState: Array<abilityValueType> = state
 
-      updateState.map((item: abilityValueType): void => {
+      updateState.map((item: abilityValueType) => {
         if ( item.skill_param === action.payload.itemParam ) {
           item.skill_value = action.payload.value
         }
       })
-      state = updateState
+
+      return updateState
     },
   },
   extraReducers: (builder) => {

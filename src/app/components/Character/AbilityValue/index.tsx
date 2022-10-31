@@ -61,7 +61,7 @@ const AbilityValue: React.FC<Props> = (props) => {
         } else {
             dispatch(initializeAbilityValues())
         }
-    },[dispatch])
+    },[0])
 
     return (
         <SectionWrap title="個人情報" >

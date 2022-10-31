@@ -29,7 +29,7 @@ const Dashboard: React.FC = () => {
             { dashboradIndex.length > 0 ||  Object.values(dashboradIndex).map(( character:any ) => {
             return <CharacterItem 
                 character_id={character.id}
-                player_character={character.character_title}
+                player_character={character.player_character}
                 image_path="../img/"
                 image_name="dammyUser.png"
                 updateded_at={character.updated_at}

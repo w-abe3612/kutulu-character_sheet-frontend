@@ -14,7 +14,6 @@ const login = async ({email,password}:{email:string,password:string}) => {
         `http://localhost:80/api/v1/login`,
         {email,password}
     )
-    console.log(data)
     return data 
 }
 
@@ -22,7 +21,6 @@ const logout = async () => {
     const { data } = await axios.post<User>(`http://localhost:80/api/v1/logout`)
     return data 
 }
-//http://localhost:80/api/v1/character_infos/1
 
 export {
     getUsers,

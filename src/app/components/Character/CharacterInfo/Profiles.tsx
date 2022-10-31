@@ -34,6 +34,9 @@ const Profiles: React.FC<Props> = (props) => {
                         message: '16文字以下で入力してください。'
                     }
                 }}
+                setValueAction={{
+                    type:'characterInfo',
+                }}
             />
             <InputTextInfo
                 label="氏名"
@@ -47,6 +50,9 @@ const Profiles: React.FC<Props> = (props) => {
                         message: '16文字以下で入力してください。'
                     }
                 }}
+                setValueAction={{
+                    type:'characterInfo',
+                }}
             />
             <InputTextInfo
                 label="称号／肩書"
@@ -59,6 +65,9 @@ const Profiles: React.FC<Props> = (props) => {
                         value: 16,
                         message: '16文字以下で入力してください。'
                     }
+                }}
+                setValueAction={{
+                    type:'kutuluInfo',
                 }}
             />
             <CheckParameter

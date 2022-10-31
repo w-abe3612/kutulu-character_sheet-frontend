@@ -76,10 +76,18 @@ const createCharacter = async ( info:any ) => {
         { headers: {
             'Content-Type': 'application/json'
         }}
-        /*
-        {headers: {
-            'Content-Type': 'multipart/form-data'
-        }}*/
+    )
+    console.log(data)
+    return data 
+}
+
+const updateCharacter =  async ( info:any ) => {
+    const { data } = await axios.post<any>(
+        `http://localhost:80/api/v1/character/edit`,
+        info,
+        { headers: {
+            'Content-Type': 'application/json'
+        }}
     )
     console.log(data)
     return data 
@@ -93,5 +101,6 @@ export {
     getKutuluInfo,
     deleteCharacter,
     getCharacters,
-    createCharacter
+    createCharacter,
+    updateCharacter
 }

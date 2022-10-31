@@ -29,20 +29,28 @@ export const KutuluInfoSlice = createSlice({
   initialState,
   reducers: {
     initializeKutuluInfo:(state) => {
+      let updateState: any = state
+      updateState = initialKutuluInfo
+      state = updateState
 
+      return state
     },
-    setKutuluInfoValue: (state, action: PayloadAction<any>) => {
+    setKutuluInfoValue:(state, action: PayloadAction<any>) => {
+      let updateState: any = state
+      updateState[ action.payload.name ] = action.payload.value
 
+      state = updateState
+      return state
     },
     setInjuryValue: (state, action: PayloadAction<any>) => {
         let updateState: kutuluInfoType = state
         let injuryValue: number = 0
-  
+ 
         injuryValue = action.payload.value
         updateState.injury_value = injuryValue
         state = updateState
 
-        return state
+        return updateState
       },
   },
   extraReducers: (builder) => {

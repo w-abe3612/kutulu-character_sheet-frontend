@@ -47,7 +47,6 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => 
 
         switchReduserDispatch(isReduser, setCheckedAction)
         // 後でstate変更による再レンダリングのみで表現したい
-        //setValue(paramName, checkvalue)
     }
 
     // チェックされたのが2だった場合、1もチェックされる
@@ -95,10 +94,10 @@ type Props = {
 }
 
 const CheckParameter: React.FC<Props> = (props): JSX.Element => {
+    const dispatch = useAppDispatch()
     let defaultValue = 0
     let seconds: number = props.seconds
     const { setValue } = useFormContext();
-
 
     const parameterSeconds = (itemName: string, itemValue: number, isReduser: string): Array<JSX.Element> => {
         let result: Array<JSX.Element> = []
@@ -120,6 +119,10 @@ const CheckParameter: React.FC<Props> = (props): JSX.Element => {
             return checkButton
         })
     }
+
+    useEffect(()=> {
+        setValue( props.itemName, props.itemValue !== null ? props.itemValue: 0 )
+    },[props])
 
     return (
         <div className="m-checkParameter">

@@ -25,29 +25,27 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
     const store = useAppSelector((state: any) => state)
 
-    const methods = useForm({
-        defaultValues:{
-            player_name:'test'
-        }
-    });
+    const methods = useForm()
     const characterId:number = getCharacterId4Url(props.isPage)
     const submit = submithandler()
 
     useEffect(()=>{
+        dispatch(initializeCharacterInfo())
+        dispatch(initializeKutuluInfo())
+        methods.reset()
+
         if(props.isPage === 'edit') {
             dispatch(getCharacterInfo(characterId))
             dispatch(getKutuluInfo(characterId))
-        } else {
-            dispatch(initializeCharacterInfo())
-            dispatch(initializeKutuluInfo())
-            methods.reset()
-        }
-    },[dispatch])
+        } 
+    },[0])
 
     const onSubmit = (data: any) => {
         submit.setDatas(data)
         submit.setStates(store)
         submit.createValues()
+        submit.setPurpose(props.isPage)
+        submit.setCharacterId( characterId )
         submit.submit()
     }
     return (
