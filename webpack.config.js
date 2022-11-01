@@ -66,7 +66,7 @@ module.exports = {
     plugins: [
         new Dotenv(),
         new CleanWebpackPlugin({
-            cleanAfterEveryBuildPatterns: ['public/build']
+            cleanAfterEveryBuildPatterns: ['public/build'] 
         }),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
