@@ -4,8 +4,9 @@ import { toast } from 'react-toastify';
 import { useAppDispatch } from '../reducers/hooks'
 import { setLoggedIn,setLogout } from '../reducers/systemStateSlice'
 
-const useCheckLoggedIn = () => {
-    return api.getUsers()
+
+const  useCheckLoggedIn = () => {
+    return api.getUser()
 }
 
 const useLogin = () => {

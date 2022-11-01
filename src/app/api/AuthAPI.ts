@@ -3,27 +3,29 @@ import { User } from "../reducers/types"
 
 axios.defaults.withCredentials = true;
 
+const getUser = async () => {
+    let data: any
+    data = await axios.get<any>('http://localhost:80/api/v1/user')
 
-const getUsers = async () => {
-    const { data } = await axios.get<any>('http://localhost:80/api/v1/user')
-    return data 
+    return data
 }
 
-const login = async ({email,password}:{email:string,password:string}) => {
+
+const login = async ({ email, password }: { email: string, password: string }) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/login`,
-        {email,password}
+        { email, password }
     )
-    return data 
+    return data
 }
 
 const logout = async () => {
     const { data } = await axios.post<any>(`http://localhost:80/api/v1/logout`)
-    return data 
+    return data
 }
 
 export {
-    getUsers,
+    getUser,
     login,
     logout,
 }

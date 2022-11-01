@@ -18,11 +18,11 @@ export interface sentenceTextAreaType {
 
 // システムに関わる変数、
 export interface systemStateType {
-    isLoggedIn: string
     isPage: string
+    isLoggedIn: string
     userId: number | null | string
     userName: string
-    public_page_token: string
+    public_page_token: string | null
 }
 
 // 新規登録に使われるStates
@@ -58,10 +58,39 @@ export interface kutuluInfoType {
     character_preference:string
 }
 
+// 
 export interface abilityValueType {
     skill_name: string
     skill_param: string
     skill_value: number
     skill_type: number
     skill_order: number
+}
+
+// 
+export interface specializedSkillType {
+    skill_name: string
+    skill_param: string
+    skill_value: number
+    skill_order: number
+}
+
+// 
+export interface flavorInfoType {
+    flavor_info_name: string
+    flavor_info_param: string
+    flavor_info_value: string
+    flavor_info_order: number
+}
+
+// 全てのState
+export interface statesType {
+    systemState: systemStateType
+    characterInfo: characterInfoType
+    kutuluInfo: kutuluInfoType
+    abilityValues: Array<abilityValueType>
+    dashboard: Array<characterInfoType>
+    flavorInfo: Array<flavorInfoType>
+    specializedSkill: Array<specializedSkillType>
+    registerState: registerStatesType 
 }

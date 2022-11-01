@@ -4,12 +4,12 @@ import Router from './router'
 import { QueryClient, QueryClientProvider } from "react-query"
 import { useAppSelector, useAppDispatch } from '../reducers/hooks'
 import { isCheckLoggedIn,setLoggedIn }  from '../reducers/systemStateSlice';
-import type { systemStateType } from '../config/type'
+import type { systemStateType,statesType } from '../config/type'
 import crypto from 'crypto-js'
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch()
-    let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
+    let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
 
     // コンストラクターにする予定？
     const recoveryText = ( targetText:string | null ):string => {
@@ -27,7 +27,8 @@ const App: React.FC = () => {
             if ( localStorage.getItem("userId") !== null 
                 && localStorage.getItem("userName") !== null) {
 
-                let result: any = {
+                let result: systemStateType = {
+                    isPage:'',
                     isLoggedIn: recoveryText( localStorage.getItem("isLoggedIn")),
                     userId: Number(recoveryText(localStorage.getItem('userId'))),
                     userName: recoveryText(localStorage.getItem('userName')),

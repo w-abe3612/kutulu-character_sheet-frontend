@@ -67,8 +67,7 @@ export const systemStateSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(isCheckLoggedIn.fulfilled, (state, action) => {
             let updateState: systemStateType = state
-            if ( action.payload.id !== null 
-                && action.payload.name !== '' ) {
+            if ( action.payload ) {
 
                 // todo このへんの処理って多分ここでやるべきじゃない
                 const localIsLoggedIn = crypto.AES.encrypt('1', process.env.HASH_KEY ? process.env.HASH_KEY: 'abc' ).toString();
@@ -85,6 +84,11 @@ export const systemStateSlice = createSlice({
                 updateState.userName           = action.payload.name
                 
                 updateState.public_page_token  = action.payload.public_page_token
+            } else {
+                localStorage.removeItem('isLoggedIn')
+                localStorage.removeItem('userId')
+                localStorage.removeItem('userName')
+                localStorage.removeItem('public_page_token')
             }
 
             return updateState
