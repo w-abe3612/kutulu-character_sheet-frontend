@@ -4,7 +4,7 @@ import AbilityItem from './AbilityItem'
 import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
-import { systemStateType } from '../../../../config/type'
+import { systemStateType, statesType } from '../../../../config/type'
 import { initializeAbilityValues ,getAbilityValue } from '../../../../reducers/abilityValuesSlice'
 import { useParams } from 'react-router-dom'
 
@@ -22,7 +22,7 @@ interface abilityValueType {
 const dividePassive2Active = (itemvaluse :Array<abilityValueType> , type:number ) : Array<abilityValueType> => {
     let result:Array<abilityValueType> = []
 
-    result = itemvaluse.filter(( item :any ) => {
+    result = itemvaluse.filter(( item :abilityValueType ) => {
         if( type === 0 && item.skill_type === 0 ) {
             return item 
         } else if ( type === 1 && item.skill_type === 1 ) {
@@ -38,7 +38,7 @@ const dividePassive2Active = (itemvaluse :Array<abilityValueType> , type:number 
 const sort2ItemOrder = ( itemvaluse :Array<abilityValueType> ): Array<abilityValueType> => {
     let result:Array<abilityValueType> = []
     
-    result = itemvaluse.sort((a:any, b:any)  => {
+    result = itemvaluse.sort((a:abilityValueType, b:abilityValueType)  => {
         return a.skill_order - b.skill_order
     })
 
@@ -50,11 +50,12 @@ type Props = {
 }
 const AbilityValue: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
-    const systemState:systemStateType = useAppSelector((state: any) => state.systemState)
-    const abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
+    const systemState:systemStateType = useAppSelector((state:statesType) => state.systemState)
+    const abilityValues:Array<abilityValueType> = useAppSelector( ( state:statesType ) => state.abilityValues )
     const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
     const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
     const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
+
     useEffect(()=>{
         if(props.isPage === 'edit') {
             dispatch(getAbilityValue(urlParams.charactorId))

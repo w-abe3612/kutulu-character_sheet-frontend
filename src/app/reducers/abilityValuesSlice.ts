@@ -2,20 +2,7 @@ import { createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit'
 import initialAbilityValue from './initialValue/abilityValues'
 import type { RootState } from './store'
 import { useAbilityValues } from '../queries/CharacterQuery'
-
-// Define a type for the slice state
-interface setChecked {
-  value: number,
-  itemParam: string
-}
-
-export interface abilityValueType {
-  skill_name: string
-  skill_param: string
-  skill_value: number
-  skill_type: number
-  skill_order: number
-}
+import { setCheckedActionType,abilityValueType  } from '../config/type'
 
 const initialState = initialAbilityValue
 
@@ -38,11 +25,11 @@ export const abilityValuesSlice = createSlice({
 
       return state
     },
-    setAbilityValues: (state, action: PayloadAction<setChecked>) => {
+    setAbilityValues: (state, action: PayloadAction<setCheckedActionType>) => {
       let updateState: Array<abilityValueType> = state
 
       updateState.map((item: abilityValueType) => {
-        if ( item.skill_param === action.payload.itemParam ) {
+        if ( item.skill_param === action.payload.name ) {
           item.skill_value = action.payload.value
         }
       })

@@ -3,9 +3,9 @@ import axios from "axios";
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
 import { useCharacters } from '../queries/CharacterQuery'
-import { characterInfoType } from '../config/type'
+import { dashboardIndexType } from '../config/type'
 
-const initialState:Array<characterInfoType> = [] 
+const initialState:Array<any> = [] 
 
 export const getCharacters = createAsyncThunk(
   "getCharacters",
@@ -16,11 +16,11 @@ export const getCharacters = createAsyncThunk(
 );
 
 export const dashboardIndexSlice = createSlice({
-  name: 'characters',
+  name: 'dashboard',
   initialState,
   reducers: {
     setDashboard2Users: (state, action: PayloadAction<any>): void => {
-        let updateState: Array<characterInfoType> = state
+        let updateState: Array<any> = state
         updateState = action.payload.characters
 
         state = updateState
@@ -40,7 +40,7 @@ export const dashboardIndexSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
-      let updateState: Array<characterInfoType> = state
+      let updateState: Array<any> = state
       updateState = action.payload
       state = updateState
       return {

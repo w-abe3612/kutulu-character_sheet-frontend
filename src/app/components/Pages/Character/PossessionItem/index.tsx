@@ -3,13 +3,15 @@ import { useAppSelector } from '../../../../reducers/hooks'
 import { kutuluInfoType } from '../../../../config/type'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import SentenceTextArea from '../../../Commons/SheetParts/sentenceTextArea'
+import { statesType } from '../../../../config/type'
 
 type Props = {
     isPage: string
 }
 
 const PossessionItem: React.FC<Props> = (props): JSX.Element => {
-    let kutuluInfo:kutuluInfoType = useAppSelector( ( state : any ) => state.kutuluInfo )
+    const kutuluInfo:kutuluInfoType = useAppSelector( ( state:statesType ) => state.kutuluInfo )
+
     return (
         <SectionWrap title="個人情報" >
             <SentenceTextArea

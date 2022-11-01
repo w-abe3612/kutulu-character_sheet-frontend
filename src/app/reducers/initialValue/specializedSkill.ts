@@ -1,9 +1,4 @@
-export interface specializedSkillType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_order: number
-}
+import { specializedSkillType } from '../../config/type'
 
 const initialSpecializedSkill: Array<specializedSkillType> = [
     {

@@ -83,14 +83,36 @@ export interface flavorInfoType {
     flavor_info_order: number
 }
 
+export interface dashboardIndexType {
+    id:number
+    image_name:string
+    image_path:string
+    player_character:string
+    public_page_token:string
+    updated_at:string
+}
+
 // 全てのState
 export interface statesType {
     systemState: systemStateType
     characterInfo: characterInfoType
     kutuluInfo: kutuluInfoType
     abilityValues: Array<abilityValueType>
-    dashboard: Array<characterInfoType>
+    dashboard: Array<dashboardIndexType>
     flavorInfo: Array<flavorInfoType>
     specializedSkill: Array<specializedSkillType>
     registerState: registerStatesType 
 }
+
+// 
+export interface setCheckedActionType {
+    value: number,
+    name:string
+}
+
+// 
+export interface setInputTextActionType {
+    value: string,
+    name:string
+}
+

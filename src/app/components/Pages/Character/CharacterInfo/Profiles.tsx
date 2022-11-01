@@ -1,16 +1,6 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import React from 'react';
 import InputTextInfo from '../../../Commons/SheetParts/inputTextInfo'
 import CheckParameter from '../../../Commons/SheetParts/checkParameter'
-
-
-interface profilesProps {
-    player_name: string
-    player_character: string
-    character_title: string
-    injury_value: number
-}
 
 type Props = {
     characterTitle:string

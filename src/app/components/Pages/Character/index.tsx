@@ -15,6 +15,7 @@ import { initializeCharacterInfo,getCharacterInfo } from '../../../reducers/char
 import { initializeKutuluInfo,getKutuluInfo } from '../../../reducers/kutuluInfoSlice'
 import { useParams } from 'react-router-dom'
 import { Header } from '../../Commons/Header'
+import { statesType } from '../../../config/type'
 
 
 type Props = {
@@ -23,7 +24,7 @@ type Props = {
 
 const SheetLayout: React.FC<Props> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
-    const store = useAppSelector((state: any) => state)
+    const store = useAppSelector(( state:statesType ) => state)
 
     const methods = useForm()
     const characterId:number = getCharacterId4Url(props.isPage)
@@ -34,12 +35,13 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
         dispatch(initializeKutuluInfo())
         methods.reset()
 
-        if(props.isPage === 'edit') {
+        if ( props.isPage === 'edit' ) {
             dispatch(getCharacterInfo(characterId))
             dispatch(getKutuluInfo(characterId))
         } 
     },[0])
 
+    // 全部のstateを出してみて確認
     const onSubmit = (data: any) => {
         submit.setDatas(data)
         submit.setStates(store)

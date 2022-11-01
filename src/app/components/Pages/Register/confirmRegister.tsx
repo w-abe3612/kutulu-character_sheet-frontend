@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
     useNavigate
 } from "react-router-dom";
-import { registerStatesType } from '../../../reducers/types';
+//import { registerStatesType } from '../../../reducers/types';
 import { setFormState, setrRegisterInputs,setVerifyFlg } from '../../../reducers/registerSlice';
 import { useRegister } from "../../../queries/RegisterQuery"
+import { registerStatesType, statesType } from '../../../config/type'
 
 const ConfirmRegister: React.VFC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
     const register = useRegister()
-    const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
+    const registerState:registerStatesType = useAppSelector((state: statesType) => state.registerState)
     const { handleSubmit, formState: { errors } } = useForm();
     const onSubmit = () => {
         register.mutate(

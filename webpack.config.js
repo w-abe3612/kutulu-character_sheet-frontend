@@ -55,6 +55,20 @@ module.exports = {
                 // TypeScript をコンパイルする
                 use: "ts-loader"
             },
+            {
+                test: /\.(js|jsx)$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-react'
+                            ]
+                        }
+                    }
+                ]
+            },
         ]
     },
     // import 文で .ts や .tsx ファイルを解決するため

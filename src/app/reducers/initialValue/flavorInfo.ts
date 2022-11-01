@@ -1,9 +1,4 @@
-export interface flavorInfoType {
-    flavor_info_name: string
-    flavor_info_param: string
-    flavor_info_value: string
-    flavor_info_order: number
-}
+import { flavorInfoType } from '../../config/type'
 
 const initialFlavorInfo: Array<flavorInfoType> = [
     {

@@ -1,10 +1,4 @@
-export interface abilityValueType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_type: number
-    skill_order: number
-}
+import { abilityValueType } from '../../config/type'
 
 const initialAbilityValue: Array<abilityValueType> = [
     {

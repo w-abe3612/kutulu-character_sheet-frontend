@@ -5,29 +5,22 @@ import {
     useNavigate
 } from "react-router-dom";
 import { setFormState, setrRegisterInputs } from '../../../reducers/registerSlice';
-import { systemStateType} from '../../../reducers/types';
 import InputText from '../../Commons/SystemUseParts/inputText';
+import InputPassword from '../../Commons/SystemUseParts/inputPassword'
+import { statesType,registerStatesType,systemStateType } from '../../../config/type'
 
-
-interface registerStatesType {
-    formState:string,
-    verifyFlg:boolean,
-    username:string,
-    email:string,
-    password:string,
-    confirmation:string
-}
-
-const InputRegister: React.VFC = () => {
+const InputRegister: React.FC = () => {
     const dispatch = useAppDispatch()
-    const systemState: systemStateType = useAppSelector((state: any) => state.systemState)
-    const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
+    const systemState: systemStateType = useAppSelector((state:statesType) => state.systemState)
+    const registerState:registerStatesType = useAppSelector((state:statesType) => state.registerState)
 
     const navigate = useNavigate();
     // 初期化
     dispatch(setFormState({formState:'input'}))
 
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
+
+    // todo 一旦後回し
     const onSubmit = (data:any) => {
         dispatch(setFormState({formState:'confirm'}))
         dispatch(setrRegisterInputs({
@@ -73,7 +66,7 @@ const InputRegister: React.VFC = () => {
                         }}}
                         error={errors.email}
                     />
-                    <InputText 
+                    <InputPassword
                         label="パスワード" 
                         name="password" 
                         register={register} 
@@ -88,7 +81,7 @@ const InputRegister: React.VFC = () => {
                         }}}
                         error={errors.password}
                     />
-                    <InputText 
+                    <InputPassword
                         label="パスワード再入力" 
                         name="confirmation" 
                         register={register} 

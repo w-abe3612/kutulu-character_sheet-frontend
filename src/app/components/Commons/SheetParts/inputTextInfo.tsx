@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {setCharacterInfoValue} from '../../../reducers/characterInfosSlice';
 import {setFlavorInfoValue} from '../../../reducers/flavorInfosSlice';
 import {setKutuluInfoValue} from '../../../reducers/kutuluInfoSlice';
+import { setInputTextActionType } from '../../../config/type'
 
 type Props = inputTextInfoPropsType
 
@@ -13,10 +14,10 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
     const { register, formState,setValue } = useFormContext();
     const errorMessage:any = formState.errors[props.name]?.message ? formState.errors[props.name]?.message : '';
     useEffect(()=> {
-        
         setValue( props.name, props.default !== ''? props.default: '' )
     },[props])
-    const switchReduserDispatch = (actionType: string, actionName: any,actionValue:any) => {
+
+    const switchReduserDispatch = (actionType: string, actionName: string, actionValue:string) => {
         switch (actionType) {
             case 'characterInfo':
                 dispatch(setCharacterInfoValue({
@@ -39,7 +40,7 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
         }
     }
 
-    const setValueHandler = (e:any) => {
+    const setValueHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         switchReduserDispatch(
             props.setValueAction.type,
             props.name,
@@ -47,6 +48,7 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
         )
     }
 
+    // todo requiredを入れる
     return (
         <div className="m-inputTextInfo">
             <div className={`input-group ${ props.setClass && props.setClass }`} >
@@ -55,8 +57,8 @@ const InputTextInfo: React.FC<Props> = ( props ): JSX.Element => {
                     <input
                         type="text"
                         className="input-text"
-                        {...register(props.name, {
-                            onChange: (e) => setValueHandler(e)
+                        { ...register(props.name, {
+                            onChange: ( e:React.ChangeEvent<HTMLInputElement> ) => setValueHandler(e)
                         })}
                     />
                 </div>

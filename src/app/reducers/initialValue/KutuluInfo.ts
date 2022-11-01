@@ -1,13 +1,4 @@
-export interface kutuluInfoType {
-    character_title:string
-    injury_value:number
-    ability_value_max:number
-    ability_value_total:number
-    specialized_skill_max:number
-    specialized_skill_total:number
-    possession_item:string
-    character_preference:string
-}
+import { kutuluInfoType } from '../../config/type'
 
 const initialKutuluInfo:kutuluInfoType  = {
     character_title:'',

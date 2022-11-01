@@ -14,9 +14,9 @@ type Props = {
     skillItems: Array<abilityValueType>
 }
 
-const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
-    // jsxのエレメントを入れる時の型はJSX.Elementっぽい
-    let result:any = [];
+const AbilityItem: React.FC<Props> = ( { skillItems } ) :JSX.Element => {
+
+    let result:JSX.Element
     let itemBoxes: Array<JSX.Element> = []
 
     itemBoxes = skillItems.map(( item:abilityValueType ):JSX.Element => (

@@ -77,7 +77,6 @@ const createCharacter = async ( info:any ) => {
             'Content-Type': 'application/json'
         }}
     )
-    console.log(data)
     return data 
 }
 

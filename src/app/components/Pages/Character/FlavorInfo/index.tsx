@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 import { flavorInfoType } from '../../../../reducers/types'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../../Commons/SheetParts/inputTextInfo"
 import {initializeFlavorInfo,getFlavorInfos} from '../../../../reducers/flavorInfosSlice'
 import { useParams } from 'react-router-dom'
+import { statesType } from '../../../../config/type'
 
 // order順に並べ替える
 const entryInputs = (infoPrams: Array<flavorInfoType>) => {
     let result: JSX.Element = <></>
-    let inputsElements: any = []
+    let inputsElements: Array<JSX.Element> = []
 
     inputsElements = infoPrams.map((item) => {
         return (
@@ -47,9 +47,9 @@ type Props = {
 
 const FlavorInfo: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
-    const flavorInfo: Array<flavorInfoType> = useAppSelector((state: any) => state.flavorInfo)
-    let entryInput:any = <></>
-    entryInput = entryInputs(flavorInfo)
+    const flavorInfo: Array<flavorInfoType> = useAppSelector((state:statesType) => state.flavorInfo)
+
+    const entryInput:JSX.Element = entryInputs(flavorInfo)
     const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
 
     useEffect(()=>{

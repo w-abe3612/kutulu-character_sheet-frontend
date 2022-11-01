@@ -3,14 +3,14 @@ import {
     Navigate
 } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../reducers/hooks'
-import { systemStateType } from '../../reducers/types';
+import { systemStateType,statesType } from '../../config/type';
 
 type redirectOnLogoutProps = {
     children: React.ReactNode;
 };
 
 const RedirectOnLogout: React.FC<redirectOnLogoutProps> = (props) => {
-    let isLoggedIn: string= useAppSelector((state: any) => state.systemState.isLoggedIn)
+    let isLoggedIn: string= useAppSelector((state: statesType) => state.systemState.isLoggedIn)
     return (
         <>
             { isLoggedIn == '0' && (

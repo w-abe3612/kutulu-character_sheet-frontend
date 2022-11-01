@@ -3,7 +3,7 @@ import ItemButtons from './itemButtons'
 import image from 'img/dammyUser.png'
 
 
-export interface characterInfoType {
+type Props = {
     character_id: number
     player_character: string
     image_path: string
@@ -12,13 +12,11 @@ export interface characterInfoType {
     character_id_hash: string
 }
 
-type Props = characterInfoType
-
 const CharacterItem: React.FC<Props> = (props): JSX.Element => {
     const userPic = props.image_path + props.image_name
 
     return (
-        <div className="m-character">
+        <div key={'characterlist' + props.character_id} className="m-character">
             <div className="m-character__inner">
                 <div className="m-character__picture" >
                     <figure className="m-user_pic">

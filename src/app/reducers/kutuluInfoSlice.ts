@@ -2,6 +2,7 @@ import { createSlice, PayloadAction ,createAsyncThunk} from '@reduxjs/toolkit'
 import initialKutuluInfo from './initialValue/KutuluInfo'
 import type { RootState } from './store'
 import { useKutuluInfo } from '../queries/CharacterQuery'
+import { setCheckedActionType  } from '../config/type'
 
 export interface kutuluInfoType {
     character_title:string
@@ -42,12 +43,10 @@ export const KutuluInfoSlice = createSlice({
       state = updateState
       return state
     },
-    setInjuryValue: (state, action: PayloadAction<any>) => {
+    setInjuryValue: (state, action: PayloadAction<setCheckedActionType>) => {
         let updateState: kutuluInfoType = state
-        let injuryValue: number = 0
  
-        injuryValue = action.payload.value
-        updateState.injury_value = injuryValue
+        updateState.injury_value = action.payload.value
         state = updateState
 
         return updateState

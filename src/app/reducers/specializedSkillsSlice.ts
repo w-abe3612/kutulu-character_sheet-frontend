@@ -2,12 +2,7 @@ import { createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit'
 import initialSpecializedSkill from './initialValue/specializedSkill'
 import type { RootState } from './store'
 import { useSpecialzedSkills } from '../queries/CharacterQuery'
-
-// Define a type for the slice state
-interface setChecked {
-  value: number,
-  itemParam: string
-}
+import { setCheckedActionType } from '../config/type'
 
 export interface specializedSkillType {
     skill_name: string
@@ -37,11 +32,11 @@ export const specializedSkillSlice = createSlice({
 
       return state
     },
-    setSpecializedSkill: (state, action: PayloadAction<setChecked>) => {
+    setSpecializedSkill: (state, action: PayloadAction<setCheckedActionType>) => {
       let updateState: Array<specializedSkillType> = state
 
-      updateState.map((item: specializedSkillType): void => {
-        if ( item.skill_param === action.payload.itemParam ) {
+      updateState.map((item: specializedSkillType) => {
+        if ( item.skill_param === action.payload.name ) {
           item.skill_value = action.payload.value
         }
       })

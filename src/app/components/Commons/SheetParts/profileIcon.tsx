@@ -7,7 +7,12 @@ import { useAppDispatch } from 'app/reducers/hooks';
 import {resetImages,setbase64} from '../../../reducers/characterInfosSlice'
 
 
-const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
+type viewProps = {
+    changeImage:any
+    viewIcon:string
+}
+
+const ViewProfileIcon:React.FC<viewProps> = (props) :JSX.Element => {
     const resetIcon = (e:React.MouseEvent<HTMLElement>) => {
         props.changeImage()
     }
@@ -17,7 +22,7 @@ const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
             <figure className="image-inner" >
                 <img 
                     className="image-img"
-                    src={props.viewICon} alt="" />
+                    src={props.viewIcon} alt="" />
             </figure>
             <button 
                 type="button"
@@ -33,7 +38,12 @@ const ViewProfileIcon:React.FC<any> = (props) :JSX.Element => {
     )
 }
 
-const InputImgFile: React.FC<any> = (props): JSX.Element => {
+type inputProps = {
+    getRootProps:any
+    getInputProps:any
+}
+
+const InputImgFile: React.FC<inputProps> = (props): JSX.Element => {
 
     return (
         <div className="m-inputImgFile" >
@@ -51,17 +61,19 @@ const InputImgFile: React.FC<any> = (props): JSX.Element => {
     )
 }
 
-interface isssss{
+
+type mainProps = {
     image_path:string
     image_name:string
     img_upload_base64:string
 }
 
-type Props = isssss
+const ProfileIcon:React.FC<mainProps> = ( props ) : JSX.Element => {
+    let section:JSX.Element
+    let IconImage:string
 
-const ProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
     const dispatch = useAppDispatch()
-    const { register, formState,setValue } = useFormContext();
+    const { register, formState, setValue } = useFormContext();
     const onDrop =  useCallback( (acceptedFiles:any) => {
         if ( acceptedFiles ) {
             const reader = new FileReader()
@@ -86,9 +98,6 @@ const ProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
     // edit時の
     const {getRootProps, getInputProps} = useDropzone({onDrop})
 
-    let section:any
-    let IconImage:any
-
     // todo edit画面で得られた画像が本当に存在するかチェックも入れたい
     if ( props.img_upload_base64 !== '' ) {
         IconImage = props.img_upload_base64
@@ -101,7 +110,7 @@ const ProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
     if ( ( props.image_path && props.image_name ) || props.img_upload_base64 ) {
         section = <ViewProfileIcon 
             changeImage = {changeImageHandler}
-            viewICon = {props.img_upload_base64}
+            viewIcon = {props.img_upload_base64}
         />
     } else {
         section = <InputImgFile 

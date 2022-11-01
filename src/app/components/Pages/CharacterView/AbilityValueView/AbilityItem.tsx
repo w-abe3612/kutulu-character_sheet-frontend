@@ -1,14 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ViewParameter from '../../../Commons/ViewPage/viewParameter'
-
-interface abilityValueType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_type: number
-    skill_order: number
-}
+import { abilityValueType } from '../../../../config/type'
 
 type Props = {
     skillItems: Array<abilityValueType>

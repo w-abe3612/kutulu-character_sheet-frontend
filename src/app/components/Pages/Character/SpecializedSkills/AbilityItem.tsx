@@ -1,22 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CheckParameter from '../../../Commons/SheetParts/checkParameter'
-
-export interface specializedSkillType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_order: number
-}
+import { specializedSkillType } from '../../../../config/type'
 
 type Props = {
     skillItems: Array<specializedSkillType>
 }
 
-//　これの返り値の型がわからない
-const AbilityItem: React.FC<Props> = ( { skillItems } ) :any => {
-    // jsxのエレメントを入れる時の型はJSX.Elementっぽい
-    let result:any = [];
+const AbilityItem: React.FC<Props> = ( { skillItems } ) :JSX.Element => {
+    let result:JSX.Element
     let itemBoxes: Array<JSX.Element> = []
 
     itemBoxes = skillItems.map(( item:specializedSkillType ):JSX.Element => (

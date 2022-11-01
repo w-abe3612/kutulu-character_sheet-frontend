@@ -6,13 +6,11 @@ import { faXmark,faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from 'app/reducers/hooks';
 import {resetImages,setbase64} from '../../../reducers/characterInfosSlice'
 
-interface isssss{
+type Props = {
     image_path:string
     image_name:string
     img_upload_base64:string
 }
-
-type Props = isssss
 
 const ViewProfileIcon:React.FC<Props> = ( props ) : JSX.Element => {
 

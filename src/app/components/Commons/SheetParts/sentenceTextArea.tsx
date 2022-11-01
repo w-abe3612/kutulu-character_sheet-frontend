@@ -14,7 +14,7 @@ const SentenceTextArea: React.FC<Props> = (props): JSX.Element => {
         setValue( props.name, props.value !== ''? props.value: '' )
     },[props])
 
-    const setValueHandler = (e:any) => {
+    const setValueHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         dispatch(
             setKutuluInfoValue({
                 name:props.name,
@@ -31,10 +31,10 @@ const SentenceTextArea: React.FC<Props> = (props): JSX.Element => {
                     className="input-textarea"
                     {...register(props.name, {
                         maxLength: {
-                            value: 3000,
-                            message: '3000文字以内でお願いします。'
+                            value: 2000,
+                            message: '2000文字以内でお願いします。'
                         },
-                        onChange: (e) => setValueHandler(e)
+                        onChange: (e:React.ChangeEvent<HTMLInputElement>) => setValueHandler(e)
                     })
                     }
                 />

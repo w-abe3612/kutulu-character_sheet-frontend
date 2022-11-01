@@ -4,16 +4,15 @@ import {
     Navigate
 } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-import { systemStateType } from '../../../reducers/types';
 import CharacterItem from './characterItem'
 import SectionWrap from "../../Commons/Layout/sectionWrapDash"
-import { getCharacters,deleteCharacterItem }  from '../../../reducers/dashboardIndex';
+import { getCharacters, deleteCharacterItem } from '../../../reducers/dashboardIndex';
 import { Header } from '../../Commons/Header'
+import { systemStateType, statesType, dashboardIndexType } from '../../../config/type'
 
 const Dashboard: React.FC = () => {
-    let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
-    let dashboradIndex = useAppSelector((state: any) => state.dashboard)
-
+    const systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
+    const dashboradIndex: Array<dashboardIndexType> = useAppSelector((state: statesType) => state.dashboard)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -22,19 +21,20 @@ const Dashboard: React.FC = () => {
 
     return (
         <>
-        <Header />
-        <SectionWrap title="キャラ一覧" >
-            { dashboradIndex.length > 0 ||  Object.values(dashboradIndex).map(( character:any ) => {
-            return <CharacterItem 
-                character_id={character.id}
-                player_character={character.player_character}
-                image_path="../img/"
-                image_name="dammyUser.png"
-                updateded_at={character.updated_at}
-                character_id_hash={ character.public_page_token }
-            />
-        }) }
-        </SectionWrap>
+            <Header />
+            <SectionWrap title="キャラ一覧" >
+                {dashboradIndex.length > 0 || Object.values(dashboradIndex).map((character: dashboardIndexType) => {
+                    return <CharacterItem
+                        key={'dashboradIndex' + character.id }
+                        character_id={character.id}
+                        player_character={character.player_character}
+                        image_path="../img/"
+                        image_name="dammyUser.png"
+                        updateded_at={character.updated_at}
+                        character_id_hash={character.public_page_token}
+                    />
+                })}
+            </SectionWrap>
         </>
     )
     return <></>

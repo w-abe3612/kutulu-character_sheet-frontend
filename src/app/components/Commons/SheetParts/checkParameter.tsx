@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useFormContext } from "react-hook-form";
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import { useAppDispatch } from '../../../reducers/hooks'
 import { setInjuryValue } from '../../../reducers/kutuluInfoSlice'
 import { setAbilityValues } from '../../../reducers/abilityValuesSlice'
 import { setSpecializedSkill } from '../../../reducers/specializedSkillsSlice'
+import { setCheckedActionType } from '../../../config/type'
 
-const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => {
+type itembtnProps = { 
+    itemName:string
+    itemValue:number
+    seconds:number
+    isReduser:string
+}
+
+const ItemBtn: React.FC<itembtnProps> = (props): JSX.Element => {
     const [btnChecked, setChecked] = useState(false);
     const dispatch = useAppDispatch()
     // 後でstate変更による再レンダリングのみで表現したい
     const { setValue } = useFormContext();
 
-    const switchReduserDispatch = (isReduser: string, setAction: any) => {
+    const switchReduserDispatch = (isReduser: string, setAction:setCheckedActionType) => {
         switch (isReduser) {
             case 'injuryValue':
                 dispatch(setInjuryValue(setAction))
@@ -25,7 +33,7 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => 
         }
     }
 
-    const handleSkillPointCheck = (itemValue: number, btnChecked: any, paramName: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSkillPointCheck = (itemValue: number, btnChecked: boolean, paramName: string, e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         let checkvalue: number = 0
 
@@ -37,54 +45,53 @@ const ItemBtn: React.FC<any> = ({ itemName, itemValue, seconds, isReduser }) => 
             checkvalue = checkvalue - 1
         }
 
-        let setCheckedAction: any = {
+        let setCheckedAction: setCheckedActionType = {
             value: 0,
-            itemParam: ''
+            name: ''
         }
 
         setCheckedAction.value = checkvalue
-        setCheckedAction.itemParam = paramName
+        setCheckedAction.name = paramName
 
-        switchReduserDispatch(isReduser, setCheckedAction)
-        // 後でstate変更による再レンダリングのみで表現したい
+        switchReduserDispatch(props.isReduser, setCheckedAction)
     }
 
-    // チェックされたのが2だった場合、1もチェックされる
-    const checkedInit = (btnChecked: any, itemValue: number, seconds: number) => {
+    const checkedInit = (btnChecked: boolean, itemValue: number, seconds: number) => {
         setChecked(false)
 
         if (itemValue >= seconds) {
             setChecked(true)
         }
     }
+
     useEffect(() => {
-        checkedInit(btnChecked, itemValue, seconds)
-    });
+        checkedInit( btnChecked, props.itemValue, props.seconds )
+    },[props]);
 
     return (
-        <li key={itemName + seconds} className="m-checkParameter_items" >
+        <li key={props.itemName + props.seconds} className="m-checkParameter_items" >
             <div className="item-inner">
                 <input
                     type="checkbox"
                     className="item-checkbox"
-                    id={itemName + seconds}
-                    name={itemName + seconds}
-                    data-num={seconds}
+                    id={props.itemName + props.seconds}
+                    name={props.itemName + props.seconds}
+                    data-num={props.seconds}
                     onChange={(e) => {
-                        handleSkillPointCheck(itemValue, btnChecked, itemName, e)
+                        handleSkillPointCheck(props.itemValue, btnChecked, props.itemName, e)
                     }}
                     checked={btnChecked}
                 />
                 <label
                     className="item-label"
-                    htmlFor={itemName + seconds}
+                    htmlFor={props.itemName + props.seconds}
                 ></label>
             </div>
         </li>
     )
 }
 
-type Props = {
+type mainProps = {
     label: string
     setClass: string
     itemName: string
@@ -93,7 +100,7 @@ type Props = {
     isReduser: string
 }
 
-const CheckParameter: React.FC<Props> = (props): JSX.Element => {
+const CheckParameter: React.FC<mainProps> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
     let defaultValue = 0
     let seconds: number = props.seconds
@@ -102,7 +109,7 @@ const CheckParameter: React.FC<Props> = (props): JSX.Element => {
     const parameterSeconds = (itemName: string, itemValue: number, isReduser: string): Array<JSX.Element> => {
         let result: Array<JSX.Element> = []
         for (let i: number = 0; seconds >= i; ++i) {
-            if (i === 0) {
+            if ( i === 0 ) {
                 result[i] = <></>
             } else {
                 result[i] = (

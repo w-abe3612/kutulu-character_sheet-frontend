@@ -6,25 +6,25 @@ import {
     Navigate,
     useLocation
 } from "react-router-dom";
-import { systemStateType } from '../../../config/type';
+import { systemStateType, statesType } from '../../../config/type';
 import InputText from '../../Commons/SystemUseParts/inputText';
+import InputPassword from '../../Commons/SystemUseParts/inputPassword';
 import { Header } from '../../Commons/Header'
 
 const Login: React.FC = () => {
     const login = useLogin()
-    const dispatch = useAppDispatch()
 
-    let systemState: systemStateType = useAppSelector((state: any) => state.systemState)
-    const { register, watch, handleSubmit, formState: { errors } } = useForm();
+    let systemState: systemStateType = useAppSelector(( state:statesType ) => state.systemState)
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data: any) => {
+    // todo エラーが出るので一旦確認
+    const onSubmit = (data:any) => {
         login.mutate({ email: data.email, password: data.password })
     }
 
     return (
         <>
             <Header />
-
             <div className="m-login">
                 {systemState.isLoggedIn === '1' && (
                     <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
@@ -49,7 +49,7 @@ const Login: React.FC = () => {
                             }}
                             error={errors.email}
                         />
-                        <InputText
+                        <InputPassword 
                             label="パスワード"
                             name="password"
                             register={register}

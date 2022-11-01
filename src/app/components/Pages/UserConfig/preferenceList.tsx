@@ -3,8 +3,6 @@ import {
     Link,
 } from "react-router-dom";
 
-
-
 const PreferenceList: React.FC = () => {
     
     return (
