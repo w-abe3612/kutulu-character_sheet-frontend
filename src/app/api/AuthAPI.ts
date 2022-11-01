@@ -5,12 +5,12 @@ axios.defaults.withCredentials = true;
 
 
 const getUsers = async () => {
-    const { data } = await axios.get<User>('http://localhost:80/api/v1/user')
+    const { data } = await axios.get<any>('http://localhost:80/api/v1/user')
     return data 
 }
 
 const login = async ({email,password}:{email:string,password:string}) => {
-    const { data } = await axios.post<User>(
+    const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/login`,
         {email,password}
     )
@@ -18,7 +18,7 @@ const login = async ({email,password}:{email:string,password:string}) => {
 }
 
 const logout = async () => {
-    const { data } = await axios.post<User>(`http://localhost:80/api/v1/logout`)
+    const { data } = await axios.post<any>(`http://localhost:80/api/v1/logout`)
     return data 
 }
 

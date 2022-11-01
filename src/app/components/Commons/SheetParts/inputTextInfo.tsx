@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { inputTextInfoPropsType } from '../../../type'
+import { inputTextInfoPropsType } from '../../../config/type'
 import { useFormContext } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {setCharacterInfoValue} from '../../../reducers/characterInfosSlice';

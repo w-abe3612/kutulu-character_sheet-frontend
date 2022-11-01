@@ -2,7 +2,7 @@ import { createSlice, PayloadAction,createAsyncThunk,current } from '@reduxjs/to
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
 import { useCharactorInfo } from '../queries/CharacterQuery'
-import type { characterInfoType } from '../type/'
+import type { characterInfoType } from '../config/type'
 
 const initialState = initialCharacterInfo
 
@@ -66,7 +66,7 @@ export const characterInfoSlice = createSlice({
         image_path:action.payload[0].image_path,
         image_name:action.payload[0].image_name,
         img_upload_base64:'',
-        public_page_token:action.payload[0].ublic_page_token,
+        public_page_token:action.payload[0].public_page_token,
         public_flg:action.payload[0].public_flg,
       }
 

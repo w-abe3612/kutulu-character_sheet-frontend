@@ -17,7 +17,8 @@ const useLogin = () => {
             const loggedinflg = {
                 isLoggedIn:'1',
                 userId: user.id,
-                userName: user.name
+                userName: user.name,
+                public_page_token: user.public_page_token
             }
 
             // ログインの情報を保持する

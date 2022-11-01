@@ -10,20 +10,3 @@ export const getCharacterId4Url = (isPage:string):number => {
 
     return result
 }
-
-
-
-
-/*
-const createCharacter = async ( info:any ) => {
-    const { data } = await axios.post<any>(
-        `http://localhost:80/api/v1/character/create`,
-        info,
-        {headers: {
-            'Content-Type': 'multipart/form-data'
-        }}
-    )
-    return data 
-}
-
-*/

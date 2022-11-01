@@ -4,7 +4,7 @@ import Router from './router'
 import { QueryClient, QueryClientProvider } from "react-query"
 import { useAppSelector, useAppDispatch } from '../reducers/hooks'
 import { isCheckLoggedIn,setLoggedIn }  from '../reducers/systemStateSlice';
-import type { systemStateType } from '../type'
+import type { systemStateType } from '../config/type'
 import crypto from 'crypto-js'
 
 const App: React.FC = () => {
@@ -30,7 +30,8 @@ const App: React.FC = () => {
                 let result: any = {
                     isLoggedIn: recoveryText( localStorage.getItem("isLoggedIn")),
                     userId: Number(recoveryText(localStorage.getItem('userId'))),
-                    userName: recoveryText(localStorage.getItem('userName'))
+                    userName: recoveryText(localStorage.getItem('userName')),
+                    public_page_token: localStorage.getItem('public_page_token')
                 }
                 dispatch(setLoggedIn(result))
             } else {

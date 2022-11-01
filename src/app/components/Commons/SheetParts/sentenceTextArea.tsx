@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { sentenceTextAreaType } from '../../../type'
+import { sentenceTextAreaType } from '../../../config/type'
 import { useFormContext } from "react-hook-form";
 import {setKutuluInfoValue} from '../../../reducers/kutuluInfoSlice';
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
