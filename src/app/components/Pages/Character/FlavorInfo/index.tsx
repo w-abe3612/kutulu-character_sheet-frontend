@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
-import { flavorInfoType } from '../../../../reducers/types'
+import { flavorInfoType } from '../../../../config/type'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../../Commons/SheetParts/inputTextInfo"
 import {initializeFlavorInfo,getFlavorInfos} from '../../../../reducers/flavorInfosSlice'
@@ -50,7 +50,7 @@ const FlavorInfo: React.FC<Props> = (props) => {
     const flavorInfo: Array<flavorInfoType> = useAppSelector((state:statesType) => state.flavorInfo)
 
     const entryInput:JSX.Element = entryInputs(flavorInfo)
-    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
+    const urlParams = useParams<{ id:any ,charactorId:any }>()
 
     useEffect(()=>{
         if(props.isPage === 'edit') {

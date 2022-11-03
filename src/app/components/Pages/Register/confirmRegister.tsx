@@ -5,7 +5,6 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
     useNavigate
 } from "react-router-dom";
-//import { registerStatesType } from '../../../reducers/types';
 import { setFormState, setrRegisterInputs,setVerifyFlg } from '../../../reducers/registerSlice';
 import { useRegister } from "../../../queries/RegisterQuery"
 import { registerStatesType, statesType } from '../../../config/type'
@@ -25,29 +24,7 @@ const ConfirmRegister: React.VFC = () => {
                 password_confirmation:registerState.confirmation
             }
         )
-
-        localStorage.setItem('test', 'test');
     }
-/*
-    const handleComplete = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        dispatch(setFormState({formState:'complete'}))
-
-        return navigate("/register/confirm/complete")
-    }
-
-
-    const onSubmit = (data:any) => {
-        dispatch(setFormState({formState:'confirm'}))
-        dispatch(setrRegisterInputs({
-            username:data.username,
-            email:data.email,
-            password:data.password,
-            confirmation:data.confirmation
-        }))
-
-        return navigate("/register/confirm")
-    }*/
 
     const handleReInput = () => {
         dispatch(setFormState({formState:'input'}))

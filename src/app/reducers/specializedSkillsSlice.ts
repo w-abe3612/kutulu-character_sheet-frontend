@@ -2,20 +2,13 @@ import { createSlice, PayloadAction,createAsyncThunk } from '@reduxjs/toolkit'
 import initialSpecializedSkill from './initialValue/specializedSkill'
 import type { RootState } from './store'
 import { useSpecialzedSkills } from '../queries/CharacterQuery'
-import { setCheckedActionType } from '../config/type'
-
-export interface specializedSkillType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_order: number
-}
+import { setCheckedActionType, specializedSkillType } from '../config/type'
 
 const initialState = initialSpecializedSkill
 
 export const getSpecialzedSkills = createAsyncThunk(
   "getSpecialzedSkills",
-  async (id:any) => {
+  async (id:number) => {
     const test = await useSpecialzedSkills(id)
     return test
   }
@@ -48,9 +41,9 @@ export const specializedSkillSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getSpecialzedSkills.fulfilled, (state, action) => {
       let updateState: Array<specializedSkillType> = state
-      let result:any = []
+      let result:Array<specializedSkillType>= []
       const newSpecializedSkill = action.payload
-      result = newSpecializedSkill.map((info:any) => {
+      result = newSpecializedSkill.map((info:specializedSkillType) => {
         return {
           skill_name:info.skill_name,
           skill_order:info.skill_order,

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
-import { flavorInfoType } from '../../../../reducers/types'
+import { flavorInfoType } from '../../../../config/type'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import ViewTextInfo from "../../../Commons/ViewPage/viewTextInfo"
 import {initializeFlavorInfo,getFlavorInfos} from '../../../../reducers/flavorInfosSlice'
@@ -48,7 +48,7 @@ const FlavorInfoView: React.FC = () => {
     const flavorInfo: Array<flavorInfoType> = useAppSelector((state: any) => state.flavorInfo)
     let entryInput:any = <></>
     entryInput = entryInputs(flavorInfo)
-    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
+    const urlParams = useParams<{ id:any,charactorId: any }>()
 
     useEffect(()=>{
         dispatch(getFlavorInfos(urlParams.charactorId))

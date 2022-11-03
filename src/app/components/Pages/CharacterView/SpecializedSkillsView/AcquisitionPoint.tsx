@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
-import { specializedSkillType, characterInfoType } from '../../../../reducers/types'
-
+import { specializedSkillType, kutuluInfoType, statesType } from '../../../../config/type'
 
 const totalPointCalculation = ( abilityValues:Array<specializedSkillType> ):number => {
     let result:number = 0
@@ -19,15 +18,15 @@ const totalPointCalculation = ( abilityValues:Array<specializedSkillType> ):numb
 
 const AcquisitionPoint: React.FC = () => {
     const dispatch = useAppDispatch()
-    let specializedSkill: Array<specializedSkillType> = useAppSelector((state: any) => state.specializedSkill)
-    let characterInfo: characterInfoType = useAppSelector((state: any) => state.characterInfo)
+    const specializedSkill: Array<specializedSkillType> = useAppSelector((state:statesType) => state.specializedSkill)
+    const kutuluInfo:kutuluInfoType = useAppSelector((state:statesType) => state.kutuluInfo)
 
     return (
         <div className="m-acquisition-point" >
             <div className="m-acquisition-point__inner">
                 <dl className="m-points-box">
                     <dt className="m-points-box__label" >合計Pt</dt>
-                    <dd className="m-points-box__value" >{ characterInfo.specialized_skill_max }</dd>
+                    <dd className="m-points-box__value" >{ kutuluInfo.specialized_skill_max }</dd>
                 </dl>
                 <dl className="m-points-box">
                     <dt className="m-points-box__label" >取得Pt</dt>

@@ -4,15 +4,13 @@ import type { systemStateType } from '../config/type'
 import { useCheckLoggedIn } from '../queries/AuthQuery'
 import crypto from 'crypto-js';
 
-const initState: systemStateType = {
+const initialState:systemStateType = {
     isLoggedIn: '0',
     isPage:'',
     userId: null,
     userName: '',
     public_page_token:'',
 }
-
-const initialState = initState
 
 export const isCheckLoggedIn = createAsyncThunk(
     "checkLoggedIn",

@@ -7,16 +7,7 @@ import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import { systemStateType } from '../../../../config/type'
 import { initializeAbilityValues ,getAbilityValue } from '../../../../reducers/abilityValuesSlice'
 import { useParams } from 'react-router-dom'
-
-
-interface abilityValueType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_type: number
-    skill_order: number
-}
-
+import { abilityValueType } from '../../../../config/type'
 
 //パッシブアクティブ分ける
 const dividePassive2Active = (itemvaluse :Array<abilityValueType> , type:number ) : Array<abilityValueType> => {
@@ -50,7 +41,8 @@ const AbilityValue: React.FC = () => {
     const dispatch = useAppDispatch()
     const systemState:systemStateType = useAppSelector((state: any) => state.systemState)
     const abilityValues:Array<abilityValueType> = useAppSelector( ( state : any ) => state.abilityValues )
-    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
+    // todo エラーが出るけど一旦後回し
+    const urlParams = useParams<{ id:any,charactorId:any}>()
     const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
     const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
     useEffect(()=>{

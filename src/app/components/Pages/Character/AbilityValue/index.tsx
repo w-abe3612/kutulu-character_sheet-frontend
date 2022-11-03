@@ -1,5 +1,4 @@
 import React,{ useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import AbilityItem from './AbilityItem'
 import AcquisitionPoint from './AcquisitionPoint'
 import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
@@ -7,16 +6,7 @@ import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import { systemStateType, statesType } from '../../../../config/type'
 import { initializeAbilityValues ,getAbilityValue } from '../../../../reducers/abilityValuesSlice'
 import { useParams } from 'react-router-dom'
-
-
-interface abilityValueType {
-    skill_name: string
-    skill_param: string
-    skill_value: number
-    skill_type: number
-    skill_order: number
-}
-
+import { abilityValueType } from '../../../../config/type'
 
 //パッシブアクティブ分ける
 const dividePassive2Active = (itemvaluse :Array<abilityValueType> , type:number ) : Array<abilityValueType> => {
@@ -32,7 +22,6 @@ const dividePassive2Active = (itemvaluse :Array<abilityValueType> , type:number 
 
     return result
 }
-
 
 //並び順にする
 const sort2ItemOrder = ( itemvaluse :Array<abilityValueType> ): Array<abilityValueType> => {
@@ -52,13 +41,13 @@ const AbilityValue: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     const systemState:systemStateType = useAppSelector((state:statesType) => state.systemState)
     const abilityValues:Array<abilityValueType> = useAppSelector( ( state:statesType ) => state.abilityValues )
-    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
+    const urlParams = useParams<{ id:any,charactorId:any }>()
     const activeSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,1) )
     const passiveSkill: Array<abilityValueType> = sort2ItemOrder( dividePassive2Active(abilityValues,0) )
 
     useEffect(()=>{
         if(props.isPage === 'edit') {
-            dispatch(getAbilityValue(urlParams.charactorId))
+            dispatch(getAbilityValue(urlParams.charactorId !== undefined ? urlParams.charactorId: 0))
         } else {
             dispatch(initializeAbilityValues())
         }

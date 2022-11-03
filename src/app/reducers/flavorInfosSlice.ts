@@ -2,6 +2,7 @@ import { createSlice, PayloadAction ,createAsyncThunk} from '@reduxjs/toolkit'
 import initialFlavorInfo from './initialValue/flavorInfo'
 import type { RootState } from './store'
 import { useFlavorInfos } from '../queries/CharacterQuery'
+import { flavorInfoType } from '../config/type'
 
 // todo 名前の変更
 interface setChecked {
@@ -9,19 +10,12 @@ interface setChecked {
   itemParam: string
 }
 
-export interface flavorInfoType {
-    flavor_info_name: string
-    flavor_info_param: string
-    flavor_info_value: string
-    flavor_info_order: number
-}
-
 const initialState = initialFlavorInfo
 
 export const getFlavorInfos = createAsyncThunk(
   "getFlavorInfos",
-  async (id:any) => {
-    const test = await useFlavorInfos(id)
+  async (character_id:number) => {
+    const test = await useFlavorInfos(character_id)
     return test
   }
 );

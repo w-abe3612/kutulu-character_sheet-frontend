@@ -14,8 +14,6 @@ import { Header } from '../../Commons/Header'
 
 const UserConfig: React.FC = ( props ) => {
 
-// ここで分岐させる
-
     return (
         <>
             <Header />

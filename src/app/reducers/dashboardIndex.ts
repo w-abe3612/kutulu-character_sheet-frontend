@@ -20,13 +20,13 @@ export const dashboardIndexSlice = createSlice({
   initialState,
   reducers: {
     setDashboard2Users: (state, action: PayloadAction<any>): void => {
-        let updateState: Array<any> = state
+        let updateState: Array<dashboardIndexType> = state
         updateState = action.payload.characters
 
         state = updateState
     },
     deleteCharacterItem:(state, action: PayloadAction<any>) => {
-      let updateState:any = state
+      let updateState:Array<dashboardIndexType> = state
       const character_id = action.payload
 
       updateState = Object.values(updateState).filter((character:any) => character.id !== character_id  )
@@ -40,7 +40,7 @@ export const dashboardIndexSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
-      let updateState: Array<any> = state
+      let updateState: Array<dashboardIndexType> = state
       updateState = action.payload
       state = updateState
       return {

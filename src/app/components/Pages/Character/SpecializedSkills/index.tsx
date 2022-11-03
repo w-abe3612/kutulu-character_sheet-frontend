@@ -14,7 +14,7 @@ type Props = {
 const SpecializedSkill: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     let specializedSkill:Array<specializedSkillType> = useAppSelector( ( state : statesType ) => state.specializedSkill )
-    const urlParams = useParams<{ id: string,charactorId: string | undefined }>()
+    const urlParams = useParams<{ id:any ,charactorId:any }>()
     useEffect(()=>{
         if(props.isPage === 'edit') {
             dispatch(getSpecialzedSkills(urlParams.charactorId))

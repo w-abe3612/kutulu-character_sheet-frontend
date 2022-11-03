@@ -6,7 +6,6 @@ import FlavorInfo from './FlavorInfo'
 import CharacterInfo from './CharacterInfo'
 import CharacterPreference from './CharacterPreference'
 import PossessionItem from './PossessionItem'
-import { useCreateCharacter, useCharactorInfo } from '../../../queries/CharacterQuery'
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import { getCharacterId4Url } from '../../../functions/utility'
@@ -16,7 +15,6 @@ import { initializeKutuluInfo,getKutuluInfo } from '../../../reducers/kutuluInfo
 import { useParams } from 'react-router-dom'
 import { Header } from '../../Commons/Header'
 import { statesType } from '../../../config/type'
-
 
 type Props = {
     isPage: string

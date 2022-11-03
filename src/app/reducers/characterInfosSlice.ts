@@ -8,8 +8,8 @@ const initialState = initialCharacterInfo
 
 export const getCharacterInfo = createAsyncThunk(
   "getCharacterInfo",
-  async (id:any) => {
-    const test = await useCharactorInfo(id)
+  async (character_id:number) => {
+    const test = await useCharactorInfo(character_id)
     return test
   }
 );
@@ -26,14 +26,16 @@ export const characterInfoSlice = createSlice({
       return state
     },
     setCharacterInfoValue:(state, action: PayloadAction<any>) => {
-      let updateState: any = state
-      updateState[ action.payload.name ] = action.payload.value
+      //todo エラーが出てstateにtypeをつけられない
+      let updateState:any = state
+      let name:string  = action.payload.name
+      updateState[ name ] = action.payload.value
 
       state = updateState
       return state
     },
     setCharacterInfo:(state, action: PayloadAction<any>) => {
-      let updateState: any = state
+      let updateState:characterInfoType = state
       updateState = action.payload
 
       state = updateState

@@ -2,25 +2,15 @@ import { createSlice, PayloadAction ,createAsyncThunk} from '@reduxjs/toolkit'
 import initialKutuluInfo from './initialValue/KutuluInfo'
 import type { RootState } from './store'
 import { useKutuluInfo } from '../queries/CharacterQuery'
-import { setCheckedActionType  } from '../config/type'
+import { setCheckedActionType, kutuluInfoType  } from '../config/type'
 
-export interface kutuluInfoType {
-    character_title:string
-    injury_value:number
-    ability_value_max:number
-    ability_value_total:number
-    specialized_skill_max:number
-    specialized_skill_total:number
-    possession_item:string
-    character_preference:string
-}
 
 const initialState = initialKutuluInfo
 
 export const getKutuluInfo = createAsyncThunk(
   "getKutuluInfo",
-  async (id:any) => {
-    const test = await useKutuluInfo(id)
+  async (character_id:number) => {
+    const test = await useKutuluInfo(character_id)
     return test
   }
 );

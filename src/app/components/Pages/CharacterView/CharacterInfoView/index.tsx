@@ -1,25 +1,8 @@
 import React,{ useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
-import { characterInfoType } from '../../../../reducers/types'
 import ViewProfileIcon from '../../../Commons/ViewPage/viewProfileIcon'
 import Profiles from './Profiles'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
-import { initializeCharacterInfo,getCharacterInfo } from '../../../../reducers/characterInfosSlice'
-import { getCharacterId4Url } from '../../../../functions/utility'
 
-
-interface iconProps {
-    image_path:string
-    image_name:string
-}
-
-interface profilesProps {
-    player_name:string
-    player_character:string
-    character_title:string
-    injury_value:number
-}
 type Props = {
     characterTitle:string
     playerCharacter:string
@@ -31,7 +14,6 @@ type Props = {
 }
 
 const CharacterInfoView: React.FC<Props> = (props) => {
-    const dispatch = useAppDispatch()
     
     return (
         <SectionWrap title="個人情報" >

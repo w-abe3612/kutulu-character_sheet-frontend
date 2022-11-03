@@ -8,8 +8,8 @@ const initialState = initialAbilityValue
 
 export const getAbilityValue = createAsyncThunk(
   "getAbilityValue",
-  async (id:any) => {
-    const test = await useAbilityValues(id)
+  async (character_id:number) => {
+    const test = await useAbilityValues(character_id)
     return test
   }
 );
