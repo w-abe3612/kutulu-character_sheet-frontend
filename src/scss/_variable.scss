@@ -11,6 +11,23 @@ $breakpoints: (
   }
 }
 
+$colors: (
+    white:#fff,
+    section-title:#DEDDC8,
+    section-sub-title:#CDDCE4,
+    section-bg:#F9F8F6,
+    section-sub-bg:#EDE9E4,
+    header-bg:#464B4F,
+    current: #53AC8B,
+    accent: #AC536C,
+    text:#464B4F,
+    text-light:#464B4F,
+);
+
+@function colors($key) {
+  @return map-get($colors, $key);
+}
+
 @mixin button-reset {
   background-color: transparent;
   border: none;

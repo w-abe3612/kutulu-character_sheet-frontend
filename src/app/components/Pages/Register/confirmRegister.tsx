@@ -16,6 +16,7 @@ const ConfirmRegister: React.VFC = () => {
     const registerState:registerStatesType = useAppSelector((state: statesType) => state.registerState)
     const { handleSubmit, formState: { errors } } = useForm();
     const onSubmit = () => {
+        /*
         register.mutate(
             { 
                 name:registerState.username,
@@ -23,7 +24,10 @@ const ConfirmRegister: React.VFC = () => {
                 password:registerState.password,
                 password_confirmation:registerState.confirmation
             }
-        )
+        )*/
+
+        dispatch(setFormState({formState:'complete'}))
+        return navigate("/register/confirm/complete/")
     }
 
     const handleReInput = () => {

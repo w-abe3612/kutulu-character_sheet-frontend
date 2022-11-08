@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
-    useNavigate
+    useNavigate,
+    Link,
 } from "react-router-dom";
 import { setFormState, setrRegisterInputs } from '../../../reducers/registerSlice';
 import InputText from '../../Commons/SystemUseParts/inputText';
@@ -15,7 +16,6 @@ const InputRegister: React.FC = () => {
     const registerState:registerStatesType = useAppSelector((state:statesType) => state.registerState)
 
     const navigate = useNavigate();
-    // 初期化
     dispatch(setFormState({formState:'input'}))
 
     const { register, watch, handleSubmit, formState: { errors } } = useForm();
@@ -75,6 +75,10 @@ const InputRegister: React.FC = () => {
                             value: 254,
                             message: '254文字以下で入力してください。'
                         },
+                        minLength : {
+                            value: 8,
+                            message: '8文字以上で入力してください。'
+                        },
                         pattern:{
                             value: /[A-Za-z0-9]/,
                             message: '半角英数字で入力してください。'
@@ -90,6 +94,10 @@ const InputRegister: React.FC = () => {
                             value: 254,
                             message: '254文字以下で入力してください。'
                         },
+                        minLength : {
+                            value: 8,
+                            message: '8文字以上で入力してください。'
+                        },
                         pattern:{
                             value: /[A-Za-z0-9]/,
                             message: '半角英数字で入力してください。'
@@ -103,7 +111,7 @@ const InputRegister: React.FC = () => {
                     />
                     
                     <div>
-                        <p></p>
+                    <p>登録することで、<Link className="" to={ '/policy' }>利用規約、プライバシーポリシー</Link>、に同意するものとします。</p>
                     </div>
                     <button type="submit" className="btn">登録</button>
                 </form>

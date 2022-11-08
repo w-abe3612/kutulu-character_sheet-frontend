@@ -15,6 +15,14 @@ type Props = {
 const CharacterItem: React.FC<Props> = (props): JSX.Element => {
     const userPic = props.image_path + props.image_name
 
+    const date = new Date(props.updateded_at)
+    const year = date.getFullYear()
+    const month = date.getMonth()
+    const day = date.getDate()
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    const viewDate:string  = year + '年' +  month + '月' + day + '日' + hours + '時' + minutes + '分'
+
     return (
         <div key={'characterlist' + props.character_id} className="m-character">
             <div className="m-character__inner">
@@ -35,7 +43,7 @@ const CharacterItem: React.FC<Props> = (props): JSX.Element => {
                         </figure>
                     </div>
                     <div className="m-character__charactor-button">
-                        <span className="m-character__charactor-updateded_at" >保存:{props.updateded_at}</span>
+                        <span className="m-character__charactor-updateded_at" >保存:{viewDate}</span>
                         <ItemButtons
                             character_id={props.character_id}
                             character_id_hash= { props.character_id_hash }

@@ -1,10 +1,12 @@
 import React,{ useEffect } from 'react';
 import Router from './router'
-
 import { QueryClient, QueryClientProvider } from "react-query"
 import { useAppSelector, useAppDispatch } from '../reducers/hooks'
 import { isCheckLoggedIn,setLoggedIn }  from '../reducers/systemStateSlice';
 import type { systemStateType,statesType } from '../config/type'
+import { ToastContainer } from 'react-toastify';
+
+
 import crypto from 'crypto-js'
 
 const App: React.FC = () => {
@@ -58,6 +60,7 @@ const App: React.FC = () => {
             <div className='l-inner'>
                 <QueryClientProvider client={queryClient} >
                     <Router />
+                    <ToastContainer hideProgressBar={true} />
                 </QueryClientProvider>
             </div>
         </div>

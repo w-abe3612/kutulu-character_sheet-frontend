@@ -1,3 +1,47 @@
+/*
+        <>
+            <div className='m-header' >
+                <div className="header__inner">
+                    <div className="m-inner-top">
+                        <div className="m-inner-top__inner">
+                            <div className="m-header-logo">
+                                <Link to="/"><img /></Link>
+                            </div>
+
+                            {a(systemState)}
+                        </div>
+                    </div>
+
+                    {b(systemState)}
+                </div>
+            </div>
+            {c(systemState)}
+        </>
+*/
+
+.m-header {
+    content: '';
+    display: block;
+    width: 100%;
+
+    .header-inner {
+        width: 100%;
+        display: flex;
+        max-width: 1024px;
+        width: 100%;
+        margin: 0px auto;
+        justify-content: space-between;
+        align-items: center;
+        height: 54px;
+
+        .inner-top {
+
+        }
+        .inner-bottom {
+
+        }
+    }
+}
 
 
 .m-header {

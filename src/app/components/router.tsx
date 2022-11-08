@@ -16,8 +16,7 @@ import CharacterView from './Pages/CharacterView'
 import UserConfig from './Pages/UserConfig'
 import NotFoundPage from './Pages/NotFoundPage'
 import RedirectOnLogout from './Commons/redirectOnLogout'
-
-import axios from 'axios'
+import PrivacyPolicy from './Pages/privacyPolicy'
 
 const Router = () => {
     return (
@@ -53,6 +52,7 @@ const Router = () => {
                             </Route>
                         </Route>
                     </Route>
+                    <Route path="policy" element={<PrivacyPolicy/>} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </div>

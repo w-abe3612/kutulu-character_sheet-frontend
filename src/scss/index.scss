@@ -8,7 +8,12 @@
 @import "./modules/common/SheetParts/sentenceTextArea.scss";
 @import "./modules/common/SheetParts/profileIcon.scss";
 
-@import "./modules/common/inputText.scss";
+@import "./modules/common/SystemUseParts/systemUseInputPassword.scss";
+@import "./modules/common/SystemUseParts/systemUseInputText.scss";
+
+
+@import "./modules/common/header/index.scss";
+
 @import "./modules/common/textarea.scss";
 @import "./modules/header.scss";
 @import "./modules/slill_item.scss";
@@ -17,3 +22,5 @@
 @import "./modules/dashboard.scss";
 @import "./modules/config.scss";
 
+// おそらくwebpackのせいでここに置く必要がある
+@import 'react-toastify/dist/ReactToastify.css';

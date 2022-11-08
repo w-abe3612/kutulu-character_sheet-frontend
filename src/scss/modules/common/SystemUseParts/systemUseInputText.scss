@@ -1,18 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-
-interface inputPropsType {
-    label: string
-    name: string
-    register: any
-    required: any
-    error: any
-}
-
-type Props = inputPropsType
-
-
-const InputText: React.FC<Props> = (props): JSX.Element => (
+/*
     <div className="m-systemUseInputText" >
         <div className="input-group">
             <label className="input-label" >{props.label}</label>
@@ -24,6 +10,27 @@ const InputText: React.FC<Props> = (props): JSX.Element => (
             {props.error && <span className="input-error">{props.error.message}</span>}
         </div>
     </div>
-)
 
-export default InputText
+*/
+
+.m-systemUseInputText {
+    max-width:294px;
+    width:100%;
+    margin :0px auto;
+
+    .input-group{
+        margin:0px 0px 16px 0px;
+        .input-label{
+            content:'';
+        }
+
+        .input-text {
+            width:100%;
+        }
+
+        .input-error {
+            font-size:14px;
+            color:red;
+        }
+    }
+}
