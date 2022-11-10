@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 import { flavorInfoType } from '../../../../config/type'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../../Commons/SheetParts/inputTextInfo"
-import {initializeFlavorInfo,getFlavorInfos} from '../../../../reducers/flavorInfosSlice'
+import { initializeFlavorInfo, getFlavorInfos } from '../../../../reducers/flavorInfosSlice'
 import { useParams } from 'react-router-dom'
 import { statesType } from '../../../../config/type'
 
@@ -14,27 +14,29 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
 
     inputsElements = infoPrams.map((item) => {
         return (
-            <InputTextInfo
-                label={item.flavor_info_name}
-                name={item.flavor_info_param}
-                setClass=""
-                default={item.flavor_info_value}
-                required={{
-                    maxLength: {
-                        value: 12,
-                        message: '12文字以下で入力してください。'
-                    }
-                }}
-                setValueAction={{
-                    type:'flavorInfo',
-                }}
-            />
-        ) 
+            <li>
+                <InputTextInfo
+                    label={item.flavor_info_name}
+                    name={item.flavor_info_param}
+                    setClass=""
+                    default={item.flavor_info_value}
+                    required={{
+                        maxLength: {
+                            value: 12,
+                            message: '12文字以下で入力してください。'
+                        }
+                    }}
+                    setValueAction={{
+                        type: 'flavorInfo',
+                    }}
+                />
+            </li>
+        )
     })
 
     result = (
         <ul className="m-flaverInfos_wrap" >
-            { inputsElements }
+            {inputsElements}
         </ul>
     )
 
@@ -47,23 +49,25 @@ type Props = {
 
 const FlavorInfo: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
-    const flavorInfo: Array<flavorInfoType> = useAppSelector((state:statesType) => state.flavorInfo)
+    const flavorInfo: Array<flavorInfoType> = useAppSelector((state: statesType) => state.flavorInfo)
 
-    const entryInput:JSX.Element = entryInputs(flavorInfo)
-    const urlParams = useParams<{ id:any ,charactorId:any }>()
+    const entryInput: JSX.Element = entryInputs(flavorInfo)
+    const urlParams = useParams<{ id: any, charactorId: any }>()
 
-    useEffect(()=>{
-        if(props.isPage === 'edit') {
+    useEffect(() => {
+        if (props.isPage === 'edit') {
             dispatch(getFlavorInfos(urlParams.charactorId))
         } else {
             dispatch(initializeFlavorInfo())
         }
-    },[0])
+    }, [0])
 
     return (
-        <SectionWrap title="その他情報" >
-            <span>キャラクターのイメージをより鮮明にするための自由記入欄です。入力は任意です。</span>
-            { entryInput }
+        <SectionWrap
+            title="個人情報"
+            setClass='is-optional'
+            description='キャラクターのイメージをより鮮明にするための自由記入欄です。入力は任意です。' >
+            {entryInput}
         </SectionWrap>
     )
 }

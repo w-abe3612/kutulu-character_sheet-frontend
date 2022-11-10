@@ -3,9 +3,6 @@ import {
     BrowserRouter,
     Routes,
     Route,
-    Link,
-    RouteProps,
-    useLocation
 } from "react-router-dom";
 import { CharacterCreate, CharacterEdit } from './Pages/Character'
 import Home from './Pages/Home'

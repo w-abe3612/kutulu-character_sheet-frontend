@@ -3,10 +3,10 @@ import InputTextInfo from '../../../Commons/SheetParts/inputTextInfo'
 import CheckParameter from '../../../Commons/SheetParts/checkParameter'
 
 type Props = {
-    characterTitle:string
-    playerCharacter:string
-    playerName:string
-    injuryValue:number
+    characterTitle: string
+    playerCharacter: string
+    playerName: string
+    injuryValue: number
 }
 
 const Profiles: React.FC<Props> = (props) => {
@@ -25,7 +25,7 @@ const Profiles: React.FC<Props> = (props) => {
                     }
                 }}
                 setValueAction={{
-                    type:'characterInfo',
+                    type: 'characterInfo',
                 }}
             />
             <InputTextInfo
@@ -41,7 +41,7 @@ const Profiles: React.FC<Props> = (props) => {
                     }
                 }}
                 setValueAction={{
-                    type:'characterInfo',
+                    type: 'characterInfo',
                 }}
             />
             <InputTextInfo
@@ -57,17 +57,19 @@ const Profiles: React.FC<Props> = (props) => {
                     }
                 }}
                 setValueAction={{
-                    type:'kutuluInfo',
+                    type: 'kutuluInfo',
                 }}
             />
-            <CheckParameter
-                label="負傷"
-                setClass=""
-                itemName="injury_value"
-                itemValue={props.injuryValue}
-                seconds={3}
-                isReduser='injuryValue'
-            />
+            <div className="is-fit-injury">
+                <CheckParameter
+                    label="負傷"
+                    setClass="is-injury"
+                    itemName="injury_value"
+                    itemValue={props.injuryValue}
+                    seconds={3}
+                    isReduser='injuryValue'
+                />
+            </div>
         </div>
 
     )

@@ -1,8 +1,10 @@
 @import "./base/reset.scss";
-@import "./base/base.scss";
-@import "./layout/layout.scss";
+
+
 
 @import "./variable.scss";
+@import "./base/base.scss";
+@import "./layout/layout.scss";
 @import "./modules/common/SheetParts/inputTextInfo.scss";
 @import "./modules/common/SheetParts/checkParameter.scss";
 @import "./modules/common/SheetParts/sentenceTextArea.scss";
@@ -11,16 +13,20 @@
 @import "./modules/common/SystemUseParts/systemUseInputPassword.scss";
 @import "./modules/common/SystemUseParts/systemUseInputText.scss";
 
-
+@import "./modules/common/button.scss";
 @import "./modules/common/header/index.scss";
 
-@import "./modules/common/textarea.scss";
 @import "./modules/header.scss";
 @import "./modules/slill_item.scss";
 @import "./modules/acquisition_point.scss";
 @import "./modules/login.scss";
 @import "./modules/dashboard.scss";
 @import "./modules/config.scss";
+@import "./modules/register.scss";
+@import "./modules/privacyPolicy.scss";
+
+@import "./modules/characterInfo.scss";
+@import "./modules/flavorInfo.scss";
 
 // おそらくwebpackのせいでここに置く必要がある
 @import 'react-toastify/dist/ReactToastify.css';

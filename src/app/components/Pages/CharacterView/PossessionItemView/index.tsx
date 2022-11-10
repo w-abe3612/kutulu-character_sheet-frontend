@@ -8,7 +8,9 @@ import ViewTextArea from '../../../Commons/ViewPage/viewTextArea'
 const PossessionItemView: React.FC= (): JSX.Element => {
     let kutuluInfo:kutuluInfoType = useAppSelector( ( state : any ) => state.kutuluInfo )
     return (
-        <SectionWrap title="個人情報" >
+        <SectionWrap title="個人情報"
+        setClass=''
+        description='' >
             <ViewTextArea
                 name="possession_item"
                 value={ kutuluInfo.possession_item }

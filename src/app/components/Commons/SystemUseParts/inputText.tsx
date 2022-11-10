@@ -16,11 +16,13 @@ const InputText: React.FC<Props> = (props): JSX.Element => (
     <div className="m-systemUseInputText" >
         <div className="input-group">
             <label className="input-label" >{props.label}</label>
-            <input
-                type="text"
-                className="input-text"
-                {...props.register(props.name, props.required)}
-            />
+            <div className="input-wrap" >
+                <input
+                    type="text"
+                    className="input-text"
+                    {...props.register(props.name, props.required)}
+                />
+            </div>
             {props.error && <span className="input-error">{props.error.message}</span>}
         </div>
     </div>

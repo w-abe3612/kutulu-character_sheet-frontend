@@ -1,10 +1,9 @@
-import React, { useEffect,useState } from 'react'
+import React from 'react'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
     Navigate,
-    useLocation
 } from "react-router-dom";
-import { systemStateType,registerStatesType } from '../../../config/type';
+import { systemStateType, registerStatesType } from '../../../config/type';
 import InputRegister from './inputRegister'
 import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
@@ -38,7 +37,6 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
         return <Navigate to="/register" replace={true} />
     }
 
-    //return result
     return (
         <>
             <Header />

@@ -11,7 +11,10 @@ import InputText from '../../Commons/SystemUseParts/inputText';
 import InputPassword from '../../Commons/SystemUseParts/inputPassword';
 import { Header } from '../../Commons/Header'
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
+import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton'
 
+
+//todo 実際に運用フェーズに入ったら攻撃されるだろうから、rechapture入れる
 const Login: React.FC = () => {
     const login = useLogin()
 
@@ -26,12 +29,14 @@ const Login: React.FC = () => {
     return (
         <>
             <Header />
-
             {systemState.isLoggedIn === '1' && (
                 <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
             )}
-            <NormalWrap  title="ログイン">
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <NormalWrap  
+                title="ログイン"
+                setClass='is-login-page'
+            >
+                <form  autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <InputText
                         label="メールアドレス"
                         name="email"
@@ -66,10 +71,7 @@ const Login: React.FC = () => {
                         }}
                         error={errors.password}
                     />
-                    <div>
-                        <p></p>
-                    </div>
-                    <button type="submit" className="btn">ログイン</button>
+                    <SystemUseSubmitButton text="ログイン"/>
                 </form>
             </NormalWrap>
         </>

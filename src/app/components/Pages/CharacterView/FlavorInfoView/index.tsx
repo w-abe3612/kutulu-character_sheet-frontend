@@ -55,8 +55,9 @@ const FlavorInfoView: React.FC = () => {
     },[0])
 
     return (
-        <SectionWrap title="その他情報" >
-            <span>キャラクターのイメージをより鮮明にするための自由記入欄です。入力は任意です。</span>
+        <SectionWrap title="個人情報"
+        setClass=''
+        description='キャラクターのイメージをより鮮明にするための自由記入欄です。入力は任意です。' >
             { entryInput }
         </SectionWrap>
     )

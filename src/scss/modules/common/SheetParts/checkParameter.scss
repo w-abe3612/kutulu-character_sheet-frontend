@@ -1,4 +1,10 @@
 .m-checkParameter {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+
 
     .input-group {
         display: flex;
@@ -6,8 +12,11 @@
         height: 32px;
         width: 100%;
         background-color: #D9D9D9;
-        border-radius: 4px;
-        margin: 00px 10px 10px 0px;
+        
+        margin: 0px 10px 10px 0px;
+        &.is-injury{
+            margin: 0px 0px 0px 0px;
+        }
     }
 
     .input-title {
@@ -56,6 +65,7 @@
             border-radius: 50%;
             border: solid 2px #424424;
             background: transparent;
+            cursor: pointer;
         }
     }
 

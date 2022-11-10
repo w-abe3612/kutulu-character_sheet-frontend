@@ -18,7 +18,9 @@ const SpecializedSkillView: React.FC = () => {
     },[0])
 
     return (
-        <SectionWrap  title="専門分野">
+        <SectionWrap  title="個人情報"
+        setClass=''
+        description=''>
             <AcquisitionPoint />
             <AbilityItem skillItems={ specializedSkill }/>
         </SectionWrap>

@@ -16,7 +16,10 @@ type Props = {
 
 const CharacterInfo: React.FC<Props> = (props) => {
     return (
-        <SectionWrap title="個人情報" >
+        <SectionWrap 
+            title="個人情報"
+            setClass=''
+            description='' >
             <div className="m-characterInfo">
                 <ProfileIcon
                     image_path={props.image_path}

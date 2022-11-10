@@ -1,9 +1,7 @@
-import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
+import React,{useEffect} from 'react';
 import { useLocation } from "react-router-dom"
 import { useVerify  } from "../../../queries/RegisterQuery"
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-import { setFormState, setrRegisterInputs,setVerifyFlg } from '../../../reducers/registerSlice';
 import {registerStatesType,statesType} from '../../../config/type'
 
 const Verify: React.FC = () => {

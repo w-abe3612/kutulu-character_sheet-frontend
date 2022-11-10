@@ -50,7 +50,9 @@ const AbilityValue: React.FC = () => {
     },[0])
 
     return (
-        <SectionWrap title="個人情報" >
+        <SectionWrap title="個人情報"
+        setClass=''
+        description='' >
             <AcquisitionPoint />
             <span className="">パッシブスキル</span>
             <AbilityItem skillItems = {passiveSkill} />

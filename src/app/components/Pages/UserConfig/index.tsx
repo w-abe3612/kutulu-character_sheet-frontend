@@ -17,7 +17,9 @@ const UserConfig: React.FC = ( props ) => {
     return (
         <>
             <Header />
-            <SectionWrap title="ユーザー情報設定画面">
+            <SectionWrap title="プライバシー・ポリシー"
+                    setClass=''
+                    description=''>
                 <PreferenceList />
             </SectionWrap>
         </>
