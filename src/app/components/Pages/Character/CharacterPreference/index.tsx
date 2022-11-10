@@ -12,9 +12,9 @@ const CharacterPreference: React.FC<Props> = (props): JSX.Element => {
     let kutuluInfo: kutuluInfoType = useAppSelector((state: statesType) => state.kutuluInfo)
     return (
         <SectionWrap
-            title="個人情報"
+            title="キャラクター・プロフィール"
             setClass='is-optional'
-            description='' >
+            description='キャラクターの性格や、経験してきた事、設定等を書く為の欄です。入力は任意になります。2000字までしか入力できないから、凝りすぎるとオーバーしちゃうかも。' >
             <SentenceTextArea
                 name="character_preference"
                 value={kutuluInfo.character_preference}

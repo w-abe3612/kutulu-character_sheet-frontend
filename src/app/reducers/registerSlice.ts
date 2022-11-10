@@ -37,17 +37,21 @@ export const registerStateSlice = createSlice({
 
         return state
     },
-    setVerifyFlg:(state, action: PayloadAction<any>) => {
+    clearRegisterInputs:(state) => {
       let updateState: registerStatesType = state
-      updateState.verifyFlg    = action.payload.verifyFlg
-      state = updateState
 
+      updateState.username     = ''
+      updateState.email        = ''
+      updateState.password     = ''
+      updateState.confirmation = ''
+
+      state = updateState
       return state
     }
   },
 })
 
-export const { setFormState, setrRegisterInputs, setVerifyFlg } = registerStateSlice.actions
+export const { setFormState, setrRegisterInputs,clearRegisterInputs } = registerStateSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = ( state: RootState ) => registerStateSlice.actions

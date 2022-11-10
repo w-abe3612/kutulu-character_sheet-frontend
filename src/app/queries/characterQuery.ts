@@ -1,12 +1,6 @@
 import * as api from "../api/characterApi"
-import {
-    useNavigate
-} from "react-router-dom";
-import { AxiosError } from 'axios'
-import { useQuery, useMutation, useQueryClient } from "react-query"
-import { useAppSelector,useAppDispatch } from '../reducers/hooks'
-import { setDashboard2Users } from '../reducers/dashboardIndex';
-
+import {  useMutation } from "react-query"
+import { toast } from 'react-toastify'
 
 
 const useCharacters  = () => {
@@ -35,33 +29,39 @@ const useSpecialzedSkills = (id:any) => {
 
 
 const useDeleteCharacter  = () => {
-    let a:any = useMutation( (id:any)=> api.deleteCharacter(id) , {
+    let response:any = useMutation( (id:any)=> api.deleteCharacter(id) , {
         onSuccess: (user) => {
+            toast.success("キャラクターを削除しました。")
         },
         onError:(e) => {
+            toast.error("キャラクターの削除に失敗しました。")
         },
     })
-    return a
+    return response
 }
 
 const useCreateCharacter = () => {
-    let a:any = useMutation( (infos:any)=> api.createCharacter(infos) , {
+    let response:any = useMutation( (infos:any)=> api.createCharacter(infos) , {
         onSuccess: (user) => {
+            toast.success("キャラクターを作成しました。")
         },
         onError:(e) => {
+            toast.error("キャラクターの作成に失敗しました。")
         },
     })
-    return a
+    return response
 }
 
 const useEditCharacter = () => {
-    let a:any = useMutation( (infos:any)=> api.updateCharacter(infos) , {
+    let response:any = useMutation( (infos:any)=> api.updateCharacter(infos) , {
         onSuccess: (user) => {
+            toast.success("キャラクターを編集しました。")
         },
         onError:(e) => {
+            toast.error("キャラクターの編集に失敗しました。")
         },
     })
-    return a
+    return response
 }
 
 

@@ -18,7 +18,7 @@ module.exports = {
     entry: {
         // コンパイル対象のファイルを指定
         'index': path.resolve(__dirname, "./src/app/index.tsx"),
-        'index.css': path.resolve(__dirname, './src/scss/index.scss')
+        'index.css': path.resolve(__dirname, './src/resources/scss/index.scss')
     },
 
     devServer: {
@@ -42,12 +42,31 @@ module.exports = {
                     'css-loader',
                     'postcss-loader', // オプションはpostcss.config.jsで指定
                     'sass-loader',
-                    // 下から順にコンパイル処理が実行されるので、記入順序に注意
                 ]
             },
             {
                 test: /\.(jpg|png)$/,
-                loader: 'url-loader'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ]
             },
             {
                 // 拡張子 .ts もしくは .tsx の場合

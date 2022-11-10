@@ -23,17 +23,19 @@ const Dashboard: React.FC = () => {
         <>
             <Header />
             <SectionWrap title="キャラ一覧" >
-                {dashboradIndex.length > 0 || Object.values(dashboradIndex).map((character: dashboardIndexType) => {
-                    return <CharacterItem
-                        key={'dashboradIndex' + character.id }
-                        character_id={character.id}
-                        player_character={character.player_character}
-                        image_path="../img/"
-                        image_name="dammyUser.png"
-                        updateded_at={character.updated_at}
-                        character_id_hash={character.public_page_token}
-                    />
-                })}
+                <ul className="m-dashborad-list">
+                    {dashboradIndex.length > 0 || Object.values(dashboradIndex).map((character: dashboardIndexType) => {
+                        return <CharacterItem
+                            key={'dashboradIndex' + character.id}
+                            character_id={character.id}
+                            player_character={character.player_character}
+                            image_path="../img/"
+                            image_name="dammyUser.png"
+                            updateded_at={character.updated_at}
+                            character_id_hash={character.public_page_token}
+                        />
+                    })}
+                </ul>
             </SectionWrap>
         </>
     )

@@ -1,0 +1,34 @@
+/*
+        <div className="m-preferenceList">
+            <ul className="m-preferenceList__inner">
+                <li className="m-list-basic m-list-li">キャラ出力</li>
+                <li className="m-button-email m-list-li">キャラ出力</li>
+                <li className="m-button-password m-list-li">削除</li>
+            </ul>
+        </div>
+*/
+
+.m-preferenceList {
+    display:block;
+    &__inner {
+        display:flex;
+        justify-content:flex-end;
+        list-style: none;
+        .m-list-li {
+            @include button-reset;
+            display:inline-block;
+            height: 32px;
+            width:-moz-fit-content;
+            width:fit-content;
+            padding:0px 10px;
+            line-height: 2;
+            font-size:14px;
+            text-align: center;
+            margin: 0px 10px 0px 0px;
+            border-radius: 4px;
+            background-color:transparent;
+            border: solid 1px #53AC8B;
+            color: #53AC8B;
+        }
+    }
+}

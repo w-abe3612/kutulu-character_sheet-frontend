@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useForm } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
     useNavigate
 } from "react-router-dom";
-import { setFormState, setrRegisterInputs, setVerifyFlg } from '../../../reducers/registerSlice';
-import { useRegister } from "../../../queries/RegisterQuery"
+import { setFormState} from '../../../reducers/registerSlice';
+
 import { registerStatesType, statesType } from '../../../config/type'
 import { SystemUseConfirmationButton } from '../../Commons/SystemUseParts/submitButton'
 import ConfirmInputedText from '../../Commons/SystemUseParts/confirmInputedText'
@@ -16,20 +15,13 @@ import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 const ConfirmRegister: React.VFC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch()
-    const register = useRegister()
+
     const registerState: registerStatesType = useAppSelector((state: statesType) => state.registerState)
+
     const { handleSubmit, formState: { errors } } = useForm();
     const onSubmit = () => {
-        /*
-        register.mutate(
-            { 
-                name:registerState.username,
-                email:registerState.email,
-                password:registerState.password,
-                password_confirmation:registerState.confirmation
-            }
-        )*/
 
+        // ここでは、storeに入れるだけ
         dispatch(setFormState({ formState: 'complete' }))
         return navigate("/register/confirm/complete/")
     }

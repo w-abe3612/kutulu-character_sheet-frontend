@@ -24,9 +24,9 @@ const SpecializedSkill: React.FC<Props> = (props) => {
     },[0])
 
     return (
-        <SectionWrap  title="個人情報"
+        <SectionWrap  title="専門分野"
         setClass=''
-        description=''>
+        description='' >
             <AcquisitionPoint />
             <AbilityItem skillItems={ specializedSkill }/>
         </SectionWrap>

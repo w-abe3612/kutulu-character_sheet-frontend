@@ -1,0 +1,26 @@
+.m-sentenceInput {
+    display:block;
+    width:100%;
+    .input-group {
+        display:inline-block;
+        height:auto;
+        width:100%;
+    }
+    .input-textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        font: inherit;
+        outline: none;
+        resize: none;
+    
+        background-color: #ffffff;
+        height: 300px;
+        width:100%;
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+}

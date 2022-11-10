@@ -1,0 +1,48 @@
+
+.is-register-page{
+    .register-description{
+        margin:0px 0px 10px 0px;
+    }
+}
+
+/*
+        <NormalWrap
+            title="ご登録ありがとうございます"
+            setClass='is-thanks-complete'
+        >
+            <div className="inner-text">
+                <p>ご登録ありがとうございます。</p>
+                <p>まだ、仮登録となっております、メールにて登録ページの案内がございますので、そのリンクを踏んでいただき初めて完了となります。</p>
+            </div>
+        </NormalWrap>
+*/
+
+/*
+        <NormalWrap
+            title="ご登録ありがとうございます"
+            setClass='is-thanks-verify'
+        >
+            <div className="inner-text">
+                <p className=''>登録が完了されました、これよりログインが可能になります。</p>
+
+                <p className=''>久遠に臥したるもの死することなく<br/>
+                怪異なる永劫の内には死すら終焉を迎えん</p>
+
+                <p className=''>深宇宙の冒涜的な真実をご堪能ください。</p>
+            </div>
+        </NormalWrap>
+*/
+
+
+.is-thanks-verify,
+.is-thanks-complete {
+    .inner-text {
+        text-align:center;
+        .text {
+            margin:0px 0px 16px 0px;
+           &.is-horror {
+            content:'';
+           }
+        }
+    }
+}

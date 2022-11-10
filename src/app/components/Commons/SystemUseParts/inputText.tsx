@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import { useFormContext } from "react-hook-form";
 
-interface inputPropsType {
+type Props = {
     label: string
     name: string
-    register: any
+    setClass: string
+    default:string
     required: any
-    error: any
 }
 
-type Props = inputPropsType
+const InputText: React.FC<Props> = (props): JSX.Element => {
 
+    const { register, formState, setValue } = useFormContext();
+    const errorMessage:any = formState.errors[props.name]?.message ? formState.errors[props.name]?.message : '';
 
-const InputText: React.FC<Props> = (props): JSX.Element => (
-    <div className="m-systemUseInputText" >
-        <div className="input-group">
-            <label className="input-label" >{props.label}</label>
-            <div className="input-wrap" >
-                <input
-                    type="text"
-                    className="input-text"
-                    {...props.register(props.name, props.required)}
-                />
+    useEffect(()=> {
+        setValue( props.name, props.default !== ''? props.default: '' )
+    },[props])
+
+    return (
+        <div className="m-systemUseInputText" >
+            <div className="input-group">
+                <label className="input-label" >{props.label}</label>
+                <div className="input-wrap" >
+                    <input
+                        type="text"
+                        className="input-text"
+                        { ...register(props.name, props.required)}
+                    />
+                </div>
+                { errorMessage && <span className="error-message" >{ errorMessage }</span>}
             </div>
-            {props.error && <span className="input-error">{props.error.message}</span>}
         </div>
-    </div>
-)
+    )
+
+}
 
 export default InputText

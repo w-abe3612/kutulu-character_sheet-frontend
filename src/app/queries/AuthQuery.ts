@@ -13,7 +13,7 @@ const useLogin = () => {
     // 何故か変数にuseMutationの返り値を渡すとうまくいく、returnに渡すとうまくいかない
     const dispatch = useAppDispatch()
 
-    let a:any = useMutation( api.login , {
+    let response:any = useMutation( api.login , {
         onSuccess: (user) => {
             const loggedinflg = {
                 isLoggedIn:'1',
@@ -24,24 +24,26 @@ const useLogin = () => {
 
             // ログインの情報を保持する
             dispatch(setLoggedIn(loggedinflg))
+            toast.success("ログインしました。")
         },
         onError:(e) => {
-            console.log(e)
+            toast.error("ログインに失敗しました。")
         },
     })
-    return a
+    return response
 }
 
 const useLogout = () => {
     const dispatch = useAppDispatch()
 
-
     return useMutation( api.logout , {
         onSuccess: (user)=>{
             // この間にエラー時判定が入るはず
             dispatch(setLogout())
+            toast.success("ログアウトしました。")
         },
         onError:() => {
+            toast.error("ログアウトに失敗しました。")
         }
     })
 }

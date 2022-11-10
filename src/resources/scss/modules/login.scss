@@ -1,0 +1,25 @@
+.button-reset {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+.m-login {
+    max-width:476px;
+    width:100%;
+    background-color:#F2F1F1;
+    margin: 40px auto 0px auto;
+    &__inner{
+        padding:16px;
+    }
+
+    form{
+        max-width:294px;
+        width:100%;
+        margin :0px auto;
+    }
+
+}

@@ -55,7 +55,7 @@ const AbilityValue: React.FC<Props> = (props) => {
 
     return (
         <SectionWrap 
-            title="個人情報"
+            title="能力値"
             setClass=''
             description=''
         >

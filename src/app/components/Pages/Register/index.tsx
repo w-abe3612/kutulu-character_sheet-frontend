@@ -20,11 +20,11 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
     const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
 
     let result = <></>
-
+/*
     if ( systemState.isLoggedIn === '1' ) {
         return <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
     }
-
+*/
     if ( urlNest === 'input' ) {
         result = <InputRegister />
     } else if(urlNest === 'verify') {

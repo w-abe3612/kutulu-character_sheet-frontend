@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: inherit;
+}
+
+body {
+    font-size:16px;
+    line-height:1.5;
+    color: #424242;
+    font-family: "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+
+}
+
+input {
+    outline: none;
+    border: none;
+    height:32px;
+    &:focus {
+        outline: none;
+    }
+    &:-webkit-autofill {
+        box-shadow: 0 0 0 1000px white inset;
+    }
+}
+
+ul {
+    list-style: none;
+}

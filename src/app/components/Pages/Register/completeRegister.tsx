@@ -1,23 +1,46 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
     useNavigate
 } from "react-router-dom";
-import { useAppDispatch } from '../../../reducers/hooks'
-import { setFormState } from '../../../reducers/registerSlice';
+import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import { setFormState, clearRegisterInputs } from '../../../reducers/registerSlice';
+import { useRegister } from "../../../queries/RegisterQuery"
+import { registerStatesType, statesType } from '../../../config/type'
+import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 
-const CompleteRegister: React.VFC = () => {
+const CompleteRegister: React.FC = () => {
     const dispatch = useAppDispatch()
+    const registerState: registerStatesType = useAppSelector((state: statesType) => state.registerState)
     const navigate = useNavigate();
+    const register = useRegister()
 
-    useEffect(()=> {
+    useEffect(() => {
+        /*
+        register.mutate(
+            {
+                name: registerState.username,
+                email: registerState.email,
+                password: registerState.password,
+                password_confirmation: registerState.confirmation
+            }
+        )*/
         setTimeout(() => {
-            dispatch(setFormState({formState:'input'}))
+            dispatch(setFormState({ formState: 'input' }))
+            dispatch(clearRegisterInputs())
             navigate("/")
         }, 5000)
-    },[0])
+    }, [0])
 
     return (
-        <div>Complete</div>
+        <NormalWrap
+            title="ご登録ありがとうございます"
+            setClass='is-thanks-complete'
+        >
+            <div className="inner-text">
+                <p className="text">ご登録ありがとうございます。</p>
+                <p className="text">まだ、仮登録となっております、メールにて登録ページの案内がございますので、そのリンクを踏んでいただき初めて完了となります。</p>
+            </div>
+        </NormalWrap>
     )
 }
 
