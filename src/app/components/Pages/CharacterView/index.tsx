@@ -1,6 +1,5 @@
-import React, { ReactText } from 'react';
-import ReactDOM from 'react-dom';
-import { ViewerHeader } from '../../Commons/Header'
+import React from 'react';
+import ViewerHeader from '../../Commons/Header/viewerHeader'
 import AbilityValueView from './AbilityValueView'
 import SpecializedSkillsView from './SpecializedSkillsView'
 import FlavorInfoView from './FlavorInfoView'

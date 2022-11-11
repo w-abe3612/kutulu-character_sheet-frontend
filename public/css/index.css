@@ -1738,7 +1738,7 @@ ul {
   line-height: 2;
   text-align: center;
   margin: 0px 0px 0px 10px;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #AC536C;
 }
 .m-header__inner .m-inner-top__inner .m-menu .m-register-btn a {
@@ -1762,7 +1762,7 @@ ul {
   line-height: 2;
   text-align: center;
   margin: 0px 0px 0px 10px;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #53AC8B;
 }
 .m-header__inner .m-inner-top__inner .m-menu .m-login-btn a {
@@ -1784,7 +1784,7 @@ ul {
   color: #fff;
   color: #fff;
   border: solid #fff 1px;
-  border-radius: 4px;
+  border-radius: 3px;
   padding: 5px 10px;
 }
 
@@ -1959,7 +1959,7 @@ ul {
     height: 32px;
     width: 142px;
     border: solid #464B4F 1px;
-    border-radius: 4px;
+    border-radius: 3px;
     padding: 3px 10px;
   }
 }
@@ -1986,10 +1986,12 @@ ul {
     display: block;
     height: 32px;
     width: 32px;
-    border-radius: 4px;
+    border-radius: 3px;
     background-color: #AC536C;
     color: #fff;
     margin: 0px 0px 0px 10px;
+    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -2167,7 +2169,7 @@ ul {
 .m-dashboard-buttons li.edit, .m-dashboard-buttons li.view {
   content: "";
   text-align: center;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #53AC8B;
   border: solid 1px #53AC8B;
   color: #fff;
@@ -2193,7 +2195,7 @@ ul {
 }
 .m-dashboard-buttons li.delete {
   text-align: center;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #AC536C;
   border: solid 1px #AC536C;
   color: #ffffff;
@@ -2209,7 +2211,7 @@ ul {
 }
 .m-dashboard-buttons li.output {
   text-align: center;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: #53AC8B;
   border: solid 1px #53AC8B;
   -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);

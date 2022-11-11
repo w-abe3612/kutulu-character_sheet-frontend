@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 
 const PrivacyPolicy: React.FC = () => {

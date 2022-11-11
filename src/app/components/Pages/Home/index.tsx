@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 import CharacterItem from '../../Pages/Dashboard/characterItem'
 import SectionWrap from '../../Commons/Layout/sectionWrapDash'
 

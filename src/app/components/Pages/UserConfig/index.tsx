@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import SectionWrap from "../../Commons/Layout/sectionWrap"
 import PreferenceList from "./preferenceList"
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 
 const UserConfig: React.FC = ( props ) => {
 

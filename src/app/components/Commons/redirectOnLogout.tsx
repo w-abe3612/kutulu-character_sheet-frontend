@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode, useEffect } from "react"
 import {
     Navigate
 } from "react-router-dom";
@@ -10,11 +10,15 @@ type redirectOnLogoutProps = {
 };
 
 const RedirectOnLogout: React.FC<redirectOnLogoutProps> = (props) => {
-    let isLoggedIn: string= useAppSelector((state: statesType) => state.systemState.isLoggedIn)
+    let systemState:systemStateType = useAppSelector((state: statesType) => state.systemState)
+
     return (
         <>
-            { isLoggedIn == '0' && (
-                <Navigate to="/" replace={true} />
+            { ( systemState.userId === null  
+                && systemState.userName === '' 
+                && systemState.public_page_token === '' ) 
+                    && (
+                        <Navigate to="/" replace={true} />
             )}
             {props.children}
         </>

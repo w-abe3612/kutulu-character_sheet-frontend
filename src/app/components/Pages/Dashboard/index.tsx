@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import CharacterItem from './characterItem'
 import SectionWrap from "../../Commons/Layout/sectionWrapDash"
 import { getCharacters, deleteCharacterItem } from '../../../reducers/dashboardIndex';
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 import { systemStateType, statesType, dashboardIndexType } from '../../../config/type'
 
 const Dashboard: React.FC = () => {

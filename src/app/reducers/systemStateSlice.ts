@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction,createAsyncThunk,current } from '@reduxjs/toolkit'
 import type { RootState } from './store'
-import type { systemStateType } from '../config/type'
+import { systemStateType } from '../config/type'
 import { useCheckLoggedIn } from '../queries/AuthQuery'
-import crypto from 'crypto-js';
 
 const initialState:systemStateType = {
-    isLoggedIn: '0',
-    isPage:'',
     userId: null,
     userName: '',
     public_page_token:'',
@@ -27,7 +24,6 @@ export const systemStateSlice = createSlice({
         setLoggedIn: (state, action: PayloadAction<any>) => {
             let updateState: systemStateType = state
 
-            updateState.isLoggedIn = action.payload.isLoggedIn
             updateState.userId = action.payload.userId
             updateState.userName = action.payload.userName
             updateState.public_page_token = action.payload.public_page_token
@@ -37,7 +33,6 @@ export const systemStateSlice = createSlice({
         setLogout:(state) => {
             let updateState: systemStateType = state
 
-            updateState.isLoggedIn        = '0'
             updateState.userId            = null
             updateState.userName          = ''
             updateState.public_page_token = ''
@@ -50,10 +45,9 @@ export const systemStateSlice = createSlice({
         builder.addCase(isCheckLoggedIn.fulfilled, (state, action) => {
             let updateState: systemStateType = state
 
-                updateState.userId             = action.payload.id
-                updateState.userName           = action.payload.name
-                
-                updateState.public_page_token  = action.payload.public_page_token
+                updateState.userId             = action.payload.data.id
+                updateState.userName           = action.payload.data.name
+                updateState.public_page_token  = action.payload.data.public_page_token
            
 
             return updateState

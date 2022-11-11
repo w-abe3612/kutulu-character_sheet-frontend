@@ -18,8 +18,6 @@ export interface sentenceTextAreaType {
 
 // システムに関わる変数、
 export interface systemStateType {
-    isPage: string
-    isLoggedIn: string
     userId: number | null | string
     userName: string
     public_page_token: string | null

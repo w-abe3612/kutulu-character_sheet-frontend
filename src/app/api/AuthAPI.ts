@@ -9,14 +9,17 @@ const getUser = async () => {
     return data
 }
 
-
 const login = async ({ email, password }: { email: string, password: string }) => {
-    const { data } = await axios.post<any>(
-        `http://localhost:80/api/v1/login`,
-        { email, password }
-    )
+    const { data } = await axios.get("http://localhost:80/sanctum/csrf-cookie").then( async (res) => {
+         return await axios.post<any>(
+            `http://localhost:80/api/v1/login`,
+            { email, password }
+        )
+    })
     return data
 }
+
+
 
 const logout = async () => {
     const { data } = await axios.post<any>(`http://localhost:80/api/v1/logout`)

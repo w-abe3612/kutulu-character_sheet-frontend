@@ -9,7 +9,7 @@ import {
 import { systemStateType, statesType } from '../../../config/type';
 import InputText from '../../Commons/SystemUseParts/inputText';
 import InputPassword from '../../Commons/SystemUseParts/inputPassword';
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton'
 
@@ -29,7 +29,9 @@ const Login: React.FC = () => {
     return (
         <>
             <Header />
-            {systemState.isLoggedIn === '1' && (
+            { ( systemState.userId !== null  
+                && systemState.userName !== '' 
+                && systemState.public_page_token !== '' ) && (
                 <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
             )}
             <NormalWrap

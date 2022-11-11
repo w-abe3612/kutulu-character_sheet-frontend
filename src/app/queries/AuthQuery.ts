@@ -16,7 +16,6 @@ const useLogin = () => {
     let response:any = useMutation( api.login , {
         onSuccess: (user) => {
             const loggedinflg = {
-                isLoggedIn:'1',
                 userId: user.id,
                 userName: user.name,
                 public_page_token: user.public_page_token

@@ -47,7 +47,7 @@
                         line-height: 2;
                         text-align: center;
                         margin: 0px 0px 0px 10px;
-                        border-radius: 4px;
+                        border-radius: 3px;
                         background-color: #AC536C;
 
                         a {
@@ -74,7 +74,7 @@
                         line-height: 2;
                         text-align: center;
                         margin: 0px 0px 0px 10px;
-                        border-radius: 4px;
+                        border-radius: 3px;
                         background-color: #53AC8B;
 
                         a {
@@ -100,7 +100,7 @@
             color: #fff;
             color: #fff;
             border: solid #fff 1px;
-            border-radius: 4px;
+            border-radius: 3px;
             padding: 5px 10px;
         }
     }
@@ -298,7 +298,7 @@
             height:32px;
             width: 142px;
             border: solid colors(text) 1px;
-            border-radius: 4px;
+            border-radius: 3px;
             padding: 3px 10px;
         }
 
@@ -317,11 +317,11 @@
             display:block;
             height:32px;
             width:32px;
-            border-radius: 4px;
+            border-radius: 3px;
             background-color: #AC536C;
             color:#fff;
             margin: 0px 0px 0px 10px;
-            
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
         }
     }
 }

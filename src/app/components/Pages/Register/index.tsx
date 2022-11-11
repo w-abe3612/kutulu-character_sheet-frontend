@@ -8,7 +8,7 @@ import InputRegister from './inputRegister'
 import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
 import Verify from './verifyRegister';
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 
 type Props = {
     urlNest: string
@@ -20,11 +20,13 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
     const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
 
     let result = <></>
-/*
-    if ( systemState.isLoggedIn === '1' ) {
+
+    if ( systemState.userId !== null  
+            && systemState.userName !== '' 
+            && systemState.public_page_token !== '' ) {
         return <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
     }
-*/
+
     if ( urlNest === 'input' ) {
         result = <InputRegister />
     } else if(urlNest === 'verify') {

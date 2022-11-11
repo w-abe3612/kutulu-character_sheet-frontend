@@ -13,7 +13,7 @@ import { submithandler } from '../../../functions/submit'
 import { initializeCharacterInfo,getCharacterInfo } from '../../../reducers/characterInfosSlice'
 import { initializeKutuluInfo,getKutuluInfo } from '../../../reducers/kutuluInfoSlice'
 import { useParams } from 'react-router-dom'
-import { Header } from '../../Commons/Header'
+import Header from '../../Commons/Header'
 import { statesType } from '../../../config/type'
 
 type Props = {
