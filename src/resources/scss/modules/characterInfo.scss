@@ -1,5 +1,9 @@
 .m-characterInfo {
     display:flex;
+    flex-direction:column;
+    @include mq(sm) {
+        flex-direction:row;
+    }
     .is-fit-injury {
         width:244px;
         height:32px;

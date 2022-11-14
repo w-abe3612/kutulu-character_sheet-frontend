@@ -7,6 +7,7 @@ import systemStateReducer from './systemStateSlice';
 import registerStateReducer from './registerSlice';
 import dashboardIndexReducer from './dashboardIndex';
 import kutuluInfoReducer from './kutuluInfoSlice';
+import navigationInfoReducer from './navigationInfoSlice';
 
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
     systemState:systemStateReducer,
     registerState:registerStateReducer,
     dashboard:dashboardIndexReducer,
-    kutuluInfo:kutuluInfoReducer
+    kutuluInfo:kutuluInfoReducer,
+    navigationInfo:navigationInfoReducer
   },
 })
 

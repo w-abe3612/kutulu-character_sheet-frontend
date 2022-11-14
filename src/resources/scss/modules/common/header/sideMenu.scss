@@ -1,0 +1,244 @@
+/*
+            <div
+                className="m-side-menu"
+            >
+                <div className="menu-inner">
+                    <p className="user-welcome"><p>ようこそ</p>{ systemState.userName } <span>さん</span></p>
+                    <nav className="link-navigation">
+                        <ul className="navigation-menu">
+                            <li><Link to="/">トップへ戻る</Link></li>
+                            <li ><Link to={'/user/' + systemState.userId + '/kutulu/'} >ダッシュボード</Link></li>
+                            <li ><Link to={'/user/' + systemState.userId + '/kutulu/create/'} >新規作成</Link></li>
+                            <li id="is-logout">Logout</li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+
+*/
+
+.m-side-menu {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0);
+    transition: all 0.2s ease;
+
+    @include mq(md) {
+        display: none;
+    }
+
+    .menu-inner {
+        width: calc(100% - 80px);
+        position: absolute;
+        top: 100px;
+        height: calc(100% - 100px);
+        padding: 24px 8px 0px 16px;
+        opacity: 1;
+        background-color: #F4F1ED;
+        right: -100%;
+        transition: all 0.2s ease;
+
+        .user-welcome {
+            position:relative;
+            padding: 8px 8px 8px 16px;
+            font-size: 14px;
+            border-radius: 3px;
+            margin: 0px 8px 32px 0px;
+
+            .user-name {
+                font-size: 18px;
+                color:#2D5763;
+            }
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0px;
+                width: 6px;
+                height: 100%;
+                border-radius: 2px;
+                background-color: #2D5763;
+            }
+        }
+
+        .link-navigation {
+            list-style: none;
+
+            li {
+                position: relative;
+
+
+                a {
+                    display: block;
+                    padding: 16px 0px;
+                    text-decoration: none;
+                    line-height: 1;
+                    color: #424242;
+
+
+                }
+
+                &.left-triangle-btn {
+                    z-index: 1;
+                    margin: 0px 0px 16px 0px;
+
+                    .paper-fold {
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        top: -11px;
+                        left: -25px;
+                        border-style: solid;
+                        border-top: 5px solid transparent;
+                        border-bottom: 13px solid transparent;
+                        border-left: 8px solid #A0673E;
+                        border-right: 0;
+                        transform: rotate(56deg);
+
+                    }
+
+                    a {
+                        color: colors(white);
+                    }
+
+                    &:after {
+                        content: "";
+                        width: 0;
+                        position: absolute;
+                        height: 3px;
+                        top: -10px;
+                        left: -28px;
+                        border-style: solid;
+                        border-top: 30px solid transparent;
+                        border-bottom: 30px solid transparent;
+                        border-left: 328px solid #CC8654;
+                        border-right: 0;
+                        -webkit-transform: rotate(-3deg);
+                        transform: rotate(-3deg);
+                        z-index: -1;
+                    }
+
+                    &:before {
+                        content: "";
+                        width: 0;
+                        left: -16px;
+                        bottom: 11px;
+                        -webkit-box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                        position: absolute;
+                        width: 316px;
+                        height: 4px;
+                        -webkit-transform: rotate(-3deg);
+                        transform: rotate(-8deg);
+                        background-color: transparent;
+                        z-index: 1;
+                    }
+
+                }
+
+                &.right-triangle-btn {
+                    z-index: 1;
+                    margin: 0px 0px 16px 0px;
+
+                    a {
+                        color: colors(white);
+                        text-align: right;
+                    }
+
+                    &:after {
+                        content: "";
+                        width: 0;
+                        position: absolute;
+                        height: 3px;
+                        top: -10px;
+                        right: -34px;
+                        border-style: solid;
+                        border-top: 30px solid transparent;
+                        border-bottom: 30px solid transparent;
+                        border-right: 328px solid #97BABC;
+                        border-left: 0;
+                        -webkit-transform: rotate(-3deg);
+                        transform: rotate(-3deg);
+                        z-index: -1;
+                    }
+
+                    &:before {
+                        content: "";
+                        width: 0;
+                        right: -16px;
+                        bottom: 11px;
+                        -webkit-box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                        box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                        position: absolute;
+                        width: 310px;
+                        height: 4px;
+                        -webkit-transform: rotate(2deg);
+                        transform: rotate(2deg);
+                        background-color: transparent;
+                        z-index: 1;
+                    }
+
+                }
+
+                &.is-logout {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    right: 0px;
+                    bottom: 0px;
+                    background-color: transparent;
+                    width: 86px;
+                    height: 86px;
+                    overflow: hidden;
+                    z-index: 1;
+
+                    .side-logout-btn {
+                        @include button-reset;
+                        content: '';
+                        font-size: 24px;
+                        color: colors(white);
+                        position: absolute;
+                        right: 8px;
+                        bottom: 8px;
+
+                        &::after {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            background-color: colors(accent);
+                            width: 71px;
+                            height: 123px;
+                            -webkit-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                            top: -33px;
+                            right: -24px;
+                            z-index: -1;
+                            box-shadow: inset 3px 3px 4px rgba(0, 0, 0, 0.25);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.m-side-menu {
+    &[data-open="true"] {
+        visibility:visible;
+        background: rgba(0, 0, 0, 0.62);
+       
+        .menu-inner {
+            right:0px;
+        }
+    }
+}

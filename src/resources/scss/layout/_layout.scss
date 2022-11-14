@@ -1,4 +1,22 @@
 // todo レイアウトレベルだから、装飾を抜く
+.l-layout-wrapper {
+    display:block;
+    width:100%;
+    position:relative;
+    &[data-sidebar="true"] {
+        width:100vw;
+        height:100vh;
+        overflow: hidden;
+    }
+    .l-inner{
+        height:100%;
+    }
+    .l-wrap {
+        max-width:768px;
+        width:100%;
+        margin:0px auto;
+    }
+}
 
 .l-layout {
     display:block;

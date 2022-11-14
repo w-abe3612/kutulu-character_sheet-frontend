@@ -1,20 +1,22 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Router from './router'
 import { QueryClient, QueryClientProvider } from "react-query"
 import { useAppSelector, useAppDispatch } from '../reducers/hooks'
-import { isCheckLoggedIn }  from '../reducers/systemStateSlice';
-import type { systemStateType,statesType } from '../config/type'
+import { isCheckLoggedIn } from '../reducers/systemStateSlice';
+import type { systemStateType, statesType, navigationInfoType } from '../config/type'
 import { ToastContainer } from 'react-toastify';
+import LoginStateProvider from '../components/Commons/loginStateProvider'
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch()
     let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
+    let navigationInfo: navigationInfoType = useAppSelector((state: statesType) => state.navigationInfo)
 
-    useEffect(()=>{
+    useEffect(() => {
         // todo リロードするとhomeにいってしまうが、元のページへ遷移させるのは後でも出来る為、一旦抜かし
         // todo ローディング
         dispatch(isCheckLoggedIn())
-    },[dispatch])
+    }, [dispatch])
 
     const queryClient = new QueryClient({
         defaultOptions: {
@@ -28,11 +30,15 @@ const App: React.FC = () => {
     })
 
     return (
-        <div className='l-layout' >
+        <div className='l-layout-wrapper'
+            data-sidebar={navigationInfo.sidebarState}
+        >
             <div className='l-inner'>
                 <QueryClientProvider client={queryClient} >
-                    <Router />
-                    <ToastContainer hideProgressBar={true} />
+                    <LoginStateProvider>
+                        <Router />
+                        <ToastContainer hideProgressBar={true} />
+                    </LoginStateProvider>
                 </QueryClientProvider>
             </div>
         </div>

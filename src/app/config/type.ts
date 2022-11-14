@@ -18,9 +18,18 @@ export interface sentenceTextAreaType {
 
 // システムに関わる変数、
 export interface systemStateType {
+    loading:boolean
+    success:boolean
+    error:string | null
     userId: number | null | string
     userName: string
     public_page_token: string | null
+}
+
+// ヘッダーメニューに拘るstate
+// todo今のページを追跡
+export interface navigationInfoType {
+    sidebarState: boolean
 }
 
 // 新規登録に使われるStates
@@ -100,6 +109,7 @@ export interface statesType {
     flavorInfo: Array<flavorInfoType>
     specializedSkill: Array<specializedSkillType>
     registerState: registerStatesType 
+    navigationInfo:navigationInfoType
 }
 
 // 

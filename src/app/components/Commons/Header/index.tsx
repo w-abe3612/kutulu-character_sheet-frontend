@@ -9,23 +9,25 @@ import SideMenu from './sideMenu'
 
 
 const Header: React.FC = () => {
+    const sidebarHandler = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault;
+    }
 
     return (
-        <>
-            <div className='m-header' >
-                <div className="m-header__inner">
-                    <div className="m-inner-top">
-                        <div className="m-inner-top__inner">
-                            <div className="m-header-logo">
-                                <Link to="/"><img /></Link>
-                            </div>
-                            <MainBar />
+        <div className='m-header' >
+            <div className="m-header__inner">
+                <div className="m-inner-top">
+                    <div className="m-inner-top__inner">
+                        <div className="m-header-logo">
+                            <Link to="/"><img /></Link>
                         </div>
+                        <MainBar />
                     </div>
-                    <UnderBar />
                 </div>
+                <UnderBar />
             </div>
-        </>
+            <SideMenu/>
+        </div>
     )
 }
 

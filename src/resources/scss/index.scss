@@ -30,6 +30,7 @@
 @import "./modules/characterInfo.scss";
 @import "./modules/flavorInfo.scss";
 @import "./modules/notFound.scss";
+@import "./modules/common/loading.scss";
 
 // おそらくwebpackのせいでここに置く必要がある
 @import 'react-toastify/dist/ReactToastify.css';

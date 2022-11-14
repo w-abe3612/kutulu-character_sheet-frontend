@@ -5,6 +5,7 @@ import { faGear, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-ico
 import { useAppSelector } from '../../../reducers/hooks'
 import type { systemStateType, statesType } from '../../../config/type'
 import { useLogout } from "../../../queries/AuthQuery"
+import HamburgerButton from './hamburgerButton'
 
 const UnderBar: React.FC = (): JSX.Element => {
     let result: JSX.Element = <></>
@@ -14,6 +15,10 @@ const UnderBar: React.FC = (): JSX.Element => {
     const logoutHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault;
         logout.mutate()
+    }
+
+    const sidebarHandler = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault;
     }
 
     if ( systemState.userId !== null
@@ -36,6 +41,7 @@ const UnderBar: React.FC = (): JSX.Element => {
                             <FontAwesomeIcon icon={faArrowRightFromBracket} />
                         </button>
                     </div>
+                    <HamburgerButton />
                 </nav>
             </div>
         )

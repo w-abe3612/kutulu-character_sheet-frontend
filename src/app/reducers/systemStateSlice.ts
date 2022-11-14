@@ -4,6 +4,9 @@ import { systemStateType } from '../config/type'
 import { useCheckLoggedIn } from '../queries/AuthQuery'
 
 const initialState:systemStateType = {
+    loading:true,
+    success:false,
+    error:'',
     userId: null,
     userName: '',
     public_page_token:'',
@@ -42,16 +45,33 @@ export const systemStateSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(isCheckLoggedIn.fulfilled, (state, action) => {
+        builder
+        .addCase(isCheckLoggedIn.pending, (state) => {
             let updateState: systemStateType = state
+                updateState.loading = true
+                updateState.success = false
+                updateState.error   = ''
+        })
+        .addCase(isCheckLoggedIn.fulfilled, (state, action) => {
+            let updateState: systemStateType = state
+                updateState.loading = false
+                updateState.success = true
+                updateState.error   = ''
 
                 updateState.userId             = action.payload.data.id
                 updateState.userName           = action.payload.data.name
                 updateState.public_page_token  = action.payload.data.public_page_token
            
+            return updateState
+        })
+        .addCase(isCheckLoggedIn.rejected, (state) => {
+            let updateState: systemStateType = state
+                updateState.loading = false
+                updateState.success = false
+                updateState.error   = ''
 
             return updateState
-        });
+          })
       }
 })
 

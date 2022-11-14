@@ -4,12 +4,6 @@ import type { RootState } from './store'
 import { useFlavorInfos } from '../queries/CharacterQuery'
 import { flavorInfoType } from '../config/type'
 
-// todo 名前の変更
-interface setChecked {
-  value: string,
-  itemParam: string
-}
-
 const initialState = initialFlavorInfo
 
 export const getFlavorInfos = createAsyncThunk(

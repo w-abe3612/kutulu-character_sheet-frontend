@@ -1,5 +1,6 @@
+import  localStorageHandler  from '../app/functions/localstorageOperat'
 
+test('test', () => {
 
-test('basic', () => {
-    expect(2 + 2).toBe(4);
+    expect('1').toEqual('1');
 });
