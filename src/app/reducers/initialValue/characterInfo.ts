@@ -1,6 +1,9 @@
 import { characterInfoType } from '../../config/type'
 
 const initialCharacterInfo: characterInfoType = {
+    loading: true,
+    success: false,
+    error: '',
     player_name:'',
     player_character:'',
     image_path:'',

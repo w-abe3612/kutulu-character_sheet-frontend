@@ -1,7 +1,10 @@
 import { flavorInfoType } from '../../config/type'
 
-const initialFlavorInfo: Array<flavorInfoType> = [
-    {
+const initialFlavorInfo: flavorInfoType = {
+    loading: true,
+    success: false,
+    error: '',
+    infos:[{
         flavor_info_name: '職業',
         flavor_info_param: 'occupation',
         flavor_info_value: '', 
@@ -24,8 +27,8 @@ const initialFlavorInfo: Array<flavorInfoType> = [
         flavor_info_param: 'familybackground', 
         flavor_info_value: '', 
         flavor_info_order: 3,
-    },
+    }]
 
-]
+}
 
 export default initialFlavorInfo

@@ -1,6 +1,9 @@
 import React from 'react';
 import InputTextInfo from '../../../Commons/SheetParts/inputTextInfo'
 import CheckParameter from '../../../Commons/SheetParts/checkParameter'
+import {setCharacterInfoValue} from '../../../../reducers/characterInfosSlice'
+import {setKutuluInfoValue} from '../../../../reducers/kutuluInfoSlice'
+import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 
 type Props = {
     characterTitle: string
@@ -10,6 +13,25 @@ type Props = {
 }
 
 const Profiles: React.FC<Props> = (props) => {
+    const dispatch = useAppDispatch()
+    const setCharacterInfoValueHandler = (inputName:string,e:React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+
+        dispatch(setCharacterInfoValue({
+            name: inputName,
+            value: e.target.value
+        }))
+    }
+
+    const setkutuluInfoValueHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+
+        dispatch(setKutuluInfoValue({
+            name: 'character_title',
+            value: e.target.value
+        }))
+    }
+
     return (
         <div>
             <InputTextInfo
@@ -20,12 +42,10 @@ const Profiles: React.FC<Props> = (props) => {
                 required={{
                     required: '「プレイヤー名」は必須です。',
                     maxLength: {
-                        value: 16,
-                        message: '16文字以下で入力してください。'
-                    }
-                }}
-                setValueAction={{
-                    type: 'characterInfo',
+                        value: 32,
+                        message: '32文字以下で入力してください。'
+                    },
+                    onChange: ( e:React.ChangeEvent<HTMLInputElement> ) => setCharacterInfoValueHandler("player_name",e)
                 }}
             />
             <InputTextInfo
@@ -36,12 +56,10 @@ const Profiles: React.FC<Props> = (props) => {
                 required={{
                     required: '「氏名」は必須です。',
                     maxLength: {
-                        value: 16,
-                        message: '16文字以下で入力してください。'
-                    }
-                }}
-                setValueAction={{
-                    type: 'characterInfo',
+                        value: 28,
+                        message: '28文字以下で入力してください。'
+                    },
+                    onChange: ( e:React.ChangeEvent<HTMLInputElement> ) => setCharacterInfoValueHandler("player_character",e)
                 }}
             />
             <InputTextInfo
@@ -50,14 +68,11 @@ const Profiles: React.FC<Props> = (props) => {
                 setClass="s-profiles"
                 default={props.characterTitle}
                 required={{
-                    required: '「称号／肩書」は必須です。',
                     maxLength: {
-                        value: 16,
-                        message: '16文字以下で入力してください。'
-                    }
-                }}
-                setValueAction={{
-                    type: 'kutuluInfo',
+                        value: 28,
+                        message: '28文字以下で入力してください。'
+                    },
+                    onChange: ( e:React.ChangeEvent<HTMLInputElement> ) => setkutuluInfoValueHandler(e)
                 }}
             />
             <div className="is-fit-injury">

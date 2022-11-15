@@ -22,9 +22,7 @@ export const NavigationInfoSlice = createSlice({
       
       return state
     },
-
   },
-
 })
 
 export const { setSidebarState } = NavigationInfoSlice.actions

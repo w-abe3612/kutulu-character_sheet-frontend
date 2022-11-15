@@ -1,6 +1,10 @@
 import { abilityValueType } from '../../config/type'
 
-const initialAbilityValue: Array<abilityValueType> = [
+const initialAbilityValue:abilityValueType = {
+    loading: true,
+    success: false,
+    error: '',
+    infos:[
     {
         skill_name: '名声',
         skill_param: 'prestige',
@@ -65,7 +69,7 @@ const initialAbilityValue: Array<abilityValueType> = [
         skill_type: 1,
         skill_order: 4,
     },
-]
+]}
 
 export default initialAbilityValue
 

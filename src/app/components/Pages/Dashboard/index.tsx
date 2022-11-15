@@ -1,4 +1,4 @@
-import React, { ReactText, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
     useLocation,
     Navigate
@@ -8,23 +8,41 @@ import CharacterItem from './characterItem'
 import SectionWrap from "../../Commons/Layout/sectionWrapDash"
 import { getCharacters, deleteCharacterItem } from '../../../reducers/dashboardIndex';
 import Header from '../../Commons/Header'
-import { systemStateType, statesType, dashboardIndexType } from '../../../config/type'
+import { statesType, dashboardIndexType } from '../../../config/type'
 
 const Dashboard: React.FC = () => {
-    const systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
-    const dashboradIndex: Array<dashboardIndexType> = useAppSelector((state: statesType) => state.dashboard)
+    let result: JSX.Element = <></>
+    const dashboradIndex: dashboardIndexType = useAppSelector((state: statesType) => state.dashboard)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(getCharacters())
     }, [dispatch])
 
-    return (
-        <>
-            <Header />
+    if (dashboradIndex.loading === true) {
+        result = (
+            <div className="m-page-loading">
+                <div className="inner-box">
+                    <div className="loading-animation"></div>
+                    <p className="loading-message">Now Loading</p>
+                </div>
+            </div>
+        )
+    } else if (dashboradIndex.loading === false
+        && dashboradIndex.success === false) {
+        // 失敗
+        // todo このパターンを作り込む
+        result = (
+            <div className="m-loading">読み込みに失敗しました</div>
+        )
+
+    } else if (dashboradIndex.loading === false
+        && dashboradIndex.success === true) {
+        // 読み込み完了
+        result = (
             <SectionWrap title="キャラ一覧" >
                 <ul className="m-dashborad-list">
-                    {dashboradIndex.length > 0 || Object.values(dashboradIndex).map((character: dashboardIndexType) => {
+                    { dashboradIndex.infos.length > 0 && dashboradIndex.infos.map((character: any) => {
                         return <CharacterItem
                             key={'dashboradIndex' + character.id}
                             character_id={character.id}
@@ -37,9 +55,15 @@ const Dashboard: React.FC = () => {
                     })}
                 </ul>
             </SectionWrap>
+        )
+    }
+
+    return (
+        <>
+            <Header />
+            { result }
         </>
     )
-    return <></>
 }
 
 export default Dashboard;

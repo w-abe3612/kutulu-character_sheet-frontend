@@ -1,18 +1,3 @@
-/*
-        <div className="m-viewProfileIcon">
-            <figure>
-                <img src="" alt="" />
-            </figure>
-            <button 
-                type="button"
-                className="m-deleteIcon"
-                onClick={onc}
-            >
-                <FontAwesomeIcon icon={ faXmark } />
-            </button>
-        </div>
-*/
-
 .m-charCharactorIcon {
     content: "";
     margin: 0px 24px 0 0;
@@ -36,7 +21,7 @@
         &:before {
             content: "";
             display: block;
-            padding-top: 100%; /* 比率を指定 */
+            padding-top: 100%; 
         }
     }
     .image-img {

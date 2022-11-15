@@ -1,5 +1,5 @@
 .m-inputTextInfo {
-    
+    margin: 0px 10px 10px 0px;
     .input-group {
         display: flex;
         max-width: 235px;
@@ -9,13 +9,12 @@
         width: 100%;
         background-color: #D9D9D9;
         border-radius: 2px;
-        margin: 0px 10px 10px 0px;
+        
+    }
 
-        .error-message {
-            // todo 後で変える
-            color:red;
-        }
-
+    .error-message {
+        font-size:12px;
+        color:colors(accent);
     }
 
     .input-title {

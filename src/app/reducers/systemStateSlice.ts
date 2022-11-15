@@ -1,22 +1,22 @@
-import { createSlice, PayloadAction,createAsyncThunk,current } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import { systemStateType } from '../config/type'
 import { useCheckLoggedIn } from '../queries/AuthQuery'
 
-const initialState:systemStateType = {
-    loading:true,
-    success:false,
-    error:'',
+const initialState: systemStateType = {
+    loading: true,
+    success: false,
+    error: '',
     userId: null,
     userName: '',
-    public_page_token:'',
+    public_page_token: '',
 }
 
 export const isCheckLoggedIn = createAsyncThunk(
     "checkLoggedIn",
     async () => {
-      const test = await useCheckLoggedIn()
-      return test
+        const test = await useCheckLoggedIn()
+        return test
     }
 );
 
@@ -33,11 +33,11 @@ export const systemStateSlice = createSlice({
 
             return updateState
         },
-        setLogout:(state) => {
+        setLogout: (state) => {
             let updateState: systemStateType = state
 
-            updateState.userId            = null
-            updateState.userName          = ''
+            updateState.userId = null
+            updateState.userName = ''
             updateState.public_page_token = ''
             state = updateState
 
@@ -46,36 +46,36 @@ export const systemStateSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(isCheckLoggedIn.pending, (state) => {
-            let updateState: systemStateType = state
+            .addCase(isCheckLoggedIn.pending, (state) => {
+                let updateState: systemStateType = state
                 updateState.loading = true
                 updateState.success = false
-                updateState.error   = ''
-        })
-        .addCase(isCheckLoggedIn.fulfilled, (state, action) => {
-            let updateState: systemStateType = state
+                updateState.error = ''
+            })
+            .addCase(isCheckLoggedIn.fulfilled, (state, action) => {
+                let updateState: systemStateType = state
                 updateState.loading = false
                 updateState.success = true
-                updateState.error   = ''
+                updateState.error = ''
 
-                updateState.userId             = action.payload.data.id
-                updateState.userName           = action.payload.data.name
-                updateState.public_page_token  = action.payload.data.public_page_token
-           
-            return updateState
-        })
-        .addCase(isCheckLoggedIn.rejected, (state) => {
-            let updateState: systemStateType = state
+                updateState.userId = action.payload.data.id
+                updateState.userName = action.payload.data.name
+                updateState.public_page_token = action.payload.data.public_page_token
+
+                return updateState
+            })
+            .addCase(isCheckLoggedIn.rejected, (state) => {
+                let updateState: systemStateType = state
                 updateState.loading = false
                 updateState.success = false
-                updateState.error   = ''
+                updateState.error = ''
 
-            return updateState
-          })
-      }
+                return updateState
+            })
+    }
 })
 
-export const { setLoggedIn,setLogout } = systemStateSlice.actions
+export const { setLoggedIn, setLogout } = systemStateSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => systemStateSlice.actions

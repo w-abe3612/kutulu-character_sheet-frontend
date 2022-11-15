@@ -4,14 +4,14 @@ import CheckParameter from '../../../Commons/SheetParts/checkParameter'
 import { specializedSkillType } from '../../../../config/type'
 
 type Props = {
-    skillItems: Array<specializedSkillType>
+    skillItems: Array<any>
 }
 
 const AbilityItem: React.FC<Props> = ( { skillItems } ) :JSX.Element => {
     let result:JSX.Element
     let itemBoxes: Array<JSX.Element> = []
 
-    itemBoxes = skillItems.map(( item:specializedSkillType ):JSX.Element => (
+    itemBoxes = skillItems.map(( item:any ):JSX.Element => (
         <li key={ item.skill_param } className="m-slill-item m-specialize" >
                 <CheckParameter
                     label={item.skill_name}

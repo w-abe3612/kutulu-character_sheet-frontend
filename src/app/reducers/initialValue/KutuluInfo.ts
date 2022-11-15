@@ -1,6 +1,9 @@
 import { kutuluInfoType } from '../../config/type'
 
 const initialKutuluInfo:kutuluInfoType  = {
+    loading: true,
+    success: false,
+    error: '',
     character_title:'',
     injury_value:0,
     ability_value_max:13,

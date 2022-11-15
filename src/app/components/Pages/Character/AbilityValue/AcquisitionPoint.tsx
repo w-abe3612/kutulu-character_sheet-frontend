@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 import { abilityValueType, kutuluInfoType, statesType } from '../../../../config/type'
 
 
-const totalPointCalculation = ( abilityValues:Array<abilityValueType> ):number => {
+const totalPointCalculation = ( abilityValues:Array<any> ):number => {
     let result:number = 0
 
     result = abilityValues.map((item) => {
@@ -19,7 +19,7 @@ const totalPointCalculation = ( abilityValues:Array<abilityValueType> ):number =
 
 const AcquisitionPoint: React.FC = () => {
     const dispatch = useAppDispatch()
-    let abilityValues: Array<abilityValueType> = useAppSelector((state: statesType) => state.abilityValues)
+    let abilityValues: abilityValueType = useAppSelector((state: statesType) => state.abilityValues)
     let kutuluInfo:kutuluInfoType = useAppSelector((state: statesType) => state.kutuluInfo)
 
     return (
@@ -31,7 +31,7 @@ const AcquisitionPoint: React.FC = () => {
                 </dl>
                 <dl className="m-points-box">
                     <dt className="m-points-box__label" >取得Pt</dt>
-                    <dd className="m-points-box__value" >{ totalPointCalculation(abilityValues) }</dd>
+                    <dd className="m-points-box__value" >{ totalPointCalculation(abilityValues.infos) }</dd>
                 </dl>
             </div>
         </div>

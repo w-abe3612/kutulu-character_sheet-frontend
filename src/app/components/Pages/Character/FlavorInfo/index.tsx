@@ -3,16 +3,27 @@ import { useAppSelector, useAppDispatch } from '../../../../reducers/hooks'
 import { flavorInfoType } from '../../../../config/type'
 import SectionWrap from "../../../Commons/Layout/sectionWrap"
 import InputTextInfo from "../../../Commons/SheetParts/inputTextInfo"
-import { initializeFlavorInfo, getFlavorInfos } from '../../../../reducers/flavorInfosSlice'
+import { initializeFlavorInfo, getFlavorInfos, setFlavorInfoValue } from '../../../../reducers/flavorInfosSlice'
 import { useParams } from 'react-router-dom'
 import { statesType } from '../../../../config/type'
+import LoadingStateProvider from '../../../Commons/SheetParts/loadingStateProvider'
 
 // order順に並べ替える
-const entryInputs = (infoPrams: Array<flavorInfoType>) => {
+const entryInputs = (infoPrams: Array<any>) => {
     let result: JSX.Element = <></>
+    const dispatch = useAppDispatch()
     let inputsElements: Array<JSX.Element> = []
 
     inputsElements = infoPrams.map((item) => {
+        const setValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+            e.preventDefault()
+
+            dispatch(setFlavorInfoValue({
+                name: item.flavor_info_param,
+                value: e.target.value
+            }))
+        }
+
         return (
             <li>
                 <InputTextInfo
@@ -22,12 +33,10 @@ const entryInputs = (infoPrams: Array<flavorInfoType>) => {
                     default={item.flavor_info_value}
                     required={{
                         maxLength: {
-                            value: 12,
-                            message: '12文字以下で入力してください。'
-                        }
-                    }}
-                    setValueAction={{
-                        type: 'flavorInfo',
+                            value: 28,
+                            message: '28文字以下で入力してください。'
+                        },
+                        onChange: (e: React.ChangeEvent<HTMLInputElement>) => setValueHandler(e)
                     }}
                 />
             </li>
@@ -48,10 +57,11 @@ type Props = {
 }
 
 const FlavorInfo: React.FC<Props> = (props) => {
+    let result:JSX.Element = <></>
     const dispatch = useAppDispatch()
-    const flavorInfo: Array<flavorInfoType> = useAppSelector((state: statesType) => state.flavorInfo)
+    const flavorInfo: flavorInfoType = useAppSelector((state: statesType) => state.flavorInfo)
 
-    const entryInput: JSX.Element = entryInputs(flavorInfo)
+    const entryInput: JSX.Element = entryInputs(flavorInfo.infos)
     const urlParams = useParams<{ id: any, charactorId: any }>()
 
     useEffect(() => {
@@ -64,10 +74,16 @@ const FlavorInfo: React.FC<Props> = (props) => {
 
     return (
         <SectionWrap
-            title="その他情報"
+            title="背景"
             setClass='is-optional'
             description='キャラクターのイメージをより鮮明にするための自由記入欄です。入力は任意です。' >
-            {entryInput}
+            <LoadingStateProvider
+                isPage={props.isPage}
+                loading={flavorInfo.loading}
+                success={flavorInfo.success}
+                error=''
+                element={( entryInput )}
+            />
         </SectionWrap>
     )
 }

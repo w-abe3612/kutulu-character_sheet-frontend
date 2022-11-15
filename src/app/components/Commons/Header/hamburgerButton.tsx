@@ -9,7 +9,6 @@ const HamburgerButton: React.FC = (): JSX.Element => {
     const dispatch = useAppDispatch()
     const systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
     const navigationInfo:any = useAppSelector((state: statesType) => state.navigationInfo)
-    console.log(navigationInfo)
 
     const sidebarHandler = (e:React.MouseEvent<HTMLElement>) => {
         e.preventDefault

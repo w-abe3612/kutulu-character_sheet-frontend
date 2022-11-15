@@ -25,18 +25,11 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
     const store = useAppSelector(( state:statesType ) => state)
 
     const methods = useForm()
-    const characterId:number = getCharacterId4Url(props.isPage)
+    const urlParams = useParams<{ id: any, charactorId: any }>()
     const submit = submithandler()
 
     useEffect(()=>{
-        dispatch(initializeCharacterInfo())
-        dispatch(initializeKutuluInfo())
         methods.reset()
-
-        if ( props.isPage === 'edit' ) {
-            dispatch(getCharacterInfo(characterId))
-            dispatch(getKutuluInfo(characterId))
-        } 
     },[0])
 
     // 全部のstateを出してみて確認
@@ -45,7 +38,7 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
         submit.setStates(store)
         submit.createValues()
         submit.setPurpose(props.isPage)
-        submit.setCharacterId( characterId )
+        submit.setCharacterId( urlParams.charactorId )
         submit.submit()
     }
     return (
@@ -56,13 +49,6 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
                     <form onSubmit={methods.handleSubmit(onSubmit)} >
                         <CharacterInfo 
                             isPage={props.isPage}
-                            playerName = { store.characterInfo.player_name }
-                            playerCharacter = { store.characterInfo.player_character } 
-                            characterTitle = { store.kutuluInfo.character_title }
-                            injuryValue = { store.kutuluInfo.injury_value }
-                            image_path = {store.characterInfo.image_path }
-                            image_name = {store.characterInfo.image_name}
-                            img_upload_base64 = {store.characterInfo.img_upload_base64}
                         />
                         <FlavorInfo
                             isPage={props.isPage}/>
