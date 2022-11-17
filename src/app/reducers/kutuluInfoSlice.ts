@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialKutuluInfo from './initialValue/KutuluInfo'
 import type { RootState } from './store'
-import { useKutuluInfo } from '../queries/CharacterQuery'
+import { useKutuluInfo, useViewKutuluInfo } from '../queries/CharacterQuery'
 import { setCheckedActionType, kutuluInfoType } from '../config/type'
 
 
@@ -11,6 +11,18 @@ export const getKutuluInfo = createAsyncThunk(
   "getKutuluInfo",
   async (character_id: number) => {
     const test = await useKutuluInfo(character_id)
+    return test
+  }
+);
+
+export const viewKutuluInfo = createAsyncThunk(
+  "viewKutuluInfo",
+  async (parameter:{
+    userPageToken:string,
+    characterPageToken:string
+  }) => {
+    const test = await useViewKutuluInfo( parameter.userPageToken, parameter.characterPageToken )
+
     return test
   }
 );
@@ -71,6 +83,40 @@ export const KutuluInfoSlice = createSlice({
         return updateState
       })
       .addCase(getKutuluInfo.rejected, (state) => {
+        let updateState: kutuluInfoType = state
+        updateState.loading = false
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewKutuluInfo.fulfilled, (state, action) => {
+        let updateState: kutuluInfoType = state
+        updateState.loading = false
+        updateState.success = true
+        updateState.error = ''
+
+        updateState.character_title = action.payload[0].character_title
+        updateState.injury_value = action.payload[0].injury_value
+        updateState.ability_value_max = action.payload[0].ability_value_max
+        updateState.ability_value_total = action.payload[0].ability_value_total
+        updateState.specialized_skill_max = action.payload[0].specialized_skill_max
+        updateState.specialized_skill_total = action.payload[0].specialized_skill_total
+        updateState.possession_item = action.payload[0].possession_item
+        updateState.character_preference = action.payload[0].character_preference
+
+
+        return updateState
+      })
+      .addCase(viewKutuluInfo.pending, (state) => {
+        let updateState: kutuluInfoType = state
+        updateState.loading = true
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewKutuluInfo.rejected, (state) => {
         let updateState: kutuluInfoType = state
         updateState.loading = false
         updateState.success = false

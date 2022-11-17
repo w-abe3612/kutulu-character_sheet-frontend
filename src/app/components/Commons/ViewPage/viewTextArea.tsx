@@ -1,7 +1,10 @@
 import React,{useEffect} from 'react'
 import { sentenceTextAreaType } from '../../../config/type'
 
-type Props = sentenceTextAreaType
+type Props = {
+    setClass:string
+    default:string
+}
 
 const ViewTextArea: React.FC<Props> = (props): JSX.Element => {
 
@@ -9,9 +12,10 @@ const ViewTextArea: React.FC<Props> = (props): JSX.Element => {
         <div className="m-sentenceInput">
             <div className={`input-group ${props.setClass && props.setClass}`} >
                 <textarea
-                    id={props.name}
+                    name='textarea-viwer'
                     className="input-textarea"
                     readOnly={ true }
+                    defaultValue={props.default}
                 />
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/toolkit'
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
-import { useCharactorInfo } from '../queries/CharacterQuery'
+import { useCharactorInfo, useViewCharactorInfo } from '../queries/CharacterQuery'
 import type { characterInfoType } from '../config/type'
 
 const initialState = initialCharacterInfo
@@ -10,6 +10,18 @@ export const getCharacterInfo = createAsyncThunk(
   "getCharacterInfo",
   async (character_id: number) => {
     const test = await useCharactorInfo(character_id)
+    return test
+  }
+);
+
+export const viewCharacterInfo = createAsyncThunk(
+  "viewCharacterInfo",
+  async (parameter:{
+    userPageToken:string,
+    characterPageToken:string
+  }) => {
+    const test = await useViewCharactorInfo( parameter.userPageToken, parameter.characterPageToken )
+
     return test
   }
 );
@@ -87,6 +99,40 @@ export const characterInfoSlice = createSlice({
         return updateState
       })
       .addCase(getCharacterInfo.rejected, (state) => {
+        let updateState: characterInfoType = state
+        updateState.loading = false
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewCharacterInfo.fulfilled, (state, action) => {
+        let updateState: characterInfoType = state
+        updateState.loading = false
+        updateState.success = true
+        updateState.error = ''
+      
+          updateState.player_name = action.payload[0].player_name
+          updateState.player_character = action.payload[0].player_character
+          updateState.image_path = action.payload[0].image_path
+          updateState.image_name = action.payload[0].image_name
+          updateState.img_upload_base64 = ''
+          updateState.public_page_token = action.payload[0].public_page_token
+          updateState.public_flg = action.payload[0].public_flg
+      
+
+        state = updateState
+        return state
+      })
+      .addCase(viewCharacterInfo.pending, (state) => {
+        let updateState: characterInfoType = state
+        updateState.loading = false
+        updateState.success = true
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewCharacterInfo.rejected, (state) => {
         let updateState: characterInfoType = state
         updateState.loading = false
         updateState.success = false

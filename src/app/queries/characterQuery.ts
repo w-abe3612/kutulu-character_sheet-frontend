@@ -3,8 +3,24 @@ import {  useMutation } from "react-query"
 import { toast } from 'react-toastify'
 
 
-const useCharacters  = () => {
-    return api.getCharacters() 
+const useViewCharactorInfo = ( userPageToken:string, characterPageToken:string ) => {
+    return api.viewCharacterInfo(userPageToken, characterPageToken )
+}
+const useViewKutuluInfo = ( userPageToken:string, characterPageToken:string ) => {
+    return api.viewKutuluInfo(userPageToken, characterPageToken )
+}
+const useViewFlavorInfos = ( userPageToken:string, characterPageToken:string ) => {
+    return api.viewFlavorInfos(userPageToken, characterPageToken )
+}
+const useViewAbilityValues = ( userPageToken:string, characterPageToken:string ) => {
+    return api.viewAbilityValues(userPageToken, characterPageToken )
+}
+const useViewSpecialzedSkills = ( userPageToken:string, characterPageToken:string ) => {
+    return api.viewSpecialzedSkills(userPageToken, characterPageToken )
+}
+
+const useCharacters  = (page:number) => {
+    return api.getCharacters(page) 
 }
 
 const useCharactorInfo = (id:any) => {
@@ -66,6 +82,11 @@ const useEditCharacter = () => {
 
 
 export {
+    useViewCharactorInfo,
+    useViewKutuluInfo,
+    useViewFlavorInfos,
+    useViewAbilityValues,
+    useViewSpecialzedSkills,
     useCharactorInfo,
     useFlavorInfos,
     useAbilityValues,

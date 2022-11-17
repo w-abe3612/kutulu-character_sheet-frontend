@@ -1,12 +1,8 @@
 import React, { useEffect } from 'react';
-import {
-    useLocation,
-    Navigate
-} from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import CharacterItem from './characterItem'
 import SectionWrap from "../../Commons/Layout/sectionWrapDash"
-import { getCharacters, deleteCharacterItem } from '../../../reducers/dashboardIndex';
+import { getCharacters } from '../../../reducers/dashboardIndex';
 import Header from '../../Commons/Header'
 import { statesType, dashboardIndexType } from '../../../config/type'
 
@@ -16,7 +12,8 @@ const Dashboard: React.FC = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getCharacters())
+        // UIと連動させる
+        dispatch(getCharacters(1))
     }, [dispatch])
 
     if (dashboradIndex.loading === true) {
@@ -42,7 +39,7 @@ const Dashboard: React.FC = () => {
         result = (
             <SectionWrap title="キャラ一覧" >
                 <ul className="m-dashborad-list">
-                    { dashboradIndex.infos.length > 0 && dashboradIndex.infos.map((character: any) => {
+                    { dashboradIndex.datas.length > 0 && dashboradIndex.datas.map((character: any) => {
                         return <CharacterItem
                             key={'dashboradIndex' + character.id}
                             character_id={character.id}

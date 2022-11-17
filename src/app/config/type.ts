@@ -114,7 +114,15 @@ export interface dashboardIndexType {
     loading: boolean
     success: boolean
     error: string | null
-    infos: Array<{
+    paginate: {
+        current_page: number
+        from: number
+        to: number
+        total: number
+        per_page: number
+        last_page: number
+    }
+    datas: Array<{
         id: number
         image_name: string
         image_path: string

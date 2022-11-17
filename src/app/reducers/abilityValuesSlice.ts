@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialAbilityValue from './initialValue/abilityValues'
 import type { RootState } from './store'
-import { useAbilityValues } from '../queries/CharacterQuery'
+import { useAbilityValues,useViewAbilityValues } from '../queries/CharacterQuery'
 import { setCheckedActionType, abilityValueType } from '../config/type'
 
 const initialState = initialAbilityValue
@@ -10,6 +10,18 @@ export const getAbilityValue = createAsyncThunk(
   "getAbilityValue",
   async (character_id: number) => {
     const test = await useAbilityValues(character_id)
+    return test
+  }
+);
+
+export const viewAbilityValue = createAsyncThunk(
+  "viewAbilityValue",
+  async (parameter:{
+    userPageToken:string,
+    characterPageToken:string
+  }) => {
+    const test = await useViewAbilityValues( parameter.userPageToken, parameter.characterPageToken )
+
     return test
   }
 );
@@ -67,6 +79,41 @@ export const abilityValuesSlice = createSlice({
         updateState.error = ''
       })
       .addCase(getAbilityValue.rejected, (state) => {
+        let updateState: abilityValueType = state
+        updateState.loading = false
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewAbilityValue.fulfilled, (state, action) => {
+        let updateState: abilityValueType = state
+        updateState.loading = false
+        updateState.success = true
+        updateState.error = ''
+
+        let result: any = []
+        const newSpecializedSkill = action.payload
+        result = newSpecializedSkill.map((info: any) => {
+          return {
+            skill_name: info.skill_name,
+            skill_param: info.skill_param,
+            skill_value: info.skill_value,
+            skill_type: info.skill_type,
+            skill_order: info.skill_order
+          }
+        })
+        updateState.infos = result
+
+        return updateState
+      })
+      .addCase(viewAbilityValue.pending, (state) => {
+        let updateState: abilityValueType = state
+        updateState.loading = true
+        updateState.success = false
+        updateState.error = ''
+      })
+      .addCase(viewAbilityValue.rejected, (state) => {
         let updateState: abilityValueType = state
         updateState.loading = false
         updateState.success = false

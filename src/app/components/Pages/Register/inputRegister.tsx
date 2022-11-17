@@ -122,7 +122,7 @@ const InputRegister: React.FC = () => {
                     />
 
                     <div className="register-description">
-                        <p>登録することで、<Link className="" to={'/policy'}>利用規約、プライバシーポリシー</Link>、に同意するものとします。</p>
+                        <p>登録することで、<Link className="" to={'/policy'} target="_blank" rel="noopener noreferrer" >利用規約、プライバシーポリシー</Link>、に同意するものとします。</p>
                     </div>
                     <SystemUseSubmitButton
                         text="確認"

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialSpecializedSkill from './initialValue/specializedSkill'
 import type { RootState } from './store'
-import { useSpecialzedSkills } from '../queries/CharacterQuery'
+import { useSpecialzedSkills, useViewSpecialzedSkills } from '../queries/CharacterQuery'
 import { setCheckedActionType, specializedSkillType } from '../config/type'
 
 const initialState = initialSpecializedSkill
@@ -10,6 +10,18 @@ export const getSpecialzedSkills = createAsyncThunk(
   "getSpecialzedSkills",
   async (id: number) => {
     const test = await useSpecialzedSkills(id)
+    return test
+  }
+);
+
+export const viewSpecialzedSkills = createAsyncThunk(
+  "viewSpecialzedSkills",
+  async (parameter:{
+    userPageToken:string,
+    characterPageToken:string
+  }) => {
+    const test = await useViewSpecialzedSkills( parameter.userPageToken, parameter.characterPageToken )
+
     return test
   }
 );
@@ -69,6 +81,42 @@ export const specializedSkillSlice = createSlice({
         return updateState
       })
       .addCase(getSpecialzedSkills.rejected, (state) => {
+        let updateState: specializedSkillType = state
+        updateState.loading = false
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewSpecialzedSkills.fulfilled, (state, action) => {
+        let updateState: specializedSkillType = state
+        updateState.loading = false
+        updateState.success = true
+        updateState.error = ''
+
+        let result: Array<any> = []
+        const newSpecializedSkill = action.payload
+        result = newSpecializedSkill.map((info: any) => {
+          return {
+            skill_name: info.skill_name,
+            skill_order: info.skill_order,
+            skill_param: info.skill_param,
+            skill_value: info.skill_value
+          }
+        })
+        updateState.infos = result
+
+        return updateState
+      })
+      .addCase(viewSpecialzedSkills.pending, (state) => {
+        let updateState: specializedSkillType = state
+        updateState.loading = true
+        updateState.success = false
+        updateState.error = ''
+
+        return updateState
+      })
+      .addCase(viewSpecialzedSkills.rejected, (state) => {
         let updateState: specializedSkillType = state
         updateState.loading = false
         updateState.success = false

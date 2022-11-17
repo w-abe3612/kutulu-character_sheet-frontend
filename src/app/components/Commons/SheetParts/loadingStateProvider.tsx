@@ -14,7 +14,7 @@ type Props = {
 const LoadingStateProvider: React.FC<Props> = (props) => {
     let result:JSX.Element = <></>
 
-    if (props.isPage === 'edit') {
+    if (props.isPage === 'edit' || props.isPage === 'view') {
     
         if ( props.loading === true ) {
             result = (

@@ -83,11 +83,13 @@ const ItemButtons: React.FC<Props> = (props): JSX.Element => {
                         to={'/user/' + systemState.public_page_token + '/kutulu/view/' + props.character_id_hash + '/'}
                         target="_blank" >閲覧</Link>
                 </li>
+                {/*
                 <li
                     key='dashboard-kutulu-output'
                     onClick={clipboardHandler}
                     className="output"
                 ><span className="non-sm-inline">ココフォリア</span>出力</li>
+    */}
                 <li
                     key='dashboard-kutulu-delete'
                     onClick={deleteHandler}

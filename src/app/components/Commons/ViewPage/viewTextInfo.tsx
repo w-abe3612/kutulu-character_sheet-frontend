@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { inputTextInfoPropsType } from '../../../config/type'
 
-type Props = inputTextInfoPropsType
+type Props = {
+    setClass:string
+    label:string
+    default:string
+}
 
 const ViewTextInfo: React.FC<Props> = ( props ): JSX.Element => {
 
@@ -12,8 +16,10 @@ const ViewTextInfo: React.FC<Props> = ( props ): JSX.Element => {
                 <div className="input-content" >
                     <input
                         type="text"
+                        name="viewer"
                         className="input-text"
                         readOnly={ true }
+                        defaultValue={props.default}
                     />
                 </div>
             </div>

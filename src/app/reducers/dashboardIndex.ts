@@ -9,13 +9,21 @@ const initialState:any = {
   loading: true,
   success: false,
   error: '',
-  infos:[]
+  paginate:{
+    current_page:0,
+    from:0,
+    to:0,
+    total:0,
+    per_page:0,
+    last_page:0,
+  },
+  datas:[]
 }
 
 export const getCharacters = createAsyncThunk(
   "getCharacters",
-  async () => {
-    const test = await useCharacters()
+  async (page:number) => {
+    const test = await useCharacters(page)
     return test
   }
 );
@@ -26,7 +34,7 @@ export const dashboardIndexSlice = createSlice({
   reducers: {
     setDashboard2Users: (state, action: PayloadAction<any>): void => {
       let updateState:dashboardIndexType = state
-      updateState.infos = action.payload.characters
+      updateState.datas = action.payload.characters
       
       state = updateState
     },
@@ -34,7 +42,7 @@ export const dashboardIndexSlice = createSlice({
       let updateState:dashboardIndexType = state
       const character_id = action.payload
 
-      updateState.infos = Object.values(updateState.infos).filter((character: any) => character.id !== character_id)
+      updateState.datas = Object.values(updateState.datas).filter((character: any) => character.id !== character_id)
       state = updateState
 
       // ...stateとするとレンダリングする
@@ -48,7 +56,15 @@ export const dashboardIndexSlice = createSlice({
         updateState.loading = false
         updateState.success = true
         updateState.error = ''
-        updateState.infos = action.payload
+
+        updateState.paginate.current_page = action.payload.current_page
+        updateState.paginate.from = action.payload.from
+        updateState.paginate.to = action.payload.to
+        updateState.paginate.total = action.payload.total
+        updateState.paginate.per_page = action.payload.per_page
+        updateState.paginate.last_page = action.payload.last_page
+
+        updateState.datas = action.payload.data
         
         return updateState
       })
