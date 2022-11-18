@@ -156,6 +156,7 @@ const createCharacter = async (info: any) => {
             }
         }
     )
+    console.log(data)
     return data
 }
 

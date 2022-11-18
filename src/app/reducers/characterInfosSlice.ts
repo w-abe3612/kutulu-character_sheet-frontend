@@ -10,6 +10,7 @@ export const getCharacterInfo = createAsyncThunk(
   "getCharacterInfo",
   async (character_id: number) => {
     const test = await useCharactorInfo(character_id)
+    console.log(test)
     return test
   }
 );
@@ -61,8 +62,8 @@ export const characterInfoSlice = createSlice({
     },
     resetImages: (state) => {
       let updateState: any = state
-      updateState.image_path = './img/'
-      updateState.image_name = 'dammyUser.png'
+      updateState.image_path = ''
+      updateState.image_name = ''
       updateState.img_upload_base64 = ''
 
       state = updateState

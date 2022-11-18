@@ -30,8 +30,7 @@ export const submithandler = () => {
             const submitedCharactorinfo: any = [{
                 player_name:data.player_name,
                 player_character:data.player_character,
-                image_path:data.image_path,
-                image_name:data.image_name,
+                img_upload_base64:data.img_upload_base64,
             }]
             __property.sendValues.characterInfo = submitedCharactorinfo
         },
@@ -40,8 +39,12 @@ export const submithandler = () => {
             const submitedKutuluinfo: any = [{
                 character_title:data.character_title,
                 injury_value:data.injury_value,
+                /*
                 possession_item:data.possession_item,
                 character_preference:data.character_preference,
+                */
+                possession_item:'aaa',
+                character_preference:'aaa',
             }]
             __property.sendValues.kutuluInfo = submitedKutuluinfo
         },
@@ -129,9 +132,9 @@ export const submithandler = () => {
         },
         setStates: (states: any) => {
             __property.states.characterInfo = states.characterInfo
-            __property.states.flavorInfo = states.flavorInfo
-            __property.states.abilityValues = states.abilityValues
-            __property.states.specializedSkill = states.specializedSkill
+            __property.states.flavorInfo = states.flavorInfo.infos
+            __property.states.abilityValues = states.abilityValues.infos
+            __property.states.specializedSkill = states.specializedSkill.infos
             
         },
         createValues: () => {
