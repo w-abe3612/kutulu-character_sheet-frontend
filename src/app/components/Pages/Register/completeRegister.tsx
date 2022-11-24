@@ -15,7 +15,6 @@ const CompleteRegister: React.FC = () => {
     const register = useRegister()
 
     useEffect(() => {
-        /*
         register.mutate(
             {
                 name: registerState.username,
@@ -23,7 +22,8 @@ const CompleteRegister: React.FC = () => {
                 password: registerState.password,
                 password_confirmation: registerState.confirmation
             }
-        )*/
+        )
+
         setTimeout(() => {
             dispatch(setFormState({ formState: 'input' }))
             dispatch(clearRegisterInputs())

@@ -16,7 +16,6 @@ const InputRegister: React.FC = () => {
     const dispatch = useAppDispatch()
     const systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
     const registerState: registerStatesType = useAppSelector((state: statesType) => state.registerState)
-    console.log(registerState)
 
     const navigate = useNavigate();
     dispatch(setFormState({ formState: 'input' }))

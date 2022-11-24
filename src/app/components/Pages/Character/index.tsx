@@ -1,4 +1,4 @@
-import React, { ReactText, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import AbilityValue from './AbilityValue'
 import SpecializedSkill from './SpecializedSkills'
@@ -15,12 +15,16 @@ import { initializeKutuluInfo, getKutuluInfo } from '../../../reducers/kutuluInf
 import { useParams } from 'react-router-dom'
 import Header from '../../Commons/Header'
 import { statesType } from '../../../config/type'
+import SubmitButton from '../../Commons/SheetParts/submitButton'
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 type Props = {
     isPage: string
 }
 
 const SheetLayout: React.FC<Props> = (props): JSX.Element => {
+    const [submitDisabled, setSubmitDisabled] = useState(false);
+
     const store = useAppSelector((state: statesType) => state)
 
     const methods = useForm()
@@ -33,19 +37,25 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
 
     // 全部のstateを出してみて確認
     const onSubmit = (data: any) => {
+        setSubmitDisabled(true)
         submit.setDatas(data)
         submit.setStates(store)
         submit.createValues()
         submit.setPurpose(props.isPage)
         submit.setCharacterId(urlParams.charactorId)
         submit.submit()
+
+        setTimeout(() => {
+            setSubmitDisabled(false);
+        }, 3000);
     }
     return (
-        <div>
-            <Header />
-            <div className='l-wrap'>
-                <FormProvider {...methods} >
-                    <form onSubmit={methods.handleSubmit(onSubmit)} >
+        <MainLayout
+            setClass=''
+        >
+            <FormProvider {...methods} >
+                <form onSubmit={methods.handleSubmit(onSubmit)} >
+                    <div className='l-wrap'>
                         <CharacterInfo
                             isPage={props.isPage}
                         />
@@ -57,14 +67,13 @@ const SheetLayout: React.FC<Props> = (props): JSX.Element => {
                             isPage={props.isPage} />
                         <PossessionItem isPage={props.isPage} />
                         <CharacterPreference isPage={props.isPage} />
-                        <button
-                            className="btn"
-                            type="submit"
-                        >更新</button>
-                    </form>
-                </FormProvider>
-            </div>
-        </div>
+                    </div>
+                    <SubmitButton 
+                        isPage={props.isPage}
+                        isDisabled={submitDisabled} />
+                </form>
+            </FormProvider>
+        </MainLayout>
     )
 }
 

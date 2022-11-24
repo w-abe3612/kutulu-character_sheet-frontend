@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useFormContext } from "react-hook-form";
 
-const SubmitButton: React.FC = ( ): JSX.Element => {
-    // 押した瞬間から少しの間制御不可にする(連打されないように)
+type Props = {
+    isDisabled: boolean
+    isPage:string
+}
+
+const SubmitButton: React.FC<Props> = (props): JSX.Element => {
+    const btnText = props.isPage === 'create' ? '作成':'更新'
+    
     return (
-        <button
-            className="btn"
-            type="submit"
-        >更新</button>
+        <div className="m-sheet-submit">
+            <div className="wraper-fixed">
+                <div className="wrap-inner">
+                    <button
+                        className="m-submit-btn"
+                        type="submit"
+                        disabled={props.isDisabled}
+                    >{btnText}</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

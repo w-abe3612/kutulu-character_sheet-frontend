@@ -6,8 +6,7 @@ import { faXmark, faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from 'app/reducers/hooks';
 import { resetImages, setbase64 } from '../../../reducers/characterInfosSlice'
 import { toast } from 'react-toastify'
-import Compressor from 'compressorjs';
-import 'dotenv/config'
+import Compressor from 'compressorjs'
 
 
 type viewProps = {
@@ -95,7 +94,6 @@ const ProfileIcon: React.FC<mainProps> = (props): JSX.Element => {
         }
 
         if (acceptedFile) {
-            console.log(acceptedFile)
 
             if (acceptedFile[0].size >= 10485760) {
                 toast.error('ファイルサイズが大きすぎます。')
@@ -113,7 +111,6 @@ const ProfileIcon: React.FC<mainProps> = (props): JSX.Element => {
                     },
                     error(err) {
                         toast.error('ファイル圧縮に失敗しました。')
-                        console.log(err)
                     },
                 })
             } else {

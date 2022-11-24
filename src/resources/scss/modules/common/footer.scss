@@ -1,0 +1,15 @@
+/*
+<footer className='m-footer' >
+            <div className='footer-bottom'>キャラ箱プロジェクト</div>
+        </footer>
+*/
+.m-footer {
+    .footer-bottom{
+        display:block;
+        background-color:#464B4F;
+        text-align:center;
+        color:#ffffff;
+        font-size:12px;
+        padding: 6px 0px;
+    }
+}

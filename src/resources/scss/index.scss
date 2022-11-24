@@ -9,6 +9,7 @@
 @import "./modules/common/SheetParts/checkParameter.scss";
 @import "./modules/common/SheetParts/sentenceTextArea.scss";
 @import "./modules/common/SheetParts/profileIcon.scss";
+@import "./modules/common/SheetParts/submitButton.scss";
 
 @import "./modules/common/OtherParts/pictureDisplay.scss";
 
@@ -19,6 +20,7 @@
 @import "./modules/common/header/index.scss";
 
 @import "./modules/header.scss";
+@import "./modules/common/footer.scss";
 @import "./modules/slill_item.scss";
 @import "./modules/acquisition_point.scss";
 @import "./modules/login.scss";
@@ -32,6 +34,8 @@
 @import "./modules/notFound.scss";
 @import "./modules/common/loading.scss";
 @import "./modules/abilityValue.scss";
+
+
 
 // おそらくwebpackのせいでここに置く必要がある
 @import 'react-toastify/dist/ReactToastify.css';

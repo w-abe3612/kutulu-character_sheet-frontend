@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     }
 
     return (
-        <div className='m-header' >
+        <header className='m-header' >
             <div className="m-header__inner">
                 <div className="m-inner-top">
                     <div className="m-inner-top__inner">
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
                 <UnderBar />
             </div>
             <SideMenu/>
-        </div>
+        </header>
     )
 }
 

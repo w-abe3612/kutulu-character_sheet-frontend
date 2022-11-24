@@ -16,6 +16,7 @@ import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton
 
 //todo 実際に運用フェーズに入ったら攻撃されるだろうから、rechapture入れる
 const Login: React.FC = () => {
+    const [submitDisabled, setSubmitDisabled] = useState(false);
     const login = useLogin()
 
     let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
@@ -23,7 +24,12 @@ const Login: React.FC = () => {
 
     // todo エラーが出るので一旦確認
     const onSubmit = (data: any) => {
+        setSubmitDisabled(true)
         login.mutate({ email: data.email, password: data.password })
+
+        setTimeout(() => {
+            setSubmitDisabled(false);
+        }, 3000);
     }
 
     return (
