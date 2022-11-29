@@ -20,7 +20,7 @@ const App: React.FC = () => {
             }
         }
     })
-
+    console.log(process.env.NODE_TEST)
     return (
         <div className='l-layout-wrapper'
             data-sidebar={navigationInfo.sidebarState}
