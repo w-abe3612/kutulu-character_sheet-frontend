@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialSpecializedSkill from './initialValue/specializedSkill'
 import type { RootState } from './store'
-import { useSpecialzedSkills, useViewSpecialzedSkills } from '../queries/CharacterQuery'
+//import { useSpecialzedSkills, useViewSpecialzedSkills } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import { setCheckedActionType, specializedSkillType } from '../config/type'
 
 const initialState = initialSpecializedSkill
@@ -9,7 +10,7 @@ const initialState = initialSpecializedSkill
 export const getSpecialzedSkills = createAsyncThunk(
   "getSpecialzedSkills",
   async (id: number) => {
-    const test = await useSpecialzedSkills(id)
+    const test = await characterQueries.useSpecialzedSkills(id)
     return test
   }
 );
@@ -20,7 +21,7 @@ export const viewSpecialzedSkills = createAsyncThunk(
     userPageToken:string,
     characterPageToken:string
   }) => {
-    const test = await useViewSpecialzedSkills( parameter.userPageToken, parameter.characterPageToken )
+    const test = await characterQueries.useViewSpecialzedSkills( parameter.userPageToken, parameter.characterPageToken )
 
     return test
   }

@@ -3,7 +3,8 @@ import {
     Link,
 } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-import { useDeleteCharacter } from '../../../queries/CharacterQuery'
+//import { useDeleteCharacter } from '../../../queries/CharacterQuery'
+import * as characterQueries from '../../../queries/CharacterQuery'
 import { deleteCharacterItem } from '../../../reducers/dashboardIndex'
 import { systemStateType, statesType } from '../../../config/type';
 
@@ -16,7 +17,7 @@ type Props = {
 const ItemButtons: React.FC<Props> = (props): JSX.Element => {
     const dispatch = useAppDispatch()
     let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
-    const deleteCharacter = useDeleteCharacter()
+    const deleteCharacter = characterQueries.useDeleteCharacter()
 
     const deleteHandler = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault()

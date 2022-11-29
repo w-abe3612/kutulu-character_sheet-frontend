@@ -1,8 +1,9 @@
-import { useCreateCharacter,useEditCharacter } from '../queries/CharacterQuery'
+//import { useDeleteCharacter } from '../../../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 
 export const submithandler = () => {
-    const create = useCreateCharacter()
-    const edit   = useEditCharacter()
+    const create = characterQueries.useCreateCharacter()
+    const edit   = characterQueries.useEditCharacter()
 
     const __property: any = {
         datas: {},

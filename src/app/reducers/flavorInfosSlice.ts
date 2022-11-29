@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialFlavorInfo from './initialValue/flavorInfo'
 import type { RootState } from './store'
-import { useFlavorInfos, useViewFlavorInfos } from '../queries/CharacterQuery'
+//import { useFlavorInfos, useViewFlavorInfos } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
+
 import { flavorInfoType } from '../config/type'
 
 const initialState = initialFlavorInfo
@@ -9,7 +11,7 @@ const initialState = initialFlavorInfo
 export const getFlavorInfos = createAsyncThunk(
   "getFlavorInfos",
   async (character_id: number) => {
-    const test = await useFlavorInfos(character_id)
+    const test = await characterQueries.useFlavorInfos(character_id)
     return test
   }
 );
@@ -20,7 +22,7 @@ export const viewFlavorInfos = createAsyncThunk(
     userPageToken:string,
     characterPageToken:string
   }) => {
-    const test = await useViewFlavorInfos( parameter.userPageToken, parameter.characterPageToken )
+    const test = await characterQueries.useViewFlavorInfos( parameter.userPageToken, parameter.characterPageToken )
 
     return test
   }

@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialAbilityValue from './initialValue/abilityValues'
 import type { RootState } from './store'
-import { useAbilityValues,useViewAbilityValues } from '../queries/CharacterQuery'
+//import { useAbilityValues,useViewAbilityValues } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import { setCheckedActionType, abilityValueType } from '../config/type'
 
 const initialState = initialAbilityValue
@@ -9,7 +10,7 @@ const initialState = initialAbilityValue
 export const getAbilityValue = createAsyncThunk(
   "getAbilityValue",
   async (character_id: number) => {
-    const test = await useAbilityValues(character_id)
+    const test = await characterQueries.useAbilityValues(character_id)
     return test
   }
 );
@@ -20,7 +21,7 @@ export const viewAbilityValue = createAsyncThunk(
     userPageToken:string,
     characterPageToken:string
   }) => {
-    const test = await useViewAbilityValues( parameter.userPageToken, parameter.characterPageToken )
+    const test = await characterQueries.useViewAbilityValues( parameter.userPageToken, parameter.characterPageToken )
 
     return test
   }

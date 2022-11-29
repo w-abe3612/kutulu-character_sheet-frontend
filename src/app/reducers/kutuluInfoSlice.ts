@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import initialKutuluInfo from './initialValue/KutuluInfo'
 import type { RootState } from './store'
-import { useKutuluInfo, useViewKutuluInfo } from '../queries/CharacterQuery'
+//import { useKutuluInfo, useViewKutuluInfo } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import { setCheckedActionType, kutuluInfoType } from '../config/type'
 
 
@@ -10,7 +11,7 @@ const initialState = initialKutuluInfo
 export const getKutuluInfo = createAsyncThunk(
   "getKutuluInfo",
   async (character_id: number) => {
-    const test = await useKutuluInfo(character_id)
+    const test = await characterQueries.useKutuluInfo(character_id)
     return test
   }
 );
@@ -21,7 +22,7 @@ export const viewKutuluInfo = createAsyncThunk(
     userPageToken:string,
     characterPageToken:string
   }) => {
-    const test = await useViewKutuluInfo( parameter.userPageToken, parameter.characterPageToken )
+    const test = await characterQueries.useViewKutuluInfo( parameter.userPageToken, parameter.characterPageToken )
 
     return test
   }

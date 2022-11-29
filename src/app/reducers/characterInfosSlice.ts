@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/toolkit'
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
-import { useCharactorInfo, useViewCharactorInfo } from '../queries/CharacterQuery'
+//import { useCharactorInfo, useViewCharactorInfo } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import type { characterInfoType } from '../config/type'
 
 const initialState = initialCharacterInfo
@@ -9,7 +10,7 @@ const initialState = initialCharacterInfo
 export const getCharacterInfo = createAsyncThunk(
   "getCharacterInfo",
   async (character_id: number) => {
-    const test = await useCharactorInfo(character_id)
+    const test = await characterQueries.useCharactorInfo(character_id)
     
     return test
   }
@@ -21,7 +22,7 @@ export const viewCharacterInfo = createAsyncThunk(
     userPageToken:string,
     characterPageToken:string
   }) => {
-    const test = await useViewCharactorInfo( parameter.userPageToken, parameter.characterPageToken )
+    const test = await characterQueries.useViewCharactorInfo( parameter.userPageToken, parameter.characterPageToken )
 
     return test
   }

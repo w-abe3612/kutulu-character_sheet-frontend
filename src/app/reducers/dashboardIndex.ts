@@ -2,7 +2,8 @@ import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/
 import axios from "axios";
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
-import { useCharacters } from '../queries/CharacterQuery'
+//import { useCharacters } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import { dashboardIndexType } from '../config/type'
 
 const initialState:any = {
@@ -23,7 +24,7 @@ const initialState:any = {
 export const getCharacters = createAsyncThunk(
   "getCharacters",
   async (page:number) => {
-    const test = await useCharacters(page)
+    const test = await characterQueries.useCharacters(page)
     return test
   }
 );
