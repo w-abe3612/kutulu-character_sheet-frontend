@@ -10,14 +10,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "crypto-js": "^4.1.1",
-    "ts-jest": "^29.0.3",
-    "ts-loader": "^9.3.0",
-    "typescript": "^4.7.2"
+    "crypto-js": "^4.1.1"
   },
   "dependencies": {
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
+    "ts-jest": "^29.0.3",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
     "clean-webpack-plugin": "^4.0.0",
     "webpack-fix-style-only-entries": "^0.6.1",
     "webpack-remove-empty-scripts": "^0.8.0",
