@@ -20,7 +20,6 @@ const App: React.FC = () => {
             }
         }
     })
-    console.log(process.env.ENV_TEST);
 
     return (
         <div className='l-layout-wrapper'

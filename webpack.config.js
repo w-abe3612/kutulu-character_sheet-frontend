@@ -3,8 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-
 
 module.exports = () => {
     return {
@@ -102,9 +100,6 @@ module.exports = () => {
         },
 
         plugins: [
-            new Dotenv({
-                systemvars: true
-              }),
             new CleanWebpackPlugin({
                 cleanAfterEveryBuildPatterns: ['public/build']
             }),
