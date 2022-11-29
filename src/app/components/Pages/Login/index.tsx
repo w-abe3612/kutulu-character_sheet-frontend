@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useForm, SubmitHandler,FormProvider } from "react-hook-form";
-import { useLogin, useLogout } from "../../../queries/AuthQuery"
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
+import React, { useState } from 'react'
+import { useForm, FormProvider } from "react-hook-form";
+import { useLogin } from "../../../queries/AuthQuery"
+import { useAppSelector } from '../../../reducers/hooks'
 import {
-    Navigate,
-    useLocation
+    Navigate
 } from "react-router-dom";
 import { systemStateType, statesType } from '../../../config/type';
 import InputText from '../../Commons/SystemUseParts/inputText';
 import InputPassword from '../../Commons/SystemUseParts/inputPassword';
-import Header from '../../Commons/Header'
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton'
-
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 //todo 実際に運用フェーズに入ったら攻撃されるだろうから、rechapture入れる
 const Login: React.FC = () => {
@@ -22,7 +20,6 @@ const Login: React.FC = () => {
     let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
     const methods = useForm();
 
-    // todo エラーが出るので一旦確認
     const onSubmit = (data: any) => {
         setSubmitDisabled(true)
         login.mutate({ email: data.email, password: data.password })
@@ -33,8 +30,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <>
-            <Header />
+        <MainLayout setClass='' >
             { ( systemState.userId !== null  
                 && systemState.userName !== '' 
                 && systemState.public_page_token !== '' ) && (
@@ -84,7 +80,7 @@ const Login: React.FC = () => {
                     </form>
                 </FormProvider>
             </NormalWrap>
-        </>
+        </MainLayout>
     )
 }
 

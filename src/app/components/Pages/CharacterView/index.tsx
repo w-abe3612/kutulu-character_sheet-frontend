@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ViewerHeader from '../../Commons/Header/viewerHeader'
 import { useParams } from 'react-router-dom'
 import AbilityValueView from './AbilityValueView'
@@ -8,13 +7,17 @@ import FlavorInfoView from './FlavorInfoView'
 import CharacterInfoView from './CharacterInfoView'
 import CharacterPreferenceView from './CharacterPreferenceView'
 import PossessionItemView from './PossessionItemView'
+import ViewLayout from '../../Commons/Layout/viewLayout'
+import OutputView from './OutputView'
 
 const CharacterView: React.FC = () => {
     const urlParams = useParams<{ publicUserPageToken: any, publicCharacterPageToken: any }>()
 
     return (
-        <>
-            <ViewerHeader />
+        <ViewLayout
+            setClass=''
+        >
+            
             <div className='l-wrap'>
                 <CharacterInfoView isPage='view' />
                 <FlavorInfoView isPage='view' />
@@ -23,7 +26,8 @@ const CharacterView: React.FC = () => {
                 <PossessionItemView isPage='view' />
                 <CharacterPreferenceView isPage='view' />
             </div>
-        </>
+            <OutputView isPage='view' />
+        </ViewLayout>
     )
 }
 

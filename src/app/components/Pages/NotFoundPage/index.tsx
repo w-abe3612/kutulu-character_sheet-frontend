@@ -1,11 +1,10 @@
 import React from 'react';
-import Header from '../../Commons/Header'
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 const NotFoundPage: React.FC = () => {
     return (
-        <div>
-            <Header />
+        <MainLayout setClass='' >
             <NormalWrap
                 title="404"
                 setClass='is-404'
@@ -19,8 +18,7 @@ const NotFoundPage: React.FC = () => {
                     <p className="text">気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです気のせいです</p>
                 </div>
             </NormalWrap>
-
-        </div>
+        </MainLayout>
     )
 }
 

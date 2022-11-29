@@ -4,7 +4,7 @@ import type { RootState } from './store'
 import { useKutuluInfo } from '../queries/CharacterQuery'
 import { navigationInfoType  } from '../config/type'
 
-
+// UIstateInfoにして
 const initialNavigationInfo: navigationInfoType = {
   sidebarState:false
 }

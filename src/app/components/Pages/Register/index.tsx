@@ -9,6 +9,7 @@ import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
 import Verify from './verifyRegister';
 import Header from '../../Commons/Header'
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 type Props = {
     urlNest: string
@@ -40,10 +41,9 @@ const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
     }
 
     return (
-        <>
-            <Header />
+        <MainLayout setClass='' >
             {result}
-        </>
+        </MainLayout>
     )
 }
 

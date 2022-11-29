@@ -1,8 +1,10 @@
 {
   "scripts": {
     "build": "webpack",
+    "build:prd": "webpack -mode production",
     "watch": "webpack -w",
     "start": "webpack-dev-server --open",
+    "start:prd": "webpack-dev-server --open",
     "test": "jest"
   },
   "author": "",

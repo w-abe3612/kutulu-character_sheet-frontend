@@ -1,13 +1,12 @@
 
 
 import React from 'react';
-import Header from '../../Commons/Header'
 import SectionWrap from "../../Commons/Layout/sectionWrap"
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 const PrivacyPolicy: React.FC = () => {
     return (
-        <div>
-            <Header />
+        <MainLayout setClass='' >
             <div>
                 <SectionWrap title="利用規約"
                     setClass='is-policy-page'
@@ -19,7 +18,7 @@ const PrivacyPolicy: React.FC = () => {
                             <li>( 2 ) 本利用規約は、本サービスの利用条件を定めるものです。利用者は、本利用規約に従い本サービスを利用するものとします。</li>
                             <li>( 3 ) 利用者は、本サービスを利用することにより、本利用規約の全ての記載内容について同意したものとみなされます。</li>
                             <li>( 4 ) 本利用規約の一部の規定の全部又は一部が法令に基づいて無効と判断された場合であっても、当該規定の無効部分以外の部分および本利用規約のその他の規定は有効とします。本利用規約の一部が特定の利用者との間で無効とされ、または取り消された場合でも、本利用規約はその他の利用者との関係では有効とします。</li>
-                            <li>( 5 ) 本利用規約に示される権利を行使または実施しない場合でも、当社が当該権利を放棄するものではありません。</li>
+                            <li>( 5 ) 本利用規約に示される権利を行使または実施しない場合でも、当サービスが当該権利を放棄するものではありません。</li>
                         </ul>
                     
                     
@@ -343,7 +342,7 @@ const PrivacyPolicy: React.FC = () => {
                     <p>令和 4 年 12 月 1 日 改訂</p>
                 </SectionWrap>
             </div>
-        </div>
+        </MainLayout>
     )
 }
 

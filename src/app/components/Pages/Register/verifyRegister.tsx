@@ -6,13 +6,12 @@ import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 const Verify: React.FC = () => {
     const verify = useVerify()
     const location = useLocation()
-/*
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search)
         searchParams.get('token')
         verify.mutate({ token: searchParams.get('token') })
     }, [0])
-*/
+
     return (
         <NormalWrap
             title="ご登録ありがとうございます"

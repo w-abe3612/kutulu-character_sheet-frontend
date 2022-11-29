@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Router from './router'
 import { QueryClient, QueryClientProvider } from "react-query"
-import { useAppSelector, useAppDispatch } from '../reducers/hooks'
+import { useAppSelector } from '../reducers/hooks'
 
-import type { systemStateType, statesType, navigationInfoType } from '../config/type'
+import type { statesType, navigationInfoType } from '../config/type'
 import { ToastContainer } from 'react-toastify';
 import LoginStateProvider from '../components/Commons/loginStateProvider'
 
 const App: React.FC = () => {
-    const dispatch = useAppDispatch()
-    let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
     let navigationInfo: navigationInfoType = useAppSelector((state: statesType) => state.navigationInfo)
-
-
 
     const queryClient = new QueryClient({
         defaultOptions: {
@@ -24,6 +20,7 @@ const App: React.FC = () => {
             }
         }
     })
+    console.log(process.env.ENV_TEST);
 
     return (
         <div className='l-layout-wrapper'

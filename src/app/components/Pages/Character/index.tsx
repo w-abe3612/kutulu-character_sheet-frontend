@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import AbilityValue from './AbilityValue'
 import SpecializedSkill from './SpecializedSkills'
 import FlavorInfo from './FlavorInfo'
 import CharacterInfo from './CharacterInfo'
 import CharacterPreference from './CharacterPreference'
 import PossessionItem from './PossessionItem'
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
-import { getCharacterId4Url } from '../../../functions/utility'
+import { useForm, FormProvider } from "react-hook-form";
+import { useAppSelector } from '../../../reducers/hooks'
 import { submithandler } from '../../../functions/submit'
-import { initializeCharacterInfo, getCharacterInfo } from '../../../reducers/characterInfosSlice'
-import { initializeKutuluInfo, getKutuluInfo } from '../../../reducers/kutuluInfoSlice'
 import { useParams } from 'react-router-dom'
-import Header from '../../Commons/Header'
 import { statesType } from '../../../config/type'
 import SubmitButton from '../../Commons/SheetParts/submitButton'
 import MainLayout from '../../Commons/Layout/mainLayout'

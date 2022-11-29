@@ -24,6 +24,7 @@ const InputRegister: React.FC = () => {
 
     // todo 一旦後回し
     const onSubmit = (data: any) => {
+
         dispatch(setFormState({ formState: 'confirm' }))
         dispatch(setrRegisterInputs({
             username: data.username,

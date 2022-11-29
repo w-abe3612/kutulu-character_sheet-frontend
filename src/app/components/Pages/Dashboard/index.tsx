@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import CharacterItem from './characterItem'
 import SectionWrap from "../../Commons/Layout/sectionWrapDash"
-import { getCharacters } from '../../../reducers/dashboardIndex';
-import Header from '../../Commons/Header'
+import { getCharacters } from '../../../reducers/dashboardIndex'
 import { statesType, dashboardIndexType } from '../../../config/type'
+import MainLayout from '../../Commons/Layout/mainLayout'
 
 const Dashboard: React.FC = () => {
     let result: JSX.Element = <></>
@@ -56,10 +56,9 @@ const Dashboard: React.FC = () => {
     }
 
     return (
-        <>
-            <Header />
+        <MainLayout setClass='' >
             { result }
-        </>
+        </MainLayout>
     )
 }
 

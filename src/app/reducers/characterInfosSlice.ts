@@ -111,13 +111,13 @@ export const characterInfoSlice = createSlice({
         updateState.success = true
         updateState.error = ''
       
-          updateState.player_name = action.payload[0].player_name
-          updateState.player_character = action.payload[0].player_character
-          updateState.image_path = action.payload[0].image_path
-          updateState.image_name = action.payload[0].image_name
+          updateState.player_name = action.payload.player_name
+          updateState.player_character = action.payload.player_character
+          updateState.image_path = action.payload.image_path
+          updateState.image_name = action.payload.image_name
           updateState.img_upload_base64 = ''
-          updateState.public_page_token = action.payload[0].public_page_token
-          updateState.public_flg = action.payload[0].public_flg
+          updateState.public_page_token = action.payload.public_page_token
+          updateState.public_flg = action.payload.public_flg
       
 
         state = updateState

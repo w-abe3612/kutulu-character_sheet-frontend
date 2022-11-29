@@ -12,7 +12,7 @@ const viewCharacterInfo = async (userPageToken: string, characterPageToken: stri
                 characterPageToken: characterPageToken
             }
         })
-
+        console.log(data)
     return data
 }
 const viewKutuluInfo = async (userPageToken: string, characterPageToken: string) => {
@@ -156,6 +156,7 @@ const createCharacter = async (info: any) => {
             }
         }
     )
+
     return data
 }
 
