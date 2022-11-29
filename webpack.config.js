@@ -95,8 +95,8 @@ module.exports = () => {
         },
         // import 文で .ts や .tsx ファイルを解決するため
         resolve: {
-            modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
-            extensions: [".ts", ".tsx", ".js", ".json"]
+            extensions: [".ts", ".tsx", ".js", ".json"],
+            modules: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')], 
         },
 
         plugins: [

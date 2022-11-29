@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction ,createAsyncThunk} from '@reduxjs/toolkit'
 import initialKutuluInfo from './initialValue/KutuluInfo'
 import type { RootState } from './store'
-import { useKutuluInfo } from '../queries/CharacterQuery'
+//import { useKutuluInfo } from '../queries/CharacterQuery'
+import * as characterQueries from '../queries/CharacterQuery'
 import { navigationInfoType  } from '../config/type'
 
 // UIstateInfoにして
