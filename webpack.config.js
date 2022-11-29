@@ -13,6 +13,7 @@ module.exports = () => {
         mode: "development",
         stats: {
             children: true,
+            errorDetails: true
         },
 
         // ES5(IE11等)向けの指定（webpack 5以上で必要）
