@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm, FormProvider } from "react-hook-form";
 import { useLogin } from "../../../queries/AuthQuery"
 import { useAppSelector } from '../../../reducers/hooks'
@@ -11,18 +11,27 @@ import InputPassword from '../../Commons/SystemUseParts/inputPassword';
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton'
 import MainLayout from '../../Commons/Layout/mainLayout'
+import { useReCaptcha } from '../../../config/reCaptcha'
+//recaptureを入れる
 
 //todo 実際に運用フェーズに入ったら攻撃されるだろうから、rechapture入れる
 const Login: React.FC = () => {
+    const recaptcha = useReCaptcha();
     const [submitDisabled, setSubmitDisabled] = useState(false);
     const login = useLogin()
+
+    useEffect(()=>{
+        recaptcha.load();
+    },[0])
 
     let systemState: systemStateType = useAppSelector((state: statesType) => state.systemState)
     const methods = useForm();
 
     const onSubmit = (data: any) => {
         setSubmitDisabled(true)
-        login.mutate({ email: data.email, password: data.password })
+        recaptcha.execute({ action: "submit" }).then((token) => {
+            login.mutate({ email: data.email, password: data.password, reCaptureToken:token })
+        })
 
         setTimeout(() => {
             setSubmitDisabled(false);

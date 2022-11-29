@@ -10,7 +10,8 @@ const initialCharacterInfo: characterInfoType = {
     image_name:'',
     img_upload_base64:'',
     public_page_token:'',
-    public_flg:1
+    public_flg:1,
+    character_type:0
 }
 
 export default initialCharacterInfo

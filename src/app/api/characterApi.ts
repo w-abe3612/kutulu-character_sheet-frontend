@@ -12,7 +12,6 @@ const viewCharacterInfo = async (userPageToken: string, characterPageToken: stri
                 characterPageToken: characterPageToken
             }
         })
-        console.log(data)
     return data
 }
 const viewKutuluInfo = async (userPageToken: string, characterPageToken: string) => {
@@ -64,12 +63,10 @@ const viewSpecialzedSkills = async (userPageToken: string, characterPageToken: s
     return data
 }
 
-// まだ使わないかも
 const viewOtherUserInfo = async (userPageToken: string, characterPageToken: string) => {
     return ''
 }
 
-//page
 const getCharacters = async (page: number) => {
     const { data } = await axios.get<any>(`http://localhost:80/api/v1/characters`, {
         params: {

@@ -2,10 +2,10 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true;
 
-const register = async ({name,email,password,password_confirmation}:{name:string,email:string,password:string,password_confirmation:string}) => {
+const register = async ({name,email,password,password_confirmation,reCaptureToken}:{name:string,email:string,password:string,password_confirmation:string,reCaptureToken:string}) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/registration`,
-        {name,email,password,password_confirmation},
+        {name,email,password,password_confirmation,reCaptureToken},
         {headers: {
             'Content-Type': 'application/json'
         }}
@@ -13,10 +13,12 @@ const register = async ({name,email,password,password_confirmation}:{name:string
     return data 
 }
 
-const verify = async (token:string) => {
+//{ email, password, reCaptureToken }: { email: string, password: string, reCaptureToken:string }
+//{token,reCaptureToken}: {token:string,reCaptureToken:string}
+const verify = async ({token,reCaptureToken}: {token:string,reCaptureToken:string}) => {
     const { data } = await axios.post<any>(
         `http://localhost:80/api/v1/verify`,
-        {token},
+        {token, reCaptureToken},
         {headers: {
             'Content-Type': 'application/json'
         }}

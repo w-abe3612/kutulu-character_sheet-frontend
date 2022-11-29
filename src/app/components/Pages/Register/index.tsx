@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../../reducers/hooks'
 import {
     Navigate,
@@ -8,19 +8,25 @@ import InputRegister from './inputRegister'
 import CompleteRegister from './completeRegister';
 import ConfirmRegister from './confirmRegister';
 import Verify from './verifyRegister';
-import Header from '../../Commons/Header'
 import MainLayout from '../../Commons/Layout/mainLayout'
+//recaptureを入れる
+import { useReCaptcha } from '../../../config/reCaptcha'
 
 type Props = {
     urlNest: string
 }
 
 const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
+    const recaptcha = useReCaptcha();
     const dispatch = useAppDispatch()
     const systemState: systemStateType     = useAppSelector((state: any) => state.systemState)
     const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
 
     let result = <></>
+
+    useEffect(()=>{
+        recaptcha.load();
+    },[0])
 
     if ( systemState.userId !== null  
             && systemState.userName !== '' 

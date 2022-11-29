@@ -7,22 +7,27 @@ import { setFormState, clearRegisterInputs } from '../../../reducers/registerSli
 import { useRegister } from "../../../queries/RegisterQuery"
 import { registerStatesType, statesType } from '../../../config/type'
 import NormalWrap from '../../Commons/Layout/normalSectionWrap'
+import { useReCaptcha } from '../../../config/reCaptcha'
 
 const CompleteRegister: React.FC = () => {
+    const recaptcha = useReCaptcha();
     const dispatch = useAppDispatch()
     const registerState: registerStatesType = useAppSelector((state: statesType) => state.registerState)
     const navigate = useNavigate();
     const register = useRegister()
 
     useEffect(() => {
-        register.mutate(
-            {
-                name: registerState.username,
-                email: registerState.email,
-                password: registerState.password,
-                password_confirmation: registerState.confirmation
-            }
-        )
+        recaptcha.execute({ action: "submit" }).then((reCaptureToken) => {
+            register.mutate(
+                {
+                    name: registerState.username,
+                    email: registerState.email,
+                    password: registerState.password,
+                    password_confirmation: registerState.confirmation,
+                    reCaptureToken:reCaptureToken
+                }
+            )
+        })
 
         setTimeout(() => {
             dispatch(setFormState({ formState: 'input' }))

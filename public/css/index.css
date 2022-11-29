@@ -830,6 +830,9 @@ ul {
   content: "";
 }
 .l-main-layout .l-main-wrap {
+  min-height: calc(100vh - 104px);
+}
+.l-main-layout .m-header.is-loggedin ~ .l-main-wrap {
   min-height: calc(100vh - 154px);
 }
 

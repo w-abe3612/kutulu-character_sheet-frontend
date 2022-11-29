@@ -53,6 +53,7 @@ export interface characterInfoType {
     img_upload_base64: string
     public_page_token: string
     public_flg: number
+    character_type:number
 }
 
 // クトゥルーコアインフォ
@@ -128,6 +129,7 @@ export interface dashboardIndexType {
         image_path: string
         player_character: string
         public_page_token: string
+        character_type: number
         updated_at: string
     }>
 }

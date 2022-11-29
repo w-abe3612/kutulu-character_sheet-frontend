@@ -37,6 +37,10 @@
 .l-main-layout {
     content:'';
     .l-main-wrap {
+        min-height:calc(100vh - 104px);
+    }
+
+    .m-header.is-loggedin ~ .l-main-wrap{
         min-height:calc(100vh - 154px);
     }
 }
