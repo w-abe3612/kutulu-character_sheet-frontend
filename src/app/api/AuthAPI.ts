@@ -1,18 +1,19 @@
-import axios from 'axios'
+//import useAxios from 'useAxios'
+import useAxios from '../config/axiosConfig'
 
-axios.defaults.withCredentials = true;
+
 
 const getUser = async () => {
     let data: any
-    data = await axios.get<any>('http://localhost:80/api/v1/user')
+    data = await useAxios.get<any>('/api/v1/user')
 
     return data
 }
 
 const login = async ({ email, password, reCaptureToken }: { email: string, password: string, reCaptureToken:string }) => {
-    const { data } = await axios.get("http://localhost:80/sanctum/csrf-cookie").then( async (res) => {
-         return await axios.post<any>(
-            `http://localhost:80/api/v1/login`,
+    const { data } = await useAxios.get("/sanctum/csrf-cookie").then( async (res) => {
+         return await useAxios.post<any>(
+            `/api/v1/login`,
             { email, password, reCaptureToken }
         )
     })
@@ -23,7 +24,7 @@ const login = async ({ email, password, reCaptureToken }: { email: string, passw
 
 
 const logout = async () => {
-    const { data } = await axios.post<any>(`http://localhost:80/api/v1/logout`)
+    const { data } = await useAxios.post<any>(`/api/v1/logout`)
     return data
 }
 

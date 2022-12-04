@@ -1,10 +1,11 @@
-import axios from 'axios'
+//import useAxios from 'useAxios'
+import useAxios from '../config/axiosConfig'
 import { useAppSelector, useAppDispatch } from '../reducers/hooks'
 
-axios.defaults.withCredentials = true;
+
 
 const viewCharacterInfo = async (userPageToken: string, characterPageToken: string) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/character_infos/view`,
         {
             params: {
@@ -15,7 +16,7 @@ const viewCharacterInfo = async (userPageToken: string, characterPageToken: stri
     return data
 }
 const viewKutuluInfo = async (userPageToken: string, characterPageToken: string) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/kutulu_info/view`,
         {
             params: {
@@ -27,7 +28,7 @@ const viewKutuluInfo = async (userPageToken: string, characterPageToken: string)
     return data
 }
 const viewFlavorInfos = async (userPageToken: string, characterPageToken: string) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/flavor_infos/view`,
         {
             params: {
@@ -39,7 +40,7 @@ const viewFlavorInfos = async (userPageToken: string, characterPageToken: string
     return data
 }
 const viewAbilityValues = async (userPageToken: string, characterPageToken: string) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/ability_values/view`,
         {
             params: {
@@ -51,7 +52,7 @@ const viewAbilityValues = async (userPageToken: string, characterPageToken: stri
     return data
 }
 const viewSpecialzedSkills = async (userPageToken: string, characterPageToken: string) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/specialzed_skills/view`,
         {
             params: {
@@ -68,7 +69,7 @@ const viewOtherUserInfo = async (userPageToken: string, characterPageToken: stri
 }
 
 const getCharacters = async (page: number) => {
-    const { data } = await axios.get<any>(`http://localhost:80/api/v1/characters`, {
+    const { data } = await useAxios.get<any>(`http://localhost:80/api/v1/characters`, {
         params: {
             page: page
         }
@@ -76,7 +77,7 @@ const getCharacters = async (page: number) => {
     return data
 }
 const getCharacterInfo = async (id: any) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/character_infos`,
         {
             params: {
@@ -87,7 +88,7 @@ const getCharacterInfo = async (id: any) => {
 }
 
 const getKutuluInfo = async (id: any) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/kutulu_info`,
         {
             params: {
@@ -98,7 +99,7 @@ const getKutuluInfo = async (id: any) => {
 }
 
 const getFlavorInfos = async (id: any) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/flavor_infos`,
         {
             params: {
@@ -109,7 +110,7 @@ const getFlavorInfos = async (id: any) => {
 }
 
 const getAbilityValues = async (id: any) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/ability_values`,
         {
             params: {
@@ -120,7 +121,7 @@ const getAbilityValues = async (id: any) => {
 }
 
 const getSpecialzedSkills = async (id: any) => {
-    const { data } = await axios.get<any>(
+    const { data } = await useAxios.get<any>(
         `http://localhost:80/api/v1/specialzed_skills`,
         {
             params: {
@@ -131,7 +132,7 @@ const getSpecialzedSkills = async (id: any) => {
 }
 
 const deleteCharacter = async (id: any) => {
-    const { data } = await axios.post<any>(
+    const { data } = await useAxios.post<any>(
         `http://localhost:80/api/v1/character/delete`,
         { character_id: id },
         {
@@ -144,7 +145,7 @@ const deleteCharacter = async (id: any) => {
 }
 
 const createCharacter = async (info: any) => {
-    const { data } = await axios.post<any>(
+    const { data } = await useAxios.post<any>(
         `http://localhost:80/api/v1/character/create`,
         info,
         {
@@ -158,7 +159,7 @@ const createCharacter = async (info: any) => {
 }
 
 const updateCharacter = async (info: any) => {
-    const { data } = await axios.post<any>(
+    const { data } = await useAxios.post<any>(
         `http://localhost:80/api/v1/character/edit`,
         info,
         {
