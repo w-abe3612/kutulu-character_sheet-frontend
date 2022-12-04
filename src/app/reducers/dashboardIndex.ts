@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, createAsyncThunk, current } from '@reduxjs/toolkit'
-import axios from "axios";
 import initialCharacterInfo from './initialValue/characterInfo'
 import type { RootState } from './store'
 //import { useCharacters } from '../queries/CharacterQuery'
