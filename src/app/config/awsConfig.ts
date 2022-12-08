@@ -15,10 +15,6 @@ const credentials = new AWS.Credentials(
 );
 AWS.config.credentials = credentials;
 
-const s3ImageData = {
-    content: false,
-};
-
 s3 = new AWS.S3()
 
 export default s3
