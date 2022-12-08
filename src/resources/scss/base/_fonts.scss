@@ -1,0 +1,84 @@
+
+
+$font-path: "../fonts/notoSansJp/";
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 100;
+	src: url("#{$font-path}NotoSansJP-Thin.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Thin.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Thin.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 200;
+	src: url("#{$font-path}NotoSansJP-Light.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Light.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Light.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 300;
+	src: url("#{$font-path}NotoSansJP-DemiLight.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-DemiLight.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-DemiLight.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 400;
+	src: url("#{$font-path}NotoSansJP-Regular.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Regular.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 500;
+	src: url("#{$font-path}NotoSansJP-Medium.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Medium.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Medium.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 700;
+	src: url("#{$font-path}NotoSansJP-Bold.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Bold.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Bold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans JP";
+	font-style: normal;
+	font-weight: 900;
+	src: url("#{$font-path}NotoSansJP-Black.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansJP-Black.woff") format("woff"),
+	     url("#{$font-path}NotoSansJP-Black.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans Mono JP";
+	font-style: normal;
+	font-weight: 400;
+	src: url("#{$font-path}NotoSansMonoJP-Regular.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansMonoJP-Regular.woff") format("woff"),
+	     url("#{$font-path}NotoSansMonoJP-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "Noto Sans Mono JP";
+	font-style: normal;
+	font-weight: 700;
+	src: url("#{$font-path}NotoSansMonoJP-Bold.woff2") format("woff2"),
+	     url("#{$font-path}NotoSansMonoJP-Bold.woff") format("woff"),
+	     url("#{$font-path}NotoSansMonoJP-Bold.otf") format("opentype");
+}

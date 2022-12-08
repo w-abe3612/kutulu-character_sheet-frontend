@@ -3,6 +3,7 @@
     display:block;
     width:100%;
     position:relative;
+    
     &[data-sidebar="true"] {
         width:100vw;
         height:100vh;
@@ -22,6 +23,7 @@
     display:block;
     width:100%;
     position:relative;
+    
     .l-inner{
         min-height: calc(100vh - 35px);
         height:100%;
@@ -74,6 +76,7 @@
         // todo この色をthemesに入れる
         color:#646464;
         margin:0px 0px 8px 0px;
+        
     }
 
 }
@@ -102,6 +105,7 @@
 }
 
 .l-wrap {
+    
     .l-normal{
         max-width:476px;
         width:calc(100% - 16px);

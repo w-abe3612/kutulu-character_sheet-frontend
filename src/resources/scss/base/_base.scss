@@ -1,15 +1,15 @@
 * {
     box-sizing: border-box;
     font-size: 100%;
-    font-family: inherit;
+    font-family: 'Noto Sans Jp',"メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
 }
 
 body {
     font-size:16px;
     line-height:1.5;
     color: #424242;
-    font-family: "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
-
+    font-family: 'Noto Sans Jp',"メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+    font-weight: 400;
 }
 
 input {

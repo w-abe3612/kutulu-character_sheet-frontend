@@ -39,6 +39,7 @@ module.exports = () => {
 
         module: {
             rules: [
+
                 {
                     test: /\.(sa|sc|c)ss$/, // 対象にするファイルを指定
                     use: [
@@ -61,18 +62,6 @@ module.exports = () => {
                     ]
                 },
                 {
-                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].[ext]',
-                                outputPath: 'fonts/'
-                            }
-                        }
-                    ]
-                },
-                {
                     // 拡張子 .ts もしくは .tsx の場合
                     test: /\.tsx?$/,
                     // TypeScript をコンパイルする
@@ -88,6 +77,18 @@ module.exports = () => {
                                     '@babel/preset-env',
                                     '@babel/preset-react'
                                 ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    use: [
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'fonts/'
                             }
                         }
                     ]

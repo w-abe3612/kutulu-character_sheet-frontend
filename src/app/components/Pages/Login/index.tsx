@@ -12,9 +12,8 @@ import NormalWrap from '../../Commons/Layout/normalSectionWrap'
 import { SystemUseSubmitButton } from '../../Commons/SystemUseParts/submitButton'
 import MainLayout from '../../Commons/Layout/mainLayout'
 import { useReCaptcha } from '../../../config/reCaptcha'
-//recaptureを入れる
 
-//todo 実際に運用フェーズに入ったら攻撃されるだろうから、rechapture入れる
+// todo submitボタンを一時停止する
 const Login: React.FC = () => {
     const recaptcha = useReCaptcha();
     const [submitDisabled, setSubmitDisabled] = useState(false);
