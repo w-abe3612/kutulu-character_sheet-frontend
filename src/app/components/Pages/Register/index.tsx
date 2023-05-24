@@ -19,28 +19,27 @@ type Props = {
 const Register: React.FC<Props> = ({ urlNest }): JSX.Element => {
     const recaptcha = useReCaptcha();
     const dispatch = useAppDispatch()
-    const systemState: systemStateType     = useAppSelector((state: any) => state.systemState)
-    const registerState:registerStatesType = useAppSelector((state: any) => state.registerState)
+    const systemState: systemStateType = useAppSelector((state: any) => state.systemState)
+    const registerState: registerStatesType = useAppSelector((state: any) => state.registerState)
 
     let result = <></>
+        useEffect(() => {
+            recaptcha.load();
+        }, [0])
 
-    useEffect(()=>{
-        recaptcha.load();
-    },[0])
-
-    if ( systemState.userId !== null  
-            && systemState.userName !== '' 
-            && systemState.public_page_token !== '' ) {
+    if (systemState.userId !== null
+        && systemState.userName !== ''
+        && systemState.public_page_token !== '') {
         return <Navigate to={"/user/" + systemState.userId + '/kutulu/'} replace={true} />
     }
 
-    if ( urlNest === 'input' ) {
+    if (urlNest === 'input') {
         result = <InputRegister />
-    } else if(urlNest === 'verify') {
+    } else if (urlNest === 'verify') {
         result = <Verify />
-    } else if( urlNest === 'confirm' && registerState.formState === 'confirm' ) {
+    } else if (urlNest === 'confirm' && registerState.formState === 'confirm') {
         result = <ConfirmRegister />
-    } else if( urlNest === 'complete' && registerState.formState === 'complete' ) {
+    } else if (urlNest === 'complete' && registerState.formState === 'complete') {
         result = <CompleteRegister />
     } else {
         return <Navigate to="/register" replace={true} />
